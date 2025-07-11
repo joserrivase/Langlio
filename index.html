@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Langlio - Language Guessing Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="world-map-bg"></div>
+    
+    <div class="container">
+        <header>
+            <h1>Langlio</h1>
+        </header>
+
+        <div class="game-container">
+            <div class="sentence-display">
+                <div class="sentence" id="dailySentence">
+                    <!-- Daily sentence will be inserted here -->
+                </div>
+                <div class="hint-section">
+                    <button id="hintBtn" class="hint-btn">💡 Show Hint</button>
+                    <div id="hintDisplay" class="hint-display" style="display: none;">
+                        <!-- Hint will be displayed here -->
+                    </div>
+                </div>
+                <div class="sentence-info">
+                    <span class="attempts">Attempts: <span id="attemptsLeft">6</span>/6</span>
+                    <span class="date" id="currentDate"></span>
+                </div>
+            </div>
+
+            <div class="game-over" id="gameOver" style="display: none;">
+                <h2>Game Over!</h2>
+                <div class="result-info">
+                    <p><strong>Language:</strong> <span id="correctLanguage"></span></p>
+                    <p><strong>Countries:</strong> <span id="correctCountries"></span></p>
+                    <p><strong>Sentence:</strong> <span id="correctSentence"></span></p>
+                </div>
+                <button id="newGameBtn" class="new-game-btn">New Game</button>
+            </div>
+
+            <div class="guessing-section">
+                <!-- Language guessing phase -->
+                <div class="guess-phase" id="languagePhase">
+                    <!-- <h3>Step 1: Guess the Language</h3> -->
+                    <div class="guess-row">
+                        <div class="guess-input">
+                            <label for="languageGuess">Language:</label>
+                            <select id="languageGuess" class="dropdown">
+                                <option value="">Select language...</option>
+                            </select>
+                        </div>
+                        <button id="submitLanguageGuess" class="submit-btn">Submit Language</button>
+                    </div>
+                    
+                    <!-- Language guesses history -->
+                    <div class="guesses-history" id="languageGuessesHistory">
+                        <!-- Language guesses will be displayed here -->
+                    </div>
+                </div>
+
+                <!-- Country guessing phase (initially hidden) -->
+                <div class="guess-phase" id="countryPhase" style="display: none;">
+                    <h3>Step 2: Guess the Countries</h3>
+                    <div class="language-result" id="languageResult"></div>
+                    <div class="country-inputs" id="countryInputs">
+                        <!-- Country inputs will be dynamically generated here -->
+                    </div>
+                    <div class="guess-row">
+                        <button id="submitCountryGuess" class="submit-btn">Submit Countries</button>
+                    </div>
+                    
+                    <!-- Country guesses history -->
+                    <div class="guesses-history" id="countryGuessesHistory">
+                        <!-- Country guesses will be displayed here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
