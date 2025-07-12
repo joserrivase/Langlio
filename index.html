@@ -19,6 +19,39 @@
 <body>
     <div class="world-map-bg"></div>
     
+    <!-- Instructions Popup -->
+    <div class="instructions-popup" id="instructionsPopup">
+        <div class="instructions-content">
+            <div class="instructions-header">
+                <h2>How to Play Langlio</h2>
+                <button class="close-btn" id="closeInstructions">×</button>
+            </div>
+            <div class="instructions-body">
+                <div class="instruction-step">
+                    <h3>Step 1: Guess the Language</h3>
+                    <p>You have <strong>6 attempts</strong> to guess the correct language. Type in the search box to find languages quickly!</p>
+                </div>
+                <div class="instruction-step">
+                    <h3>Step 2: Guess the Countries</h3>
+                    <p>Once you've correctly identified the language, you get <strong>6 attempts</strong> to guess all the countries where that language is spoken.</p>
+                </div>
+                <div class="instruction-features">
+                    <h3>Game Features</h3>
+                    <ul>
+                        <li><strong>💡 Hint:</strong> Click the hint button for language clues</li>
+                        <li><strong>🔄 New Game:</strong> Start a completely new game with a random language</li>
+                        <li><strong>📱 Mobile Friendly:</strong> Searchable inputs work great on phones</li>
+                        <li><strong>💾 Progress Saved:</strong> Your game progress is automatically saved</li>
+                    </ul>
+                </div>
+                <div class="instruction-tip">
+                    <p><strong>💡 Tip:</strong> Start by looking for common patterns in the sentence - articles, word endings, and special characters can give you clues about the language!</p>
+                </div>
+            </div>
+            <button class="start-game-btn" id="startGameBtn">Start Playing!</button>
+        </div>
+    </div>
+
     <div class="container">
         <header>
             <h1>Langlio</h1>
@@ -28,6 +61,9 @@
             <div class="sentence-display">
                 <div class="sentence" id="dailySentence">
                     <!-- Daily sentence will be inserted here -->
+                </div>
+                <div class="debug-language" id="debugLanguage" style="font-size: 0.9rem; color: #60a5fa; margin-top: 0.5rem;">
+                    <!-- Language will be inserted here for debugging -->
                 </div>
                 <div class="hint-section">
                     <button id="hintBtn" class="hint-btn">💡 Show Hint</button>
@@ -58,9 +94,10 @@
                     <div class="guess-row">
                         <div class="guess-input">
                             <label for="languageGuess">Language:</label>
-                            <select id="languageGuess" class="dropdown">
-                                <option value="">Select language...</option>
-                            </select>
+                            <div class="searchable-dropdown">
+                                <input type="text" id="languageGuess" class="searchable-input" placeholder="Type to search languages...">
+                                <div id="languageDropdown" class="dropdown-options" style="display: none;"></div>
+                            </div>
                         </div>
                         <button id="submitLanguageGuess" class="submit-btn">Submit Language</button>
                     </div>

@@ -222,6 +222,278 @@ header h1 {
     color: #ffffff;
 }
 
+/* Searchable dropdown styles */
+.searchable-dropdown {
+    position: relative;
+    width: 100%;
+}
+
+.searchable-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.searchable-input:focus {
+    outline: none;
+    border-color: #667eea;
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.searchable-input:disabled {
+    background: rgba(34, 197, 94, 0.1);
+    border-color: rgba(34, 197, 94, 0.3);
+    color: #22c55e;
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+/* Final game over states for country inputs */
+.searchable-input.correct-final {
+    background: rgba(34, 197, 94, 0.15);
+    border-color: rgba(34, 197, 94, 0.5);
+    color: #22c55e;
+    font-weight: 600;
+}
+
+.searchable-input.incorrect-final {
+    background: rgba(239, 68, 68, 0.15);
+    border-color: rgba(239, 68, 68, 0.5);
+    color: #ef4444;
+    font-weight: 600;
+}
+
+.searchable-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #1a1a2e;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.dropdown-option {
+    padding: 0.75rem 1rem;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dropdown-option:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-option:last-child {
+    border-bottom: none;
+}
+
+.dropdown-option.no-results {
+    color: rgba(255, 255, 255, 0.5);
+    cursor: default;
+}
+
+.dropdown-option.no-results:hover {
+    background: transparent;
+}
+
+
+
+/* Instructions Popup Styles */
+.instructions-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+}
+
+.instructions-content {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.instructions-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.instructions-header h2 {
+    color: #60a5fa;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+.instructions-body {
+    margin-bottom: 2rem;
+}
+
+.instruction-step {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.instruction-step h3 {
+    color: #60a5fa;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.instruction-step p {
+    color: #ffffff;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.instruction-features {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.instruction-features h3 {
+    color: #60a5fa;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.instruction-features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.instruction-features li {
+    color: #ffffff;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    line-height: 1.5;
+}
+
+.instruction-features li:last-child {
+    border-bottom: none;
+}
+
+.instruction-tip {
+    padding: 1rem;
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.instruction-tip p {
+    color: #ffd700;
+    margin: 0;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+.start-game-btn {
+    width: 100%;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+    border: none;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.start-game-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(96, 165, 250, 0.3);
+}
+
+.start-game-btn:active {
+    transform: translateY(0);
+}
+
+/* Mobile responsive for instructions */
+@media (max-width: 768px) {
+    .instructions-content {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    
+    .instructions-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .instruction-step h3,
+    .instruction-features h3 {
+        font-size: 1.1rem;
+    }
+}
+
 .submit-btn {
     padding: 0.75rem 1.5rem;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);

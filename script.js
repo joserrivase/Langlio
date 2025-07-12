@@ -3,37 +3,37 @@ const gameData = {
     "Spanish": {
         sentence: "El sol brilla en el cielo azul",
         translation: "The sun shines in the blue sky",
-        countries: ["Spain", "Mexico", "Argentina"],
+        countries: ["Spain", "Mexico", "Argentina", "Colombia", "Peru", "Venezuela", "Chile", "Ecuador", "Guatemala", "Cuba", "Bolivia", "Dominican Republic", "Honduras", "Paraguay", "El Salvador", "Nicaragua", "Costa Rica", "Panama", "Uruguay", "Equatorial Guinea", "Puerto Rico"],
         hint: "This language uses 'el' and 'la' articles and has rolling 'r' sounds"
     },
     "French": {
         sentence: "Le soleil brille dans le ciel bleu",
         translation: "The sun shines in the blue sky",
-        countries: ["France", "Canada", "Belgium"],
+        countries: ["France", "Canada", "Belgium", "Switzerland", "Luxembourg", "Monaco", "Haiti", "Senegal", "Mali", "Burkina Faso", "Niger", "Chad", "Central African Republic", "Cameroon", "Gabon", "Congo", "Democratic Republic of the Congo", "Rwanda", "Burundi", "Madagascar", "Comoros", "Seychelles", "Djibouti", "Vanuatu", "New Caledonia", "French Polynesia", "Wallis and Futuna"],
         hint: "This language uses 'le' and 'la' articles and has nasal sounds"
     },
     "German": {
         sentence: "Die Sonne scheint am blauen Himmel",
         translation: "The sun shines in the blue sky",
-        countries: ["Germany", "Austria", "Switzerland"],
+        countries: ["Germany", "Austria", "Switzerland", "Liechtenstein", "Luxembourg", "Belgium"],
         hint: "This language capitalizes all nouns and uses 'die', 'der', 'das' articles"
     },
     "Italian": {
         sentence: "Il sole splende nel cielo blu",
         translation: "The sun shines in the blue sky",
-        countries: ["Italy", "Switzerland", "San Marino"],
+        countries: ["Italy", "Switzerland", "San Marino", "Vatican City"],
         hint: "This language uses 'il' and 'la' articles and has musical intonation"
     },
     "Portuguese": {
         sentence: "O sol brilha no céu azul",
         translation: "The sun shines in the blue sky",
-        countries: ["Portugal", "Brazil", "Angola"],
+        countries: ["Portugal", "Brazil", "Angola", "Mozambique", "Guinea-Bissau", "Cape Verde", "São Tomé and Príncipe"],
         hint: "This language uses 'o' and 'a' articles and has nasal vowels"
     },
     "Russian": {
         sentence: "Солнце светит в голубом небе",
         translation: "The sun shines in the blue sky",
-        countries: ["Russia", "Belarus", "Kazakhstan"],
+        countries: ["Russia", "Belarus", "Kazakhstan", "Kyrgyzstan", "Tajikistan", "Uzbekistan", "Turkmenistan", "Azerbaijan", "Georgia", "Armenia", "Moldova", "Ukraine", "Estonia", "Latvia", "Lithuania", "Poland"],
         hint: "This language uses the Cyrillic alphabet and has soft/hard consonants"
     },
     "Japanese": {
@@ -57,7 +57,7 @@ const gameData = {
     "Arabic": {
         sentence: "الشمس تشرق في السماء الزرقاء",
         translation: "The sun shines in the blue sky",
-        countries: ["Egypt", "Saudi Arabia", "Iraq"],
+        countries: ["Egypt", "Saudi Arabia", "Iraq", "Syria", "Lebanon", "Jordan", "Palestine", "Israel", "Kuwait", "Bahrain", "Qatar", "United Arab Emirates", "Oman", "Yemen", "Sudan", "South Sudan", "Chad", "Libya", "Tunisia", "Algeria", "Morocco", "Mauritania", "Somalia", "Djibouti", "Eritrea", "Comoros"],
         hint: "This language is written right-to-left and has guttural sounds"
     },
     "Hindi": {
@@ -265,9 +265,11 @@ let currentGame = {
 
 // DOM elements
 const dailySentenceEl = document.getElementById('dailySentence');
+const debugLanguageEl = document.getElementById('debugLanguage');
 const attemptsLeftEl = document.getElementById('attemptsLeft');
 const currentDateEl = document.getElementById('currentDate');
 const languageGuessEl = document.getElementById('languageGuess');
+const languageDropdownEl = document.getElementById('languageDropdown');
 const submitLanguageGuessEl = document.getElementById('submitLanguageGuess');
 const submitCountryGuessEl = document.getElementById('submitCountryGuess');
 const languagePhaseEl = document.getElementById('languagePhase');
@@ -283,6 +285,9 @@ const correctSentenceEl = document.getElementById('correctSentence');
 const newGameBtnEl = document.getElementById('newGameBtn');
 const hintBtnEl = document.getElementById('hintBtn');
 const hintDisplayEl = document.getElementById('hintDisplay');
+const instructionsPopupEl = document.getElementById('instructionsPopup');
+const closeInstructionsEl = document.getElementById('closeInstructions');
+const startGameBtnEl = document.getElementById('startGameBtn');
 
 // Debug: Check if all DOM elements are found
 console.log('DOM elements found:', {
@@ -326,7 +331,9 @@ function initGame() {
         const selectedLanguage = languages[languageIndex];
         
         currentGame.correctLanguage = selectedLanguage;
-        currentGame.correctCountries = gameData[selectedLanguage].countries;
+        // Select random countries from the language's country list (max 3, or all if less than 3)
+        const allCountries = gameData[selectedLanguage].countries;
+        currentGame.correctCountries = [...allCountries]; // Use all available countries
         currentGame.dailySentence = gameData[selectedLanguage].sentence;
         
         console.log('Selected language:', selectedLanguage);
@@ -334,6 +341,9 @@ function initGame() {
         
         // Display the sentence
         dailySentenceEl.textContent = currentGame.dailySentence;
+        
+        // Display the language for debugging
+        debugLanguageEl.textContent = `Language: ${currentGame.correctLanguage}`;
         
         // Populate dropdowns
         populateDropdowns();
@@ -366,14 +376,74 @@ function hashCode(str) {
 
 // Populate dropdowns with languages and countries
 function populateDropdowns() {
-    // Populate language dropdown
+    // Set up searchable language input
+    setupSearchableLanguageInput();
+}
+
+// Set up searchable language input
+function setupSearchableLanguageInput() {
     const languages = Object.keys(gameData).sort();
-    languages.forEach(language => {
-        const option = document.createElement('option');
-        option.value = language;
-        option.textContent = language;
-        languageGuessEl.appendChild(option);
+    
+    // Store languages for filtering
+    languageGuessEl.dataset.languages = JSON.stringify(languages);
+    
+    // Add event listeners for searchable input
+    languageGuessEl.addEventListener('input', filterLanguages);
+    languageGuessEl.addEventListener('focus', showLanguageDropdown);
+    languageGuessEl.addEventListener('blur', () => {
+        // Delay hiding dropdown to allow for clicks
+        setTimeout(() => {
+            languageDropdownEl.style.display = 'none';
+        }, 200);
     });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.searchable-dropdown')) {
+            languageDropdownEl.style.display = 'none';
+        }
+    });
+}
+
+// Filter languages based on input
+function filterLanguages() {
+    const searchTerm = languageGuessEl.value.toLowerCase();
+    const languages = JSON.parse(languageGuessEl.dataset.languages || '[]');
+    const filteredLanguages = languages.filter(lang => 
+        lang.toLowerCase().includes(searchTerm)
+    );
+    
+    displayLanguageOptions(filteredLanguages);
+}
+
+// Display language options in dropdown
+function displayLanguageOptions(languages) {
+    languageDropdownEl.innerHTML = '';
+    
+    if (languages.length === 0) {
+        languageDropdownEl.innerHTML = '<div class="dropdown-option no-results">No languages found</div>';
+        languageDropdownEl.style.display = 'block';
+        return;
+    }
+    
+    languages.forEach(language => {
+        const option = document.createElement('div');
+        option.className = 'dropdown-option';
+        option.textContent = language;
+        option.addEventListener('click', () => {
+            languageGuessEl.value = language;
+            languageDropdownEl.style.display = 'none';
+        });
+        languageDropdownEl.appendChild(option);
+    });
+    
+    languageDropdownEl.style.display = 'block';
+}
+
+// Show language dropdown
+function showLanguageDropdown() {
+    const languages = JSON.parse(languageGuessEl.dataset.languages || '[]');
+    displayLanguageOptions(languages);
 }
 
 // Add event listeners
@@ -382,6 +452,17 @@ function addEventListeners() {
     submitCountryGuessEl.addEventListener('click', submitCountryGuess);
     newGameBtnEl.addEventListener('click', resetGame);
     hintBtnEl.addEventListener('click', toggleHint);
+    
+    // Instructions popup event listeners
+    closeInstructionsEl.addEventListener('click', closeInstructions);
+    startGameBtnEl.addEventListener('click', closeInstructions);
+    
+    // Close instructions when clicking outside
+    instructionsPopupEl.addEventListener('click', (e) => {
+        if (e.target === instructionsPopupEl) {
+            closeInstructions();
+        }
+    });
     
     // Add keyboard shortcuts
     document.addEventListener('keydown', (e) => {
@@ -392,20 +473,10 @@ function addEventListeners() {
                 submitCountryGuess();
             }
         }
-    });
-    
-    // Add search functionality to language dropdown
-    languageGuessEl.addEventListener('keyup', (e) => {
-        const searchTerm = e.target.value.toLowerCase();
-        const options = Array.from(languageGuessEl.options);
-        
-        options.forEach(option => {
-            if (option.value.toLowerCase().includes(searchTerm)) {
-                option.style.display = '';
-            } else {
-                option.style.display = 'none';
-            }
-        });
+        // Close instructions with Escape key
+        if (e.key === 'Escape' && instructionsPopupEl.style.display !== 'none') {
+            closeInstructions();
+        }
     });
 }
 
@@ -448,23 +519,25 @@ function updateHintDisplay() {
 function evaluateGuess(guess) {
     const languageCorrect = guess.language === currentGame.correctLanguage;
     const guessedCountries = new Set(guess.countries);
-    const correctCountries = new Set(currentGame.correctCountries);
     
-    // Check if all correct countries are guessed
-    const countriesCorrect = currentGame.correctCountries.every(country => 
-        guessedCountries.has(country)
-    ) && guess.countries.length === currentGame.correctCountries.length;
+    // Get all countries that speak this language
+    const allCountriesForLanguage = gameData[currentGame.correctLanguage] ? gameData[currentGame.correctLanguage].countries : [];
     
-    // Calculate partial matches
-    const correctMatches = currentGame.correctCountries.filter(country => 
-        guessedCountries.has(country)
-    ).length;
+    // Check if user has guessed any countries from the complete list
+    const correctMatches = guessedCountries.size > 0 ? 
+        Array.from(guessedCountries).filter(country => 
+            allCountriesForLanguage.includes(country)
+        ).length : 0;
+    
+    // User wins if they guess the required number of correct countries (any from the full list)
+    const requiredCorrect = Math.min(3, allCountriesForLanguage.length);
+    const countriesCorrect = correctMatches >= requiredCorrect;
     
     return {
         languageCorrect,
         countriesCorrect,
         correctMatches,
-        totalCorrect: currentGame.correctCountries.length
+        totalCorrect: requiredCorrect
     };
 }
 
@@ -550,53 +623,131 @@ function generateCountryInputs(correctLanguage) {
     countryInputsEl.innerHTML = '';
     
     const languageData = gameData[correctLanguage];
-    const numCountries = languageData ? languageData.countries.length : 0;
     
-    if (numCountries === 0) {
-        countryInputsEl.innerHTML = '<p>No countries found for this language.</p>';
+    if (!languageData) {
+        countryInputsEl.innerHTML = '<p>No language data found.</p>';
         return;
     }
     
-    // Create country input fields
+    // Determine number of countries to guess (max 3, or total if less than 3)
+    const totalCountries = languageData.countries.length;
+    const numCountries = Math.min(3, totalCountries);
+    
+    // Get correctly guessed countries that are in the game's correct countries list
+    const correctlyGuessedFromGame = currentGame.correctlyGuessedCountries.filter(country => 
+        currentGame.correctCountries.includes(country)
+    );
+    
+    console.log('Correctly guessed from game countries:', correctlyGuessedFromGame);
+    console.log('Game correct countries:', currentGame.correctCountries);
+    console.log('All correctly guessed countries:', currentGame.correctlyGuessedCountries);
+    
+    // Note: Input fields are disabled based on how many countries from the 3 randomly selected
+    // game countries have been correctly guessed. Countries guessed correctly but not in the
+    // 3 selected ones will be shown as correct in the guess history but won't disable input fields.
+    
+    // Create all 3 input fields (or however many are required)
     for (let i = 0; i < numCountries; i++) {
         const countryInput = document.createElement('div');
         countryInput.className = 'guess-input';
         
-        // Check if this country has been correctly guessed
-        const isCorrectlyGuessed = currentGame.correctlyGuessedCountries.includes(currentGame.correctCountries[i]);
+        // Check if this position should be disabled (if we have a correct country for this position)
+        // We need to disable fields based on how many countries from the game's correct countries have been guessed
+        // But we also need to account for the fact that users might guess countries not in the 3 selected ones
+        const isCorrectlyGuessed = i < correctlyGuessedFromGame.length;
+        console.log(`Country ${i + 1}: position ${i}, isCorrectlyGuessed: ${isCorrectlyGuessed}, correctlyGuessedFromGame: ${correctlyGuessedFromGame.length}`);
         
         countryInput.innerHTML = `
             <label for="countryGuess${i}">Country ${i + 1}:</label>
-            <select id="countryGuess${i}" class="dropdown" ${isCorrectlyGuessed ? 'disabled' : ''}>
-                <option value="">Select country...</option>
-            </select>
+            <div class="searchable-dropdown">
+                <input type="text" id="countryGuess${i}" class="searchable-input" placeholder="Type to search countries..." ${isCorrectlyGuessed ? 'disabled' : ''}>
+                <div id="countryDropdown${i}" class="dropdown-options" style="display: none;"></div>
+            </div>
         `;
         
-        // Populate country dropdown
-        const dropdown = countryInput.querySelector('select');
-        const sortedCountries = allCountries.sort();
-        sortedCountries.forEach(country => {
-            const option = document.createElement('option');
-            option.value = country;
-            option.textContent = country;
-            dropdown.appendChild(option);
-        });
+        // Set up searchable country input
+        const countryInputEl = countryInput.querySelector('input');
+        const countryDropdownEl = countryInput.querySelector('.dropdown-options');
+        
+        // Store countries for filtering
+        countryInputEl.dataset.countries = JSON.stringify(allCountries.sort());
+        
+        // Add event listeners for searchable input (only if not disabled)
+        if (!isCorrectlyGuessed) {
+            countryInputEl.addEventListener('input', (e) => filterCountries(e, countryDropdownEl));
+            countryInputEl.addEventListener('focus', (e) => showCountryDropdown(e, countryDropdownEl));
+            countryInputEl.addEventListener('blur', () => {
+                // Delay hiding dropdown to allow for clicks
+                setTimeout(() => {
+                    countryDropdownEl.style.display = 'none';
+                }, 200);
+            });
+        }
         
         // Pre-select correctly guessed countries
-        if (isCorrectlyGuessed) {
-            dropdown.value = currentGame.correctCountries[i];
+        if (isCorrectlyGuessed && i < correctlyGuessedFromGame.length) {
+            const correctCountry = correctlyGuessedFromGame[i];
+            countryInputEl.value = correctCountry;
+            countryInputEl.classList.add('correct-final');
+            console.log(`Setting country ${i + 1} to: ${correctCountry}`);
+        } else if (isCorrectlyGuessed) {
+            // This shouldn't happen, but just in case
+            console.log(`Position ${i} marked as correctly guessed but no country assigned`);
         }
         
         countryInputsEl.appendChild(countryInput);
     }
 }
 
+// Filter countries based on input
+function filterCountries(event, dropdownEl) {
+    const searchTerm = event.target.value.toLowerCase();
+    const countries = JSON.parse(event.target.dataset.countries || '[]');
+    const filteredCountries = countries.filter(country => 
+        country.toLowerCase().includes(searchTerm)
+    );
+    
+    displayCountryOptions(filteredCountries, dropdownEl);
+}
+
+// Display country options in dropdown
+function displayCountryOptions(countries, dropdownEl) {
+    dropdownEl.innerHTML = '';
+    
+    if (countries.length === 0) {
+        dropdownEl.innerHTML = '<div class="dropdown-option no-results">No countries found</div>';
+        dropdownEl.style.display = 'block';
+        return;
+    }
+    
+    countries.forEach(country => {
+        const option = document.createElement('div');
+        option.className = 'dropdown-option';
+        option.textContent = country;
+        option.addEventListener('click', () => {
+            const inputEl = dropdownEl.previousElementSibling;
+            inputEl.value = country;
+            dropdownEl.style.display = 'none';
+        });
+        dropdownEl.appendChild(option);
+    });
+    
+    dropdownEl.style.display = 'block';
+}
+
+// Show country dropdown
+function showCountryDropdown(event, dropdownEl) {
+    const countries = JSON.parse(event.target.dataset.countries || '[]');
+    displayCountryOptions(countries, dropdownEl);
+}
+
 // Submit country guess
 function submitCountryGuess() {
     if (currentGame.gameOver || currentGame.attempts <= 0) return;
     
-    const countryInputs = countryInputsEl.querySelectorAll('select');
-    const countryGuesses = Array.from(countryInputs).map(input => input.value).filter(c => c);
+    // Get all country inputs (both enabled and disabled)
+    const allCountryInputs = countryInputsEl.querySelectorAll('input[type="text"]');
+    const countryGuesses = Array.from(allCountryInputs).map(input => input.value).filter(c => c);
     
     // Validate inputs
     if (countryGuesses.length === 0) {
@@ -619,24 +770,55 @@ function submitCountryGuess() {
     currentGame.guesses.push(guess);
     currentGame.attempts--;
     
-    // Update correctly guessed countries
-    countryGuesses.forEach(country => {
-        if (currentGame.correctCountries.includes(country) && 
+    // Get all countries that speak this language
+    const allCountriesForLanguage = gameData[currentGame.correctLanguage] ? gameData[currentGame.correctLanguage].countries : [];
+    
+    // Update correctly guessed countries (check against full list)
+    let newCorrectGuesses = 0;
+    
+    // Check each guess against all countries that speak this language (order doesn't matter)
+    console.log('Current game correct countries:', currentGame.correctCountries);
+    console.log('All countries for language:', allCountriesForLanguage);
+    console.log('User guesses:', countryGuesses);
+    console.log('Currently correctly guessed:', currentGame.correctlyGuessedCountries);
+    
+    countryGuesses.forEach((country) => {
+        console.log(`Checking ${country} against all countries list`);
+        if (allCountriesForLanguage.includes(country) && 
             !currentGame.correctlyGuessedCountries.includes(country)) {
             currentGame.correctlyGuessedCountries.push(country);
+            newCorrectGuesses++;
+            console.log(`New correct guess: ${country}`);
         }
     });
+    
+    console.log('Updated correctly guessed countries:', currentGame.correctlyGuessedCountries);
+    
+    // If no new correct guesses were found, this might be a duplicate submission
+    // In that case, we should still count it as an attempt but not add duplicate guesses
+    
+    // Check if user has enough correct countries from the 3 randomly selected ones
+    const correctlyGuessedFromGame = currentGame.correctlyGuessedCountries.filter(country => 
+        currentGame.correctCountries.includes(country)
+    );
+    const requiredCorrect = Math.min(3, currentGame.correctCountries.length);
+    
+    console.log('Correctly guessed from game countries:', correctlyGuessedFromGame);
+    console.log('Required correct:', requiredCorrect);
+    
+    if (correctlyGuessedFromGame.length >= requiredCorrect) {
+        endGame(true);
+        return;
+    }
     
     // Update UI
     updateUI();
     
     // Check if game is over
-    if (results.countriesCorrect) {
-        endGame(true);
-    } else if (currentGame.attempts <= 0) {
+    if (currentGame.attempts <= 0) {
         endGame(false);
     } else {
-        // Regenerate country inputs to show correctly guessed countries as disabled
+        // Regenerate country inputs to reflect newly correctly guessed countries
         generateCountryInputs(currentGame.correctLanguage);
     }
     
@@ -666,6 +848,7 @@ function updateGuessesHistory() {
     languageGuessesHistoryEl.innerHTML = '';
     countryGuessesHistoryEl.innerHTML = '';
     
+    // Show all guesses from the guesses array
     currentGame.guesses.forEach(guess => {
         const guessItem = document.createElement('div');
         guessItem.className = 'guess-item';
@@ -700,13 +883,12 @@ function updateGuessesHistory() {
             languageGuessesHistoryEl.appendChild(guessItem);
         } else {
             // Individual country results - add to country section
-            const correctCountries = currentGame.correctCountries;
+            const allCountriesForLanguage = gameData[currentGame.correctLanguage] ? gameData[currentGame.correctLanguage].countries : [];
             guess.countries.forEach((country, index) => {
-                const isCorrect = correctCountries.includes(country);
+                const isCorrect = allCountriesForLanguage.includes(country);
                 const countryResult = document.createElement('div');
                 countryResult.className = 'result-item';
                 countryResult.innerHTML = `
-                    <div class="result-label">Country ${index + 1}</div>
                     <div class="result-value ${isCorrect ? 'correct' : 'incorrect'}">
                         ${country} ${isCorrect ? '✓' : '✗'}
                     </div>
@@ -719,6 +901,50 @@ function updateGuessesHistory() {
             countryGuessesHistoryEl.appendChild(guessItem);
         }
     });
+    
+    // Also show currently correctly guessed countries that might not be in the guesses array yet
+    if (currentGame.correctlyGuessedCountries.length > 0 && currentGame.currentPhase === 'countries') {
+        const allCountriesForLanguage = gameData[currentGame.correctLanguage] ? gameData[currentGame.correctLanguage].countries : [];
+        
+        // Check which correctly guessed countries are not already shown in the guesses history
+        const shownCountries = new Set();
+        currentGame.guesses.forEach(guess => {
+            if (guess.countries) {
+                guess.countries.forEach(country => {
+                    if (allCountriesForLanguage.includes(country)) {
+                        shownCountries.add(country);
+                    }
+                });
+            }
+        });
+        
+        // Show any correctly guessed countries that aren't already displayed
+        const missingCorrectCountries = currentGame.correctlyGuessedCountries.filter(country => 
+            !shownCountries.has(country)
+        );
+        
+        if (missingCorrectCountries.length > 0) {
+            const guessItem = document.createElement('div');
+            guessItem.className = 'guess-item';
+            
+            const guessResults = document.createElement('div');
+            guessResults.className = 'guess-results';
+            
+            missingCorrectCountries.forEach(country => {
+                const countryResult = document.createElement('div');
+                countryResult.className = 'result-item';
+                countryResult.innerHTML = `
+                    <div class="result-value correct">
+                        ${country} ✓
+                    </div>
+                `;
+                guessResults.appendChild(countryResult);
+            });
+            
+            guessItem.appendChild(guessResults);
+            countryGuessesHistoryEl.appendChild(guessItem);
+        }
+    }
 }
 
 // End game
@@ -726,15 +952,22 @@ function endGame(won) {
     currentGame.gameOver = true;
     
     correctLanguageEl.textContent = currentGame.correctLanguage;
-    correctCountriesEl.textContent = currentGame.correctCountries.join(', ');
-    // Show the English translation instead of the original sentence
+    
+    // Show all countries that speak this language
     const lang = currentGame.correctLanguage;
+    const allCountriesForLanguage = gameData[lang] ? gameData[lang].countries : [];
+    correctCountriesEl.textContent = allCountriesForLanguage.join(', ');
+    
+    // Show the English translation instead of the original sentence
     correctSentenceEl.textContent = gameData[lang] && gameData[lang].translation ? gameData[lang].translation : currentGame.dailySentence;
     
     gameOverEl.style.display = 'block';
     submitLanguageGuessEl.disabled = true;
     submitCountryGuessEl.disabled = true;
     hintBtnEl.disabled = true;
+    
+    // Mark all country inputs as correct/incorrect and disable them
+    markCountryInputsAsFinal();
 }
 
 // Reset game
@@ -833,9 +1066,57 @@ function loadGameState() {
             
             if (currentGame.gameOver) {
                 endGame(false);
+            } else if (currentGame.currentPhase === 'countries') {
+                // If we're in country phase but game isn't over, regenerate country inputs
+                generateCountryInputs(currentGame.correctLanguage);
             }
         }
     }
+}
+
+// Close instructions popup
+function closeInstructions() {
+    instructionsPopupEl.style.display = 'none';
+    // Save that user has seen instructions
+    localStorage.setItem('langlioInstructionsSeen', 'true');
+}
+
+// Show instructions popup
+function showInstructions() {
+    instructionsPopupEl.style.display = 'flex';
+}
+
+// Mark all country inputs as correct/incorrect when game ends
+function markCountryInputsAsFinal() {
+    const countryInputs = countryInputsEl.querySelectorAll('input[type="text"]');
+    
+    // Get all countries that speak this language
+    const allCountriesForLanguage = gameData[currentGame.correctLanguage] ? gameData[currentGame.correctLanguage].countries : [];
+    
+    countryInputs.forEach((input, index) => {
+        const countryValue = input.value;
+        const isCorrect = allCountriesForLanguage.includes(countryValue);
+        
+        // Disable the input
+        input.disabled = true;
+        
+        // Add visual styling based on correctness
+        if (isCorrect) {
+            input.classList.add('correct-final');
+            input.classList.remove('incorrect-final');
+        } else {
+            input.classList.add('incorrect-final');
+            input.classList.remove('correct-final');
+        }
+        
+        // If input is empty, show it as incorrect
+        if (!countryValue) {
+            input.classList.add('incorrect-final');
+            input.classList.remove('correct-final');
+        }
+    });
+    
+    // Don't show the correct countries display
 }
 
 // Initialize the game when the page loads
@@ -843,6 +1124,12 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
         console.log('DOM loaded, starting initialization...');
         initGame();
+        
+        // Show instructions if user hasn't seen them before
+        const instructionsSeen = localStorage.getItem('langlioInstructionsSeen');
+        if (!instructionsSeen) {
+            showInstructions();
+        }
     } catch (error) {
         console.error('Error in DOMContentLoaded:', error);
         alert('Error loading game: ' + error.message);
