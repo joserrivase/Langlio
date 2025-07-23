@@ -27,9 +27,9 @@ body {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 1.5rem;
+    padding: 1.5rem 5rem;
     position: relative;
     z-index: 1;
 }
@@ -51,6 +51,7 @@ header h1 {
     font-size: 1.2rem;
     color: #a0a0a0;
     font-weight: 400;
+    margin-top: 0.5rem;
 }
 
 .game-container {
@@ -62,25 +63,23 @@ header h1 {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
+/* HINT SECTION LEFT LAYOUT */
 .sentence-display {
-    text-align: center;
-    margin-bottom: 1rem;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.sentence {
-    font-size: 1.75rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: #ffffff;
-    line-height: 1.4;
-    min-height: 2.5rem;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+.sentence-display > div {
+    width: 100%;
+}
+.sentence-display .hint-section {
+    align-self: flex-start;
+    margin-right: 1rem;
+    min-width: 180px;
+}
+.sentence-display .sentence {
+    text-align: center;
 }
 
 .hint-section {
@@ -98,6 +97,7 @@ header h1 {
     cursor: pointer;
     transition: all 0.3s ease;
     font-family: inherit;
+    margin-bottom: 0.5rem;
 }
 
 .hint-btn:hover {
@@ -112,16 +112,36 @@ header h1 {
     transform: none;
 }
 
-.hint-display {
-    margin-top: 1rem;
-    padding: 1rem;
+/* Hint button and display inline, same height */
+#hintBtn {
+    vertical-align: middle;
+    min-height: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+#hintDisplay.hint-display {
+    display: none !important;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    height: 38px;
+    padding: 0 1rem;
+    margin: 0;
     background: rgba(255, 215, 0, 0.1);
     border: 1px solid rgba(255, 215, 0, 0.3);
-    border-radius: 10px;
+    border-radius: 8px;
     color: #ffd700;
     font-size: 0.95rem;
     font-style: italic;
     line-height: 1.4;
+    box-sizing: border-box;
+    text-align: center;
+}
+#hintDisplay.hint-display.show {
+    display: flex !important;
 }
 
 .sentence-info {
@@ -130,6 +150,45 @@ header h1 {
     align-items: center;
     font-size: 0.9rem;
     color: #a0a0a0;
+}
+
+/* 6-SLOT GUESS HISTORY */
+.guesses-history {
+    display: flex !important;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-height: 12rem;
+    max-height: 15rem;
+    justify-content: flex-start;
+}
+.guess-item {
+    min-height: 1.8rem;
+    display: flex;
+    align-items: center;
+    background: rgba(255,255,255,0.03);
+    border-radius: 10px;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+.guess-results {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    width: 100%;
+}
+.result-value.correct {
+    background: rgba(34, 197, 94, 0.3);
+    color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.5);
+}
+.result-value.incorrect {
+    background: rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.5);
+}
+/* Remove attempts/date styles */
+.sentence-info, .sentence-info .attempts, .sentence-info .date {
+    display: none !important;
 }
 
 .guessing-section {
@@ -148,6 +207,14 @@ header h1 {
     text-align: center;
 }
 
+.guess-prompt {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #87CEEB;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
 .language-result {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 10px;
@@ -162,6 +229,51 @@ header h1 {
     align-items: center;
     gap: 1rem;
     font-size: 1rem;
+}
+
+.language-result-message {
+    text-align: center;
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: 10px;
+    background: transparent;
+    border: none;
+}
+
+.result-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.result-text.success {
+    color: #22c55e;
+}
+
+.result-text.failure {
+    color: #ef4444;
+}
+
+.correct-language-info {
+    margin-top: 0.5rem;
+    padding: 0;
+    background: transparent;
+    border-radius: 8px;
+    border: none;
+    text-align: center;
+}
+
+.correct-language {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #60a5fa;
+    margin-bottom: 0.25rem;
+}
+
+.translation {
+    font-size: 1rem;
+    color: #a0a0a0;
+    font-style: italic;
 }
 
 .country-inputs {
@@ -683,4 +795,244 @@ header h1 {
     .sentence-display {
         padding: 1rem;
     }
+} 
+
+.hint-row {
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    margin-top: 0.5rem;
+} 
+
+/* Make guess slots fill the whole width and center content */
+#languageGuessesHistory {
+    width: 100%;
+    display: flex !important;
+    flex-direction: column;
+    gap: 0.25rem;
+    min-height: 12rem;
+    max-height: 15rem;
+    justify-content: flex-start;
+}
+#languageGuessesHistory .guess-item {
+    min-height: 2.2rem;
+    height: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: none;
+    border-radius: 10px;
+    margin-bottom: 0;
+    box-sizing: border-box;
+    border: none;
+}
+#languageGuessesHistory .guess-results {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+#languageGuessesHistory .result-value {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.2rem;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border-radius: 10px;
+    background: none;
+    border: none;
+}
+#languageGuessesHistory .result-item {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+#languageGuessesHistory .result-value:not(.correct):not(.incorrect) {
+    background: rgba(255,255,255,0.06);
+    color: #888;
+}
+#languageGuessesHistory .result-value.correct {
+    background: rgba(34, 197, 94, 0.3);
+    color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.5);
+}
+#languageGuessesHistory .result-value.incorrect {
+    background: rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.5);
+} 
+
+/* Country guessing slots - same as language */
+#countryGuessesHistory {
+    width: 100%;
+    display: flex !important;
+    flex-direction: column;
+    gap: 0.25rem;
+    min-height: 12rem;
+    max-height: 15rem;
+    justify-content: flex-start;
+}
+#countryGuessesHistory .guess-item {
+    min-height: 2.2rem;
+    height: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background: none;
+    border-radius: 10px;
+    margin-bottom: 0;
+    box-sizing: border-box;
+    border: none;
+}
+#countryGuessesHistory .guess-results {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+#countryGuessesHistory .result-value {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.2rem;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border-radius: 10px;
+    background: none;
+    border: none;
+}
+#countryGuessesHistory .result-item {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+#countryGuessesHistory .result-value:not(.correct):not(.incorrect) {
+    background: rgba(255,255,255,0.06);
+    color: #888;
+}
+#countryGuessesHistory .result-value.correct {
+    background: rgba(34, 197, 94, 0.3);
+    color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.5);
+}
+#countryGuessesHistory .result-value.incorrect {
+    background: rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.5);
+} 
+
+.play-next-section {
+    text-align: center;
+    margin-top: 1rem;
+    padding: 1rem;
+}
+
+.play-next-btn {
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+    border: none;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.play-next-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(96, 165, 250, 0.3);
+}
+
+.play-next-btn:active {
+    transform: translateY(0);
+} 
+
+.country-result-message {
+    text-align: center;
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: 10px;
+    background: transparent;
+    border: none;
+}
+
+.all-countries-info {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: transparent;
+    border-radius: 8px;
+    border: none;
+}
+
+.all-countries-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #60a5fa;
+    margin-bottom: 0.75rem;
+}
+
+.all-countries-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    justify-content: center;
+    text-align: left;
+}
+
+.all-countries-list span {
+    background: transparent;
+    color: #ffffff;
+    padding: 0.5rem 0.75rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.all-countries-list span::before {
+    content: "•";
+    color: #60a5fa;
+    font-weight: bold;
+    font-size: 1.2rem;
 } 

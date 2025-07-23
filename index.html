@@ -19,6 +19,9 @@
 <body>
     <div class="world-map-bg"></div>
     
+    <!-- Confetti Canvas -->
+    <canvas id="confettiCanvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1000; display: none;"></canvas>
+    
     <!-- Instructions Popup -->
     <div class="instructions-popup" id="instructionsPopup">
         <div class="instructions-content">
@@ -54,46 +57,37 @@
 
     <div class="container">
         <header>
-            <h1>Langlio</h1>
+            <h1>
+                <span style="color: #ff0000;">L</span>
+                <span style="color: #ffa500;">a</span>
+                <span style="color: #ffff00;">n</span>
+                <span style="color: #008000;">g</span>
+                <span style="color: #0000ff;">l</span>
+                <span style="color: #800080;">i</span>
+                <span style="color: #ff69b4;">o</span>
+            </h1>
+            <p class="subtitle">How many languages do you know?</p>
         </header>
 
         <div class="game-container">
             <div class="sentence-display">
-                <div class="sentence" id="dailySentence">
-                    <!-- Daily sentence will be inserted here -->
-                </div>
-                <div class="debug-language" id="debugLanguage" style="font-size: 0.9rem; color: #60a5fa; margin-top: 0.5rem;">
-                    <!-- Language will be inserted here for debugging -->
-                </div>
-                <div class="hint-section">
+                <h2 class="guess-prompt">Guess the language</h2>
+                <div class="sentence" id="dailySentence"></div>
+                <div class="hint-row" style="display: flex; align-items: center; gap: 1rem; margin-top: 0.5rem;">
                     <button id="hintBtn" class="hint-btn">💡 Show Hint</button>
-                    <div id="hintDisplay" class="hint-display" style="display: none;">
-                        <!-- Hint will be displayed here -->
-                    </div>
+                    <div id="hintDisplay" class="hint-display" style="display: none; margin: 0;"></div>
                 </div>
-                <div class="sentence-info">
-                    <span class="attempts">Attempts: <span id="attemptsLeft">6</span>/6</span>
-                    <span class="date" id="currentDate"></span>
+                <div class="correct-language-info" id="correctLanguageInfo" style="display: none;">
+                    <div class="correct-language" id="correctLanguageDisplay"></div>
+                    <div class="translation" id="translationDisplay"></div>
                 </div>
-            </div>
-
-            <div class="game-over" id="gameOver" style="display: none;">
-                <h2>Game Over!</h2>
-                <div class="result-info">
-                    <p><strong>Language:</strong> <span id="correctLanguage"></span></p>
-                    <p><strong>Countries:</strong> <span id="correctCountries"></span></p>
-                    <p><strong>Sentence:</strong> <span id="correctSentence"></span></p>
-                </div>
-                <button id="newGameBtn" class="new-game-btn">New Game</button>
             </div>
 
             <div class="guessing-section">
                 <!-- Language guessing phase -->
                 <div class="guess-phase" id="languagePhase">
-                    <!-- <h3>Step 1: Guess the Language</h3> -->
-                    <div class="guess-row">
+                    <div class="guess-row" id="languageInputRow">
                         <div class="guess-input">
-                            <label for="languageGuess">Language:</label>
                             <div class="searchable-dropdown">
                                 <input type="text" id="languageGuess" class="searchable-input" placeholder="Type to search languages...">
                                 <div id="languageDropdown" class="dropdown-options" style="display: none;"></div>
@@ -101,27 +95,32 @@
                         </div>
                         <button id="submitLanguageGuess" class="submit-btn">Submit Language</button>
                     </div>
-                    
-                    <!-- Language guesses history -->
-                    <div class="guesses-history" id="languageGuessesHistory">
-                        <!-- Language guesses will be displayed here -->
+                    <div class="language-result-message" id="languageResultMessage" style="display: none;">
+                        <div class="result-text" id="languageResultText"></div>
+                    </div>
+                    <div class="guesses-history" id="languageGuessesHistory" style="display: flex; flex-direction: column; gap: 0.5rem; min-height: 12rem; max-height: 15rem;">
+                        <!-- 6 vertical slots for language guesses will be displayed here -->
+                    </div>
+                    <div class="play-next-section" id="playNextSection" style="display: none;">
+                        <button id="playNextBtn" class="play-next-btn">Play Next</button>
                     </div>
                 </div>
-
                 <!-- Country guessing phase (initially hidden) -->
                 <div class="guess-phase" id="countryPhase" style="display: none;">
-                    <h3>Step 2: Guess the Countries</h3>
-                    <div class="language-result" id="languageResult"></div>
-                    <div class="country-inputs" id="countryInputs">
-                        <!-- Country inputs will be dynamically generated here -->
+                    <div class="country-result-message" id="countryResultMessage" style="display: none;">
+                        <div class="result-text" id="countryResultText"></div>
+                        <div class="all-countries-info" id="allCountriesInfo" style="display: none;">
+                            <div class="all-countries-title">All countries that speak this language:</div>
+                            <div class="all-countries-list" id="allCountriesList"></div>
+                        </div>
+                        <button id="newGameBtn" class="new-game-btn">New Game</button>
                     </div>
+                    <div class="country-inputs" id="countryInputs"></div>
                     <div class="guess-row">
                         <button id="submitCountryGuess" class="submit-btn">Submit Countries</button>
                     </div>
-                    
-                    <!-- Country guesses history -->
-                    <div class="guesses-history" id="countryGuessesHistory">
-                        <!-- Country guesses will be displayed here -->
+                    <div class="guesses-history" id="countryGuessesHistory" style="display: flex; flex-direction: column; gap: 0.5rem; min-height: 12rem; max-height: 15rem;">
+                        <!-- 6 vertical slots for country guesses will be displayed here -->
                     </div>
                 </div>
             </div>

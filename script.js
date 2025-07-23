@@ -246,6 +246,39 @@ const allCountries = [
     "Zambia", "Zimbabwe"
 ];
 
+// Country flag mapping
+const countryFlags = {
+    "Afghanistan": "🇦🇫", "Albania": "🇦🇱", "Algeria": "🇩🇿", "Andorra": "🇦🇩", "Angola": "🇦🇴", "Antigua and Barbuda": "🇦🇬", "Argentina": "🇦🇷", "Armenia": "🇦🇲", "Australia": "🇦🇺", "Austria": "🇦🇹", "Azerbaijan": "🇦🇿",
+    "Bahamas": "🇧🇸", "Bahrain": "🇧🇭", "Bangladesh": "🇧🇩", "Barbados": "🇧🇧", "Belarus": "🇧🇾", "Belgium": "🇧🇪", "Belize": "🇧🇿", "Benin": "🇧🇯", "Bhutan": "🇧🇹", "Bolivia": "🇧🇴", "Bosnia and Herzegovina": "🇧🇦", "Botswana": "🇧🇼", "Brazil": "🇧🇷", "Brunei": "🇧🇳", "Bulgaria": "🇧🇬", "Burkina Faso": "🇧🇫", "Burundi": "🇧🇮",
+    "Cabo Verde": "🇨🇻", "Cambodia": "🇰🇭", "Cameroon": "🇨🇲", "Canada": "🇨🇦", "Central African Republic": "🇨🇫", "Chad": "🇹🇩", "Chile": "🇨🇱", "China": "🇨🇳", "Colombia": "🇨🇴", "Comoros": "🇰🇲", "Congo": "🇨🇬", "Costa Rica": "🇨🇷", "Croatia": "🇭🇷", "Cuba": "🇨🇺", "Cyprus": "🇨🇾", "Czech Republic": "🇨🇿",
+    "Democratic Republic of the Congo": "🇨🇩", "Denmark": "🇩🇰", "Djibouti": "🇩🇯", "Dominica": "🇩🇲", "Dominican Republic": "🇩🇴",
+    "East Timor": "🇹🇱", "Ecuador": "🇪🇨", "Egypt": "🇪🇬", "El Salvador": "🇸🇻", "Equatorial Guinea": "🇬🇶", "Eritrea": "🇪🇷", "Estonia": "🇪🇪", "Eswatini": "🇸🇿", "Ethiopia": "🇪🇹",
+    "Fiji": "🇫🇯", "Finland": "🇫🇮", "France": "🇫🇷",
+    "Gabon": "🇬🇦", "Gambia": "🇬🇲", "Georgia": "🇬🇪", "Germany": "🇩🇪", "Ghana": "🇬🇭", "Greece": "🇬🇷", "Grenada": "🇬🇩", "Guatemala": "🇬🇹", "Guinea": "🇬🇳", "Guinea-Bissau": "🇬🇼", "Guyana": "🇬🇾",
+    "Haiti": "🇭🇹", "Honduras": "🇭🇳", "Hungary": "🇭🇺",
+    "Iceland": "🇮🇸", "India": "🇮🇳", "Indonesia": "🇮🇩", "Iran": "🇮🇷", "Iraq": "🇮🇶", "Ireland": "🇮🇪", "Israel": "🇮🇱", "Italy": "🇮🇹", "Ivory Coast": "🇨🇮",
+    "Jamaica": "🇯🇲", "Japan": "🇯🇵", "Jordan": "🇯🇴",
+    "Kazakhstan": "🇰🇿", "Kenya": "🇰🇪", "Kiribati": "🇰🇮", "Kuwait": "🇰🇼", "Kyrgyzstan": "🇰🇬",
+    "Laos": "🇱🇦", "Latvia": "🇱🇻", "Lebanon": "🇱🇧", "Lesotho": "🇱🇸", "Liberia": "🇱🇷", "Libya": "🇱🇾", "Liechtenstein": "🇱🇮", "Lithuania": "🇱🇹", "Luxembourg": "🇱🇺",
+    "Madagascar": "🇲🇬", "Malawi": "🇲🇼", "Malaysia": "🇲🇾", "Maldives": "🇲🇻", "Mali": "🇲🇱", "Malta": "🇲🇹", "Marshall Islands": "🇲🇭", "Mauritania": "🇲🇷", "Mauritius": "🇲🇺", "Mexico": "🇲🇽", "Micronesia": "🇫🇲", "Moldova": "🇲🇩", "Monaco": "🇲🇨", "Mongolia": "🇲🇳", "Montenegro": "🇲🇪", "Morocco": "🇲🇦", "Mozambique": "🇲🇿", "Myanmar": "🇲🇲",
+    "Namibia": "🇳🇦", "Nauru": "🇳🇷", "Nepal": "🇳🇵", "Netherlands": "🇳🇱", "New Zealand": "🇳🇿", "Nicaragua": "🇳🇮", "Niger": "🇳🇪", "Nigeria": "🇳🇬", "North Korea": "🇰🇵", "North Macedonia": "🇲🇰", "Norway": "🇳🇴",
+    "Oman": "🇴🇲",
+    "Pakistan": "🇵🇰", "Palau": "🇵🇼", "Panama": "🇵🇦", "Papua New Guinea": "🇵🇬", "Paraguay": "🇵🇾", "Peru": "🇵🇪", "Philippines": "🇵🇭", "Poland": "🇵🇱", "Portugal": "🇵🇹",
+    "Qatar": "🇶🇦",
+    "Romania": "🇷🇴", "Russia": "🇷🇺", "Rwanda": "🇷🇼",
+    "Saint Kitts and Nevis": "🇰🇳", "Saint Lucia": "🇱🇨", "Saint Vincent and the Grenadines": "🇻🇨", "Samoa": "🇼🇸", "San Marino": "🇸🇲", "Sao Tome and Principe": "🇸🇹", "Saudi Arabia": "🇸🇦", "Senegal": "🇸🇳", "Serbia": "🇷🇸", "Seychelles": "🇸🇨", "Sierra Leone": "🇸🇱", "Singapore": "🇸🇬", "Slovakia": "🇸🇰", "Slovenia": "🇸🇮", "Solomon Islands": "🇸🇧", "Somalia": "🇸🇴", "South Africa": "🇿🇦", "South Korea": "🇰🇷", "South Sudan": "🇸🇸", "Spain": "🇪🇸", "Sri Lanka": "🇱🇰", "Sudan": "🇸🇩", "Suriname": "🇸🇷", "Sweden": "🇸🇪", "Switzerland": "🇨🇭", "Syria": "🇸🇾",
+    "Taiwan": "🇹🇼", "Tajikistan": "🇹🇯", "Tanzania": "🇹🇿", "Thailand": "🇹🇭", "Togo": "🇹🇬", "Tonga": "🇹🇴", "Trinidad and Tobago": "🇹🇹", "Tunisia": "🇹🇳", "Turkey": "🇹🇷", "Turkmenistan": "🇹🇲", "Tuvalu": "🇹🇻",
+    "Uganda": "🇺🇬", "Ukraine": "🇺🇦", "United Arab Emirates": "🇦🇪", "United Kingdom": "🇬🇧", "United States": "🇺🇸", "Uruguay": "🇺🇾", "Uzbekistan": "🇺🇿",
+    "Vanuatu": "🇻🇺", "Vatican City": "🇻🇦", "Venezuela": "🇻🇪", "Vietnam": "🇻🇳",
+    "Yemen": "🇾🇪",
+    "Zambia": "🇿🇲", "Zimbabwe": "🇿🇼"
+};
+
+// Get country flag function
+function getCountryFlag(countryName) {
+    return countryFlags[countryName] || "🏳️"; // Default flag if not found
+}
+
 // Game state
 let currentGame = {
     attempts: 6,
@@ -266,8 +299,6 @@ let currentGame = {
 // DOM elements
 const dailySentenceEl = document.getElementById('dailySentence');
 const debugLanguageEl = document.getElementById('debugLanguage');
-const attemptsLeftEl = document.getElementById('attemptsLeft');
-const currentDateEl = document.getElementById('currentDate');
 const languageGuessEl = document.getElementById('languageGuess');
 const languageDropdownEl = document.getElementById('languageDropdown');
 const submitLanguageGuessEl = document.getElementById('submitLanguageGuess');
@@ -278,7 +309,6 @@ const languageResultEl = document.getElementById('languageResult');
 const countryInputsEl = document.getElementById('countryInputs');
 const languageGuessesHistoryEl = document.getElementById('languageGuessesHistory');
 const countryGuessesHistoryEl = document.getElementById('countryGuessesHistory');
-const gameOverEl = document.getElementById('gameOver');
 const correctLanguageEl = document.getElementById('correctLanguage');
 const correctCountriesEl = document.getElementById('correctCountries');
 const correctSentenceEl = document.getElementById('correctSentence');
@@ -288,12 +318,24 @@ const hintDisplayEl = document.getElementById('hintDisplay');
 const instructionsPopupEl = document.getElementById('instructionsPopup');
 const closeInstructionsEl = document.getElementById('closeInstructions');
 const startGameBtnEl = document.getElementById('startGameBtn');
+const playNextSectionEl = document.getElementById('playNextSection');
+const playNextBtnEl = document.getElementById('playNextBtn');
+const languageInputRowEl = document.getElementById('languageInputRow');
+const languageResultMessageEl = document.getElementById('languageResultMessage');
+const languageResultTextEl = document.getElementById('languageResultText');
+const correctLanguageInfoEl = document.getElementById('correctLanguageInfo');
+const correctLanguageDisplayEl = document.getElementById('correctLanguageDisplay');
+const translationDisplayEl = document.getElementById('translationDisplay');
+const countryResultMessageEl = document.getElementById('countryResultMessage');
+const countryResultTextEl = document.getElementById('countryResultText');
+const allCountriesInfoEl = document.getElementById('allCountriesInfo');
+const allCountriesListEl = document.getElementById('allCountriesList');
+const guessPromptEl = document.querySelector('.guess-prompt');
+const confettiCanvasEl = document.getElementById('confettiCanvas');
 
 // Debug: Check if all DOM elements are found
 console.log('DOM elements found:', {
     dailySentenceEl: !!dailySentenceEl,
-    attemptsLeftEl: !!attemptsLeftEl,
-    currentDateEl: !!currentDateEl,
     languageGuessEl: !!languageGuessEl,
     submitLanguageGuessEl: !!submitLanguageGuessEl,
     submitCountryGuessEl: !!submitCountryGuessEl,
@@ -303,7 +345,6 @@ console.log('DOM elements found:', {
     countryInputsEl: !!countryInputsEl,
     languageGuessesHistoryEl: !!languageGuessesHistoryEl,
     countryGuessesHistoryEl: !!countryGuessesHistoryEl,
-    gameOverEl: !!gameOverEl,
     correctLanguageEl: !!correctLanguageEl,
     correctCountriesEl: !!correctCountriesEl,
     newGameBtnEl: !!newGameBtnEl,
@@ -318,13 +359,7 @@ function initGame() {
         
         // Set current date
         const today = new Date();
-        currentDateEl.textContent = today.toLocaleDateString('en-US', { 
-            weekday: 'long', 
-            year: 'numeric', 
-            month: 'long', 
-            day: 'numeric' 
-        });
-
+        
         // Generate random sentence (not date-based for new games)
         const languages = Object.keys(gameData);
         const languageIndex = Math.floor(Math.random() * languages.length);
@@ -341,9 +376,8 @@ function initGame() {
         
         // Display the sentence
         dailySentenceEl.textContent = currentGame.dailySentence;
-        
-        // Display the language for debugging
-        debugLanguageEl.textContent = `Language: ${currentGame.correctLanguage}`;
+        // Log the language for debugging
+        console.log('Debug Language:', currentGame.correctLanguage);
         
         // Populate dropdowns
         populateDropdowns();
@@ -355,6 +389,9 @@ function initGame() {
         if (!currentGame.isNewGame) {
             loadGameState();
         }
+        
+        // Update UI to show empty slots immediately
+        updateUI();
         
         console.log('Game initialized successfully');
     } catch (error) {
@@ -395,6 +432,17 @@ function setupSearchableLanguageInput() {
         setTimeout(() => {
             languageDropdownEl.style.display = 'none';
         }, 200);
+    });
+    // Add Enter key handler for language input
+    languageGuessEl.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            const firstOption = languageDropdownEl.querySelector('.dropdown-option:not(.no-results)');
+            if (firstOption) {
+                languageGuessEl.value = firstOption.textContent;
+                languageDropdownEl.style.display = 'none';
+            }
+        }
     });
     
     // Close dropdown when clicking outside
@@ -452,6 +500,7 @@ function addEventListeners() {
     submitCountryGuessEl.addEventListener('click', submitCountryGuess);
     newGameBtnEl.addEventListener('click', resetGame);
     hintBtnEl.addEventListener('click', toggleHint);
+    playNextBtnEl.addEventListener('click', startCountryPhase);
     
     // Instructions popup event listeners
     closeInstructionsEl.addEventListener('click', closeInstructions);
@@ -485,7 +534,7 @@ function toggleHint() {
     if (currentGame.hintRevealed) {
         // Hide hint
         currentGame.hintRevealed = false;
-        hintDisplayEl.style.display = 'none';
+        hintDisplayEl.classList.remove('show');
         hintBtnEl.textContent = '💡 Show Hint';
     } else {
         // Show hint
@@ -501,16 +550,16 @@ function toggleHint() {
 // Update hint display
 function updateHintDisplay() {
     if (!currentGame.hintRevealed) {
-        hintDisplayEl.style.display = 'none';
+        hintDisplayEl.classList.remove('show');
         return;
     }
     
     const languageData = gameData[currentGame.correctLanguage];
     if (languageData && languageData.hint) {
         hintDisplayEl.textContent = languageData.hint;
-        hintDisplayEl.style.display = 'block';
+        hintDisplayEl.classList.add('show');
     } else {
-        hintDisplayEl.style.display = 'none';
+        hintDisplayEl.classList.remove('show');
     }
 }
 
@@ -555,6 +604,13 @@ function submitLanguageGuess() {
         return;
     }
     
+    // Check if the guessed language exists in the dropdown options
+    const languages = JSON.parse(languageGuessEl.dataset.languages || '[]');
+    if (!languages.includes(languageGuess)) {
+        alert('Please select a valid language from the dropdown.');
+        return;
+    }
+    
     // Check if language is correct
     const isCorrect = languageGuess === currentGame.correctLanguage;
     
@@ -579,34 +635,59 @@ function submitLanguageGuess() {
     updateUI();
     
     if (isCorrect) {
-        // Language is correct - move to country phase
+        // Trigger confetti for correct language guess
+        triggerConfetti();
+        
+        // Language is correct - show success message and correct language info
         currentGame.languageGuessed = true;
         currentGame.currentLanguageGuess = languageGuess;
         
-        // Show language result
-        languageResultEl.innerHTML = `
-            <div class="language-result-display">
-                <span class="result-label">Language:</span>
-                <span class="result-value correct">
-                    ${languageGuess} ✓
-                </span>
-            </div>
-        `;
+        // Hide input section
+        languageInputRowEl.style.display = 'none';
         
-        // Generate country inputs based on the correct language
-        generateCountryInputs(currentGame.correctLanguage);
+        // Hide hint button
+        hintBtnEl.style.display = 'none';
         
-        // Switch to country phase
-        currentGame.currentPhase = 'countries';
-        languagePhaseEl.style.display = 'none';
-        countryPhaseEl.style.display = 'block';
+        // Show success message
+        languageResultMessageEl.style.display = 'block';
+        languageResultTextEl.textContent = 'You guessed the language!';
+        languageResultTextEl.className = 'result-text success';
+        
+        // Show correct language and translation
+        correctLanguageInfoEl.style.display = 'block';
+        correctLanguageDisplayEl.textContent = currentGame.correctLanguage;
+        const languageData = gameData[currentGame.correctLanguage];
+        if (languageData && languageData.translation) {
+            translationDisplayEl.textContent = languageData.translation;
+        }
+        
+        // Show "Play Next" button
+        playNextSectionEl.style.display = 'block';
         
         // Clear language input
         languageGuessEl.value = '';
     } else {
-        // Language is incorrect - stay in language phase
+        // Language is incorrect - check if game is over
         if (currentGame.languageAttempts <= 0) {
-            // No more language attempts - end game
+            // No more language attempts - show failure message
+            languageInputRowEl.style.display = 'none';
+            
+            // Hide hint button
+            hintBtnEl.style.display = 'none';
+            
+            languageResultMessageEl.style.display = 'block';
+            languageResultTextEl.textContent = 'Better luck next time!';
+            languageResultTextEl.className = 'result-text failure';
+            
+            // Show correct language and translation
+            correctLanguageInfoEl.style.display = 'block';
+            correctLanguageDisplayEl.textContent = currentGame.correctLanguage;
+            const languageData = gameData[currentGame.correctLanguage];
+            if (languageData && languageData.translation) {
+                translationDisplayEl.textContent = languageData.translation;
+            }
+            
+            // End game
             endGame(false);
         } else {
             // Clear language input for next attempt
@@ -682,6 +763,17 @@ function generateCountryInputs(correctLanguage) {
                     countryDropdownEl.style.display = 'none';
                 }, 200);
             });
+            // Add Enter key handler for country inputs
+            countryInputEl.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    const firstOption = countryDropdownEl.querySelector('.dropdown-option:not(.no-results)');
+                    if (firstOption) {
+                        countryInputEl.value = firstOption.textContent;
+                        countryDropdownEl.style.display = 'none';
+                    }
+                }
+            });
         }
         
         // Pre-select correctly guessed countries
@@ -753,6 +845,15 @@ function submitCountryGuess() {
     if (countryGuesses.length === 0) {
         alert('Please select at least one country.');
         return;
+    }
+    
+    // Check if all guessed countries exist in the dropdown options
+    const allCountries = JSON.parse(allCountryInputs[0].dataset.countries || '[]');
+    for (const country of countryGuesses) {
+        if (!allCountries.includes(country)) {
+            alert(`Please select a valid country from the dropdown: ${country}`);
+            return;
+        }
     }
     
     // Create complete guess object
@@ -828,13 +929,6 @@ function submitCountryGuess() {
 
 // Update UI
 function updateUI() {
-    // Update attempts based on current phase
-    if (currentGame.currentPhase === 'language') {
-        attemptsLeftEl.textContent = currentGame.languageAttempts;
-    } else {
-        attemptsLeftEl.textContent = currentGame.attempts;
-    }
-    
     // Update guesses history
     updateGuessesHistory();
     
@@ -844,106 +938,68 @@ function updateUI() {
 
 // Update guesses history with separate sections for language and country guesses
 function updateGuessesHistory() {
-    // Clear both sections
+    // Only show the last 6 guesses for each
+    const languageGuesses = currentGame.guesses.filter(g => g.countries.length === 0).slice(-6);
+    const countryGuesses = currentGame.guesses.filter(g => g.countries.length > 0).slice(-6);
     languageGuessesHistoryEl.innerHTML = '';
     countryGuessesHistoryEl.innerHTML = '';
-    
-    // Show all guesses from the guesses array
-    currentGame.guesses.forEach(guess => {
+
+    // Fill up to 6 slots for language guesses
+    for (let i = 0; i < 6; i++) {
+        const guess = languageGuesses[i];
         const guessItem = document.createElement('div');
         guessItem.className = 'guess-item';
-        
-        const guessHeader = document.createElement('div');
-        guessHeader.className = 'guess-header';
-        
-        if (guess.countries.length === 0) {
-            // Language-only guess - no header needed since result shows the language
-            guessHeader.style.display = 'none';
-        } else {
-            // Complete guess with countries - no header needed since results show the countries
-            guessHeader.style.display = 'none';
-        }
-        
         const guessResults = document.createElement('div');
         guessResults.className = 'guess-results';
-        
-        if (guess.countries.length === 0) {
-            // Language result only - add to language section
+        if (guess) {
             const languageResult = document.createElement('div');
             languageResult.className = 'result-item';
             languageResult.innerHTML = `
                 <div class="result-value ${guess.results.languageCorrect ? 'correct' : 'incorrect'}">
-                    ${guess.language} ${guess.results.languageCorrect ? '✓' : '✗'}
+                    ${guess.language}
                 </div>
             `;
             guessResults.appendChild(languageResult);
-            
-            guessItem.appendChild(guessHeader);
-            guessItem.appendChild(guessResults);
-            languageGuessesHistoryEl.appendChild(guessItem);
         } else {
-            // Individual country results - add to country section
+            // Empty slot
+            const emptyResult = document.createElement('div');
+            emptyResult.className = 'result-item';
+            emptyResult.innerHTML = `<div class="result-value">&nbsp;</div>`;
+            guessResults.appendChild(emptyResult);
+        }
+        guessItem.appendChild(guessResults);
+        languageGuessesHistoryEl.appendChild(guessItem);
+    }
+
+    // Fill up to 6 slots for country guesses
+    for (let i = 0; i < 6; i++) {
+        const guess = countryGuesses[i];
+        const guessItem = document.createElement('div');
+        guessItem.className = 'guess-item';
+        const guessResults = document.createElement('div');
+        guessResults.className = 'guess-results';
+        if (guess) {
             const allCountriesForLanguage = gameData[currentGame.correctLanguage] ? gameData[currentGame.correctLanguage].countries : [];
-            guess.countries.forEach((country, index) => {
+            guess.countries.forEach(country => {
                 const isCorrect = allCountriesForLanguage.includes(country);
                 const countryResult = document.createElement('div');
                 countryResult.className = 'result-item';
                 countryResult.innerHTML = `
                     <div class="result-value ${isCorrect ? 'correct' : 'incorrect'}">
-                        ${country} ${isCorrect ? '✓' : '✗'}
+                        ${country}
                     </div>
                 `;
                 guessResults.appendChild(countryResult);
             });
-            
-            guessItem.appendChild(guessHeader);
-            guessItem.appendChild(guessResults);
-            countryGuessesHistoryEl.appendChild(guessItem);
+        } else {
+            // Empty slot
+            const emptyResult = document.createElement('div');
+            emptyResult.className = 'result-item';
+            emptyResult.innerHTML = `<div class="result-value">&nbsp;</div>`;
+            guessResults.appendChild(emptyResult);
         }
-    });
-    
-    // Also show currently correctly guessed countries that might not be in the guesses array yet
-    if (currentGame.correctlyGuessedCountries.length > 0 && currentGame.currentPhase === 'countries') {
-        const allCountriesForLanguage = gameData[currentGame.correctLanguage] ? gameData[currentGame.correctLanguage].countries : [];
-        
-        // Check which correctly guessed countries are not already shown in the guesses history
-        const shownCountries = new Set();
-        currentGame.guesses.forEach(guess => {
-            if (guess.countries) {
-                guess.countries.forEach(country => {
-                    if (allCountriesForLanguage.includes(country)) {
-                        shownCountries.add(country);
-                    }
-                });
-            }
-        });
-        
-        // Show any correctly guessed countries that aren't already displayed
-        const missingCorrectCountries = currentGame.correctlyGuessedCountries.filter(country => 
-            !shownCountries.has(country)
-        );
-        
-        if (missingCorrectCountries.length > 0) {
-            const guessItem = document.createElement('div');
-            guessItem.className = 'guess-item';
-            
-            const guessResults = document.createElement('div');
-            guessResults.className = 'guess-results';
-            
-            missingCorrectCountries.forEach(country => {
-                const countryResult = document.createElement('div');
-                countryResult.className = 'result-item';
-                countryResult.innerHTML = `
-                    <div class="result-value correct">
-                        ${country} ✓
-                    </div>
-                `;
-                guessResults.appendChild(countryResult);
-            });
-            
-            guessItem.appendChild(guessResults);
-            countryGuessesHistoryEl.appendChild(guessItem);
-        }
+        guessItem.appendChild(guessResults);
+        countryGuessesHistoryEl.appendChild(guessItem);
     }
 }
 
@@ -951,23 +1007,51 @@ function updateGuessesHistory() {
 function endGame(won) {
     currentGame.gameOver = true;
     
-    correctLanguageEl.textContent = currentGame.correctLanguage;
+    if (currentGame.currentPhase === 'countries') {
+        // Trigger confetti for winning the country phase
+        if (won) {
+            triggerConfetti();
+        }
+        
+        // Hide country inputs section
+        countryInputsEl.style.display = 'none';
+        submitCountryGuessEl.style.display = 'none';
+        
+        // Country phase ended - show country result message
+        countryResultMessageEl.style.display = 'block';
+        
+        if (won) {
+            countryResultTextEl.textContent = 'Congratulations! You guessed all the countries!';
+            countryResultTextEl.className = 'result-text success';
+        } else {
+            countryResultTextEl.textContent = 'Game Over! Better luck next time!';
+            countryResultTextEl.className = 'result-text failure';
+        }
+        
+        // Show all countries that speak this language
+        allCountriesInfoEl.style.display = 'block';
+        const languageData = gameData[currentGame.correctLanguage];
+        if (languageData && languageData.countries) {
+            allCountriesListEl.innerHTML = '';
+            languageData.countries.forEach(country => {
+                const countrySpan = document.createElement('span');
+                const flag = getCountryFlag(country);
+                countrySpan.innerHTML = `${flag} ${country}`;
+                allCountriesListEl.appendChild(countrySpan);
+            });
+        }
+        
+        // Disable country inputs
+        submitCountryGuessEl.disabled = true;
+        const countryInputs = countryInputsEl.querySelectorAll('input[type="text"]');
+        countryInputs.forEach(input => input.disabled = true);
+        
+        // Update UI to show final guess history
+        updateUI();
+    }
     
-    // Show all countries that speak this language
-    const lang = currentGame.correctLanguage;
-    const allCountriesForLanguage = gameData[lang] ? gameData[lang].countries : [];
-    correctCountriesEl.textContent = allCountriesForLanguage.join(', ');
-    
-    // Show the English translation instead of the original sentence
-    correctSentenceEl.textContent = gameData[lang] && gameData[lang].translation ? gameData[lang].translation : currentGame.dailySentence;
-    
-    gameOverEl.style.display = 'block';
-    submitLanguageGuessEl.disabled = true;
-    submitCountryGuessEl.disabled = true;
-    hintBtnEl.disabled = true;
-    
-    // Mark all country inputs as correct/incorrect and disable them
-    markCountryInputsAsFinal();
+    // Save game state
+    saveGameState();
 }
 
 // Reset game
@@ -991,19 +1075,34 @@ function resetGame() {
     // Clear UI
     languageGuessesHistoryEl.innerHTML = '';
     countryGuessesHistoryEl.innerHTML = '';
-    gameOverEl.style.display = 'none';
+    countryResultMessageEl.style.display = 'none';
+    allCountriesInfoEl.style.display = 'none';
     submitLanguageGuessEl.disabled = false;
     submitCountryGuessEl.disabled = false;
     hintBtnEl.disabled = false; // Re-enable hint button
     
     // Reset hint state
-    hintDisplayEl.style.display = 'none';
-    hintBtnEl.textContent = '💡 Show Hint';
+    hintDisplayEl.classList.remove('show');
+    hintDisplayEl.textContent = '';
     
     // Reset phases
     languagePhaseEl.style.display = 'block';
     countryPhaseEl.style.display = 'none';
     languageResultEl.innerHTML = '';
+    
+    // Reset language input section
+    languageInputRowEl.style.display = 'grid';
+    languageResultMessageEl.style.display = 'none';
+    correctLanguageInfoEl.style.display = 'none';
+    playNextSectionEl.style.display = 'none';
+    
+    // Reset guess prompt
+    guessPromptEl.textContent = 'Guess the language';
+    guessPromptEl.style.color = '#87CEEB'; // Light blue color to match country phase
+    
+    // Re-enable language input and show hint button
+    languageGuessEl.disabled = false;
+    hintBtnEl.style.display = 'block';
     
     // Reinitialize with new random language
     initGame();
@@ -1043,7 +1142,7 @@ function loadGameState() {
                 updateHintDisplay();
             } else {
                 hintBtnEl.textContent = '💡 Show Hint';
-                hintDisplayEl.style.display = 'none';
+                hintDisplayEl.classList.remove('show');
             }
             
             // Restore phase state
@@ -1119,6 +1218,117 @@ function markCountryInputsAsFinal() {
     // Don't show the correct countries display
 }
 
+// Start country phase
+function startCountryPhase() {
+    // Generate country inputs based on the correct language
+    generateCountryInputs(currentGame.correctLanguage);
+    
+    // Update the guess prompt for country phase
+    guessPromptEl.innerHTML = `Guess what countries speak <span style="color: #D2B48C;">${currentGame.correctLanguage}</span>`;
+    guessPromptEl.style.color = '#87CEEB'; // Light blue color for the main text
+    
+    // Switch to country phase
+    currentGame.currentPhase = 'countries';
+    languagePhaseEl.style.display = 'none';
+    countryPhaseEl.style.display = 'block';
+    
+    // Hide "Play Next" button and correct language info
+    playNextSectionEl.style.display = 'none';
+    correctLanguageInfoEl.style.display = 'none';
+    
+    // Save game state
+    saveGameState();
+}
+
+// Confetti animation
+class Confetti {
+    constructor(canvas) {
+        this.canvas = canvas;
+        this.ctx = canvas.getContext('2d');
+        this.particles = [];
+        this.colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ffa500', '#800080'];
+        this.isActive = false;
+    }
+
+    start() {
+        this.isActive = true;
+        this.canvas.style.display = 'block';
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+        
+        // Create particles shooting from the center of the screen
+        const centerX = this.canvas.width / 2;
+        const centerY = this.canvas.height / 2;
+        
+        for (let i = 0; i < 100; i++) {
+            this.particles.push({
+                x: centerX + (Math.random() - 0.5) * 20, // Small spread around center
+                y: centerY + (Math.random() - 0.5) * 20,
+                vx: (Math.random() - 0.5) * 12, // Spread out horizontally
+                vy: (Math.random() - 0.5) * 12, // Spread out vertically
+                size: Math.random() * 8 + 4,
+                color: this.colors[Math.floor(Math.random() * this.colors.length)],
+                rotation: Math.random() * 360,
+                rotationSpeed: (Math.random() - 0.5) * 8
+            });
+        }
+        
+        this.animate();
+    }
+
+    animate() {
+        if (!this.isActive) return;
+        
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        
+        for (let i = this.particles.length - 1; i >= 0; i--) {
+            const particle = this.particles[i];
+            
+            // Update position
+            particle.x += particle.vx;
+            particle.y += particle.vy;
+            particle.rotation += particle.rotationSpeed;
+            
+            // Add gravity (slowing down upward movement)
+            particle.vy += 0.3;
+            
+            // Draw particle
+            this.ctx.save();
+            this.ctx.translate(particle.x, particle.y);
+            this.ctx.rotate(particle.rotation * Math.PI / 180);
+            this.ctx.fillStyle = particle.color;
+            this.ctx.fillRect(-particle.size/2, -particle.size/2, particle.size, particle.size);
+            this.ctx.restore();
+            
+            // Remove particles that are off screen (above or below)
+            if (particle.y < -20 || particle.y > this.canvas.height + 20) {
+                this.particles.splice(i, 1);
+            }
+        }
+        
+        // Stop animation when all particles are gone
+        if (this.particles.length === 0) {
+            this.stop();
+            return;
+        }
+        
+        requestAnimationFrame(() => this.animate());
+    }
+
+    stop() {
+        this.isActive = false;
+        this.canvas.style.display = 'none';
+    }
+}
+
+// Initialize confetti
+const confetti = new Confetti(confettiCanvasEl);
+
+// Trigger confetti function
+function triggerConfetti() {
+    confetti.start();
+}
+
 // Initialize the game when the page loads
 document.addEventListener('DOMContentLoaded', () => {
     try {
@@ -1130,6 +1340,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!instructionsSeen) {
             showInstructions();
         }
+        // Ensure hint is hidden on load
+        hintDisplayEl.classList.remove('show');
+        hintDisplayEl.textContent = '';
     } catch (error) {
         console.error('Error in DOMContentLoaded:', error);
         alert('Error loading game: ' + error.message);
