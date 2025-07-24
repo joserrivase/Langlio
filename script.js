@@ -350,7 +350,9 @@ console.log('DOM elements found:', {
     correctLanguageEl: !!correctLanguageEl,
     correctCountriesEl: !!correctCountriesEl,
     hintBtnEl: !!hintBtnEl,
-    hintDisplayEl: !!hintDisplayEl
+    hintDisplayEl: !!hintDisplayEl,
+    shareBtnEl: !!shareBtnEl,
+    shareBtnLanguageEl: !!shareBtnLanguageEl
 });
 
 // Initialize the game
@@ -501,8 +503,14 @@ function addEventListeners() {
     submitCountryGuessEl.addEventListener('click', submitCountryGuess);
     hintBtnEl.addEventListener('click', toggleHint);
     playNextBtnEl.addEventListener('click', startCountryPhase);
-    shareBtnEl.addEventListener('click', shareResult);
-    shareBtnLanguageEl.addEventListener('click', shareResult);
+    
+    // Add event listeners for share buttons if they exist
+    if (shareBtnEl) {
+        shareBtnEl.addEventListener('click', shareResult);
+    }
+    if (shareBtnLanguageEl) {
+        shareBtnLanguageEl.addEventListener('click', shareResult);
+    }
     
     // Instructions popup event listeners
     closeInstructionsEl.addEventListener('click', closeInstructions);
@@ -1358,7 +1366,7 @@ function shareResult(event) {
     
     let shareText;
     if (languageCorrect) {
-        shareText = `🎯 I just played Langlio and correctly guessed the language in ${languageAttemptsUsed} attempt${languageAttemptsUsed === 1 ? '' : 's'}! Can you beat my score? 🌍`;
+        shareText = `🎯 I just played Langlio and guessed the correct language in ${languageAttemptsUsed} attempt${languageAttemptsUsed === 1 ? '' : 's'}! Can you beat my score? 🌍`;
     } else {
         shareText = `🌍 I just played Langlio and tried to guess the language but couldn't get it in 6 attempts. Can you do better? 🎯`;
     }
