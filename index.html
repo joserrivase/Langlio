@@ -59,12 +59,12 @@
         <header>
             <h1>
                 <span style="color: #ff0000;">L</span>
-                <span style="color: #ffa500;">a</span>
-                <span style="color: #ffff00;">n</span>
-                <span style="color: #008000;">g</span>
-                <span style="color: #0000ff;">l</span>
-                <span style="color: #800080;">i</span>
-                <span style="color: #ff69b4;">o</span>
+                <span style="color: #ffa500;">A</span>
+                <span style="color: #ffff00;">N</span>
+                <span style="color: #008000;">G</span>
+                <span style="color: #0000ff;">L</span>
+                <span style="color: #800080;">I</span>
+                <span style="color: #ff69b4;">O</span>
             </h1>
             <p class="subtitle">How many languages do you know?</p>
         </header>
@@ -74,7 +74,7 @@
                 <h2 class="guess-prompt">Guess the language</h2>
                 <div class="sentence" id="dailySentence"></div>
                 <div class="hint-row" style="display: flex; align-items: center; gap: 1rem; margin-top: 0.5rem;">
-                    <button id="hintBtn" class="hint-btn">💡 Show Hint</button>
+                    <button id="hintBtn" class="hint-btn">Hint</button>
                     <div id="hintDisplay" class="hint-display" style="display: none; margin: 0;"></div>
                 </div>
                 <div class="correct-language-info" id="correctLanguageInfo" style="display: none;">
@@ -97,6 +97,7 @@
                     </div>
                     <div class="language-result-message" id="languageResultMessage" style="display: none;">
                         <div class="result-text" id="languageResultText"></div>
+                        <button id="shareBtnLanguage" class="share-btn">Share Result</button>
                     </div>
                     <div class="guesses-history" id="languageGuessesHistory" style="display: flex; flex-direction: column; gap: 0.5rem; min-height: 12rem; max-height: 15rem;">
                         <!-- 6 vertical slots for language guesses will be displayed here -->
@@ -113,7 +114,7 @@
                             <div class="all-countries-title">All countries that speak this language:</div>
                             <div class="all-countries-list" id="allCountriesList"></div>
                         </div>
-                        <button id="newGameBtn" class="new-game-btn">New Game</button>
+                        <button id="shareBtn" class="share-btn">Share Result</button>
                     </div>
                     <div class="country-inputs" id="countryInputs"></div>
                     <div class="guess-row">

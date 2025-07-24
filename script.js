@@ -293,7 +293,8 @@ let currentGame = {
     languageGuessed: false, // Track if language has been correctly guessed
     isNewGame: true, // Flag to indicate if it's a new game or a loaded daily game
     hintRevealed: false, // Track if hint has been revealed
-    correctlyGuessedCountries: [] // Track countries that have been correctly guessed
+    correctlyGuessedCountries: [], // Track countries that have been correctly guessed
+    correctCountryPositions: {} // Track which position each correct country was guessed in
 };
 
 // DOM elements
@@ -312,7 +313,6 @@ const countryGuessesHistoryEl = document.getElementById('countryGuessesHistory')
 const correctLanguageEl = document.getElementById('correctLanguage');
 const correctCountriesEl = document.getElementById('correctCountries');
 const correctSentenceEl = document.getElementById('correctSentence');
-const newGameBtnEl = document.getElementById('newGameBtn');
 const hintBtnEl = document.getElementById('hintBtn');
 const hintDisplayEl = document.getElementById('hintDisplay');
 const instructionsPopupEl = document.getElementById('instructionsPopup');
@@ -323,6 +323,7 @@ const playNextBtnEl = document.getElementById('playNextBtn');
 const languageInputRowEl = document.getElementById('languageInputRow');
 const languageResultMessageEl = document.getElementById('languageResultMessage');
 const languageResultTextEl = document.getElementById('languageResultText');
+const shareBtnLanguageEl = document.getElementById('shareBtnLanguage');
 const correctLanguageInfoEl = document.getElementById('correctLanguageInfo');
 const correctLanguageDisplayEl = document.getElementById('correctLanguageDisplay');
 const translationDisplayEl = document.getElementById('translationDisplay');
@@ -330,6 +331,7 @@ const countryResultMessageEl = document.getElementById('countryResultMessage');
 const countryResultTextEl = document.getElementById('countryResultText');
 const allCountriesInfoEl = document.getElementById('allCountriesInfo');
 const allCountriesListEl = document.getElementById('allCountriesList');
+const shareBtnEl = document.getElementById('shareBtn');
 const guessPromptEl = document.querySelector('.guess-prompt');
 const confettiCanvasEl = document.getElementById('confettiCanvas');
 
@@ -347,7 +349,6 @@ console.log('DOM elements found:', {
     countryGuessesHistoryEl: !!countryGuessesHistoryEl,
     correctLanguageEl: !!correctLanguageEl,
     correctCountriesEl: !!correctCountriesEl,
-    newGameBtnEl: !!newGameBtnEl,
     hintBtnEl: !!hintBtnEl,
     hintDisplayEl: !!hintDisplayEl
 });
@@ -498,9 +499,10 @@ function showLanguageDropdown() {
 function addEventListeners() {
     submitLanguageGuessEl.addEventListener('click', submitLanguageGuess);
     submitCountryGuessEl.addEventListener('click', submitCountryGuess);
-    newGameBtnEl.addEventListener('click', resetGame);
     hintBtnEl.addEventListener('click', toggleHint);
     playNextBtnEl.addEventListener('click', startCountryPhase);
+    shareBtnEl.addEventListener('click', shareResult);
+    shareBtnLanguageEl.addEventListener('click', shareResult);
     
     // Instructions popup event listeners
     closeInstructionsEl.addEventListener('click', closeInstructions);
@@ -532,15 +534,12 @@ function addEventListeners() {
 // Toggle hint display
 function toggleHint() {
     if (currentGame.hintRevealed) {
-        // Hide hint
-        currentGame.hintRevealed = false;
-        hintDisplayEl.classList.remove('show');
-        hintBtnEl.textContent = '💡 Show Hint';
+        // Hint is already revealed - do nothing (keep it open)
+        return;
     } else {
-        // Show hint
+        // Show hint (only once)
         currentGame.hintRevealed = true;
         updateHintDisplay();
-        hintBtnEl.textContent = '🙈 Hide Hint';
     }
     
     // Save game state
@@ -550,6 +549,7 @@ function toggleHint() {
 // Update hint display
 function updateHintDisplay() {
     if (!currentGame.hintRevealed) {
+        hintDisplayEl.style.display = 'none';
         hintDisplayEl.classList.remove('show');
         return;
     }
@@ -557,8 +557,10 @@ function updateHintDisplay() {
     const languageData = gameData[currentGame.correctLanguage];
     if (languageData && languageData.hint) {
         hintDisplayEl.textContent = languageData.hint;
+        hintDisplayEl.style.display = 'flex';
         hintDisplayEl.classList.add('show');
     } else {
+        hintDisplayEl.style.display = 'none';
         hintDisplayEl.classList.remove('show');
     }
 }
@@ -648,6 +650,9 @@ function submitLanguageGuess() {
         // Hide hint button
         hintBtnEl.style.display = 'none';
         
+        // Hide hint display
+        hintDisplayEl.style.display = 'none';
+        
         // Show success message
         languageResultMessageEl.style.display = 'block';
         languageResultTextEl.textContent = 'You guessed the language!';
@@ -674,6 +679,9 @@ function submitLanguageGuess() {
             
             // Hide hint button
             hintBtnEl.style.display = 'none';
+            
+            // Hide hint display
+            hintDisplayEl.style.display = 'none';
             
             languageResultMessageEl.style.display = 'block';
             languageResultTextEl.textContent = 'Better luck next time!';
@@ -714,29 +722,34 @@ function generateCountryInputs(correctLanguage) {
     const totalCountries = languageData.countries.length;
     const numCountries = Math.min(3, totalCountries);
     
-    // Get correctly guessed countries that are in the game's correct countries list
-    const correctlyGuessedFromGame = currentGame.correctlyGuessedCountries.filter(country => 
-        currentGame.correctCountries.includes(country)
-    );
+    // Create a mapping of positions to countries based on the original guesses
+    const positionToCountry = {};
+    const countryToPosition = {};
     
-    console.log('Correctly guessed from game countries:', correctlyGuessedFromGame);
-    console.log('Game correct countries:', currentGame.correctCountries);
-    console.log('All correctly guessed countries:', currentGame.correctlyGuessedCountries);
+    // Get the most recent country guess to determine positions
+    const lastCountryGuess = currentGame.guesses.filter(g => g.countries.length > 0).pop();
+    if (lastCountryGuess) {
+        lastCountryGuess.countries.forEach((country, index) => {
+            if (currentGame.correctlyGuessedCountries.includes(country)) {
+                positionToCountry[index] = country;
+                countryToPosition[country] = index;
+            }
+        });
+    }
     
-    // Note: Input fields are disabled based on how many countries from the 3 randomly selected
-    // game countries have been correctly guessed. Countries guessed correctly but not in the
-    // 3 selected ones will be shown as correct in the guess history but won't disable input fields.
+    console.log('Position to country mapping:', positionToCountry);
+    console.log('Country to position mapping:', countryToPosition);
     
     // Create all 3 input fields (or however many are required)
     for (let i = 0; i < numCountries; i++) {
         const countryInput = document.createElement('div');
         countryInput.className = 'guess-input';
         
-        // Check if this position should be disabled (if we have a correct country for this position)
-        // We need to disable fields based on how many countries from the game's correct countries have been guessed
-        // But we also need to account for the fact that users might guess countries not in the 3 selected ones
-        const isCorrectlyGuessed = i < correctlyGuessedFromGame.length;
-        console.log(`Country ${i + 1}: position ${i}, isCorrectlyGuessed: ${isCorrectlyGuessed}, correctlyGuessedFromGame: ${correctlyGuessedFromGame.length}`);
+        // Check if this position has a correct country
+        const correctCountryForPosition = positionToCountry[i];
+        const isCorrectlyGuessed = correctCountryForPosition !== undefined;
+        
+        console.log(`Country ${i + 1}: position ${i}, isCorrectlyGuessed: ${isCorrectlyGuessed}, country: ${correctCountryForPosition}`);
         
         countryInput.innerHTML = `
             <label for="countryGuess${i}">Country ${i + 1}:</label>
@@ -776,15 +789,11 @@ function generateCountryInputs(correctLanguage) {
             });
         }
         
-        // Pre-select correctly guessed countries
-        if (isCorrectlyGuessed && i < correctlyGuessedFromGame.length) {
-            const correctCountry = correctlyGuessedFromGame[i];
-            countryInputEl.value = correctCountry;
+        // Pre-select correctly guessed countries in their original positions
+        if (isCorrectlyGuessed) {
+            countryInputEl.value = correctCountryForPosition;
             countryInputEl.classList.add('correct-final');
-            console.log(`Setting country ${i + 1} to: ${correctCountry}`);
-        } else if (isCorrectlyGuessed) {
-            // This shouldn't happen, but just in case
-            console.log(`Position ${i} marked as correctly guessed but no country assigned`);
+            console.log(`Setting country ${i + 1} to: ${correctCountryForPosition}`);
         }
         
         countryInputsEl.appendChild(countryInput);
@@ -883,13 +892,15 @@ function submitCountryGuess() {
     console.log('User guesses:', countryGuesses);
     console.log('Currently correctly guessed:', currentGame.correctlyGuessedCountries);
     
-    countryGuesses.forEach((country) => {
+    countryGuesses.forEach((country, index) => {
         console.log(`Checking ${country} against all countries list`);
         if (allCountriesForLanguage.includes(country) && 
             !currentGame.correctlyGuessedCountries.includes(country)) {
             currentGame.correctlyGuessedCountries.push(country);
+            // Track the position where this country was guessed
+            currentGame.correctCountryPositions[country] = index;
             newCorrectGuesses++;
-            console.log(`New correct guess: ${country}`);
+            console.log(`New correct guess: ${country} at position ${index}`);
         }
     });
     
@@ -1069,7 +1080,8 @@ function resetGame() {
         languageGuessed: false,
         isNewGame: true, // Flag to indicate if it's a new game or a loaded daily game
         hintRevealed: false, // Reset hint state
-        correctlyGuessedCountries: [] // Reset correctly guessed countries
+        correctlyGuessedCountries: [], // Reset correctly guessed countries
+        correctCountryPositions: {} // Reset correct country positions
     };
     
     // Clear UI
@@ -1138,10 +1150,8 @@ function loadGameState() {
             
             // Restore hint state
             if (currentGame.hintRevealed) {
-                hintBtnEl.textContent = '🙈 Hide Hint';
                 updateHintDisplay();
             } else {
-                hintBtnEl.textContent = '💡 Show Hint';
                 hintDisplayEl.classList.remove('show');
             }
             
@@ -1150,6 +1160,12 @@ function loadGameState() {
                 languagePhaseEl.style.display = 'none';
                 countryPhaseEl.style.display = 'block';
                 generateCountryInputs(currentGame.correctLanguage);
+                
+                // Hide hint button in country phase
+                hintBtnEl.style.display = 'none';
+                
+                // Hide hint display in country phase
+                hintDisplayEl.style.display = 'none';
                 
                 // Show language result
                 const isCorrect = currentGame.currentLanguageGuess === currentGame.correctLanguage;
@@ -1231,6 +1247,10 @@ function startCountryPhase() {
     currentGame.currentPhase = 'countries';
     languagePhaseEl.style.display = 'none';
     countryPhaseEl.style.display = 'block';
+    
+    // Hide hint button and display in country phase
+    hintBtnEl.style.display = 'none';
+    hintDisplayEl.style.display = 'none';
     
     // Hide "Play Next" button and correct language info
     playNextSectionEl.style.display = 'none';
@@ -1327,6 +1347,74 @@ const confetti = new Confetti(confettiCanvasEl);
 // Trigger confetti function
 function triggerConfetti() {
     confetti.start();
+}
+
+// Share result function
+function shareResult(event) {
+    // Get language guessing performance
+    const languageGuesses = currentGame.guesses.filter(g => g.countries.length === 0);
+    const languageAttemptsUsed = 6 - currentGame.languageAttempts;
+    const languageCorrect = currentGame.languageGuessed;
+    
+    let shareText;
+    if (languageCorrect) {
+        shareText = `🎯 I just played Langlio and correctly guessed the language in ${languageAttemptsUsed} attempt${languageAttemptsUsed === 1 ? '' : 's'}! Can you beat my score? 🌍`;
+    } else {
+        shareText = `🌍 I just played Langlio and tried to guess the language but couldn't get it in 6 attempts. Can you do better? 🎯`;
+    }
+    
+    // Determine which button was clicked
+    const clickedButton = event.target;
+    
+    // Try to copy to clipboard
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(shareText).then(() => {
+            // Show success feedback
+            const originalText = clickedButton.textContent;
+            clickedButton.textContent = 'Copied!';
+            clickedButton.style.background = 'linear-gradient(135deg, #059669 0%, #047857 100%)';
+            
+            setTimeout(() => {
+                clickedButton.textContent = originalText;
+                clickedButton.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+            }, 2000);
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
+            fallbackCopyTextToClipboard(shareText, clickedButton);
+        });
+    } else {
+        // Fallback for older browsers
+        fallbackCopyTextToClipboard(shareText, clickedButton);
+    }
+}
+
+// Fallback copy function for older browsers
+function fallbackCopyTextToClipboard(text, button) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-999999px';
+    textArea.style.top = '-999999px';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    
+    try {
+        document.execCommand('copy');
+        const originalText = button.textContent;
+        button.textContent = 'Copied!';
+        button.style.background = 'linear-gradient(135deg, #059669 0%, #047857 100%)';
+        
+        setTimeout(() => {
+            button.textContent = originalText;
+            button.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+        }, 2000);
+    } catch (err) {
+        console.error('Fallback: Oops, unable to copy', err);
+        alert('Failed to copy to clipboard. Please copy manually: ' + text);
+    }
+    
+    document.body.removeChild(textArea);
 }
 
 // Initialize the game when the page loads

@@ -121,15 +121,16 @@ header h1 {
     align-items: center;
     padding: 0 1rem;
     box-sizing: border-box;
+    margin-bottom: 0.5rem;
 }
 #hintDisplay.hint-display {
-    display: none !important;
+    display: none;
     align-items: center;
     justify-content: center;
     min-height: 38px;
     height: 38px;
     padding: 0 1rem;
-    margin: 0;
+    margin: 0 0 0.5rem 0;
     background: rgba(255, 215, 0, 0.1);
     border: 1px solid rgba(255, 215, 0, 0.3);
     border-radius: 8px;
@@ -141,7 +142,7 @@ header h1 {
     text-align: center;
 }
 #hintDisplay.hint-display.show {
-    display: flex !important;
+    display: flex;
 }
 
 .sentence-info {
@@ -608,7 +609,7 @@ header h1 {
 
 .submit-btn {
     padding: 0.75rem 1.5rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #ff8c42 0%, #ff6b35 100%);
     border: none;
     border-radius: 10px;
     color: #ffffff;
@@ -621,7 +622,7 @@ header h1 {
 
 .submit-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 10px 20px rgba(255, 140, 66, 0.3);
 }
 
 .submit-btn:disabled {
@@ -803,6 +804,7 @@ header h1 {
     justify-content: flex-start;
     gap: 1rem;
     margin-top: 0.5rem;
+    align-items: flex-start;
 } 
 
 /* Make guess slots fill the whole width and center content */
@@ -987,6 +989,29 @@ header h1 {
     transform: translateY(0);
 } 
 
+.share-btn {
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border: none;
+    border-radius: 10px;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    font-family: inherit;
+}
+
+.share-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+}
+
+.share-btn:active {
+    transform: translateY(0);
+}
+
 .country-result-message {
     text-align: center;
     margin: 1rem 0;
@@ -1013,26 +1038,40 @@ header h1 {
 
 .all-countries-list {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.75rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.1rem;
     justify-content: center;
-    text-align: left;
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 .all-countries-list span {
     background: transparent;
     color: #ffffff;
-    padding: 0.5rem 0.75rem;
+    padding: 0.25rem 0.5rem;
     border-radius: 5px;
     font-size: 0.9rem;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
 }
 
 .all-countries-list span::before {
-    content: "•";
-    color: #60a5fa;
-    font-weight: bold;
-    font-size: 1.2rem;
+    content: "";
+    display: none;
+} 
+
+.sentence {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #ffffff;
+    line-height: 1.4;
+    min-height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 } 
