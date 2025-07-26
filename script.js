@@ -1003,7 +1003,7 @@ function endGame(won) {
         allCountriesInfoEl.style.display = 'block';
         
         // Update the title with the actual language name
-        allCountriesTitleEl.textContent = `All countries that speak ${currentGame.correctLanguage}:`;
+        allCountriesTitleEl.textContent = `Every country that speak ${currentGame.correctLanguage}:`;
         
         const languageData = gameData[currentGame.correctLanguage];
         if (languageData && languageData.countries) {
@@ -1227,8 +1227,7 @@ function startCountryPhase() {
     playNextSectionEl.style.display = 'none';
     correctLanguageInfoEl.style.display = 'none';
     
-    // Hide translation
-    translationDisplayEl.style.display = 'none';
+    // Keep translation visible during country guessing round
     
     // Save game state
     saveGameState();
@@ -1384,9 +1383,9 @@ function shareResult(event) {
     
     let shareText;
     if (languageCorrect) {
-        shareText = `🎯 I just played Langlio and guessed the correct language in ${languageAttemptsUsed} attempt${languageAttemptsUsed === 1 ? '' : 's'}! Can you beat my score? 🌍`;
+        shareText = `🎯 I just played Langlio and guessed the correct language in ${languageAttemptsUsed} attempt${languageAttemptsUsed === 1 ? '' : 's'}! Can you beat my score? 🌍\n\nPlay here: https://langlio.io`;
     } else {
-        shareText = `🌍 I just played Langlio and tried to guess the language but couldn't get it in 6 attempts. Can you do better? 🎯`;
+        shareText = `🌍 I just played Langlio and tried to guess the language but couldn't get it in 6 attempts. Can you do better? 🎯\n\nPlay here: https://langlio.io`;
     }
     
     // Try to copy to clipboard
