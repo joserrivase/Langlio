@@ -36,15 +36,12 @@
                 </div>
                 <div class="instruction-step">
                     <h3>Step 2: Guess the Countries</h3>
-                    <p>Once you've correctly identified the language, you get <strong>6 attempts</strong> to guess all the countries where that language is spoken.</p>
+                    <p>Once you've attempted to guess the language, you get <strong>6 attempts</strong> to guess up to three countries where that language is spoken.</p>
                 </div>
                 <div class="instruction-features">
                     <h3>Game Features</h3>
                     <ul>
                         <li><strong>💡 Hint:</strong> Click the hint button for language clues</li>
-                        <li><strong>🔄 New Game:</strong> Start a completely new game with a random language</li>
-                        <li><strong>📱 Mobile Friendly:</strong> Searchable inputs work great on phones</li>
-                        <li><strong>💾 Progress Saved:</strong> Your game progress is automatically saved</li>
                     </ul>
                 </div>
                 <div class="instruction-tip">
@@ -58,13 +55,13 @@
     <div class="container">
         <header>
             <h1>
-                <span style="color: #ff0000;">L</span>
-                <span style="color: #ffa500;">A</span>
-                <span style="color: #ffff00;">N</span>
-                <span style="color: #008000;">G</span>
-                <span style="color: #0000ff;">L</span>
-                <span style="color: #800080;">I</span>
-                <span style="color: #ff69b4;">O</span>
+                <span style="color: #ff0000; text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff;">L</span>
+                <span style="color: #0000ff; text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff;">A</span>
+                <span style="color: #ffffff; text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000;">N</span>
+                <span style="color: #008000; text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff;">G</span>
+                <span style="color: #ffff00; text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff;">L</span>
+                <span style="color: #000000; text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff;">I</span>
+                <span style="color: #ffa500; text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff;">O</span>
             </h1>
             <p class="subtitle">How many languages do you know?</p>
         </header>
@@ -73,13 +70,13 @@
             <div class="sentence-display">
                 <h2 class="guess-prompt">Guess the language</h2>
                 <div class="sentence" id="dailySentence"></div>
+                <div class="translation" id="translationDisplay" style="display: none;"></div>
                 <div class="hint-row" style="display: flex; align-items: center; gap: 1rem; margin-top: 0.5rem;">
                     <button id="hintBtn" class="hint-btn">Hint</button>
                     <div id="hintDisplay" class="hint-display" style="display: none; margin: 0;"></div>
                 </div>
                 <div class="correct-language-info" id="correctLanguageInfo" style="display: none;">
                     <div class="correct-language" id="correctLanguageDisplay"></div>
-                    <div class="translation" id="translationDisplay"></div>
                 </div>
             </div>
 
@@ -97,13 +94,13 @@
                     </div>
                     <div class="language-result-message" id="languageResultMessage" style="display: none;">
                         <div class="result-text" id="languageResultText"></div>
-                        <button id="shareBtnLanguage" class="share-btn">Share Result</button>
                     </div>
                     <div class="guesses-history" id="languageGuessesHistory" style="display: flex; flex-direction: column; gap: 0.5rem; min-height: 12rem; max-height: 15rem;">
                         <!-- 6 vertical slots for language guesses will be displayed here -->
                     </div>
                     <div class="play-next-section" id="playNextSection" style="display: none;">
                         <button id="playNextBtn" class="play-next-btn">Play Next</button>
+                        <button id="shareBtnLanguage" class="play-next-btn">Share Result</button>
                     </div>
                 </div>
                 <!-- Country guessing phase (initially hidden) -->
@@ -111,10 +108,9 @@
                     <div class="country-result-message" id="countryResultMessage" style="display: none;">
                         <div class="result-text" id="countryResultText"></div>
                         <div class="all-countries-info" id="allCountriesInfo" style="display: none;">
-                            <div class="all-countries-title">All countries that speak this language:</div>
+                            <div class="all-countries-title" id="allCountriesTitle">All countries that speak this language:</div>
                             <div class="all-countries-list" id="allCountriesList"></div>
                         </div>
-                        <button id="shareBtn" class="share-btn">Share Result</button>
                     </div>
                     <div class="country-inputs" id="countryInputs"></div>
                     <div class="guess-row">
@@ -123,10 +119,24 @@
                     <div class="guesses-history" id="countryGuessesHistory" style="display: flex; flex-direction: column; gap: 0.5rem; min-height: 12rem; max-height: 15rem;">
                         <!-- 6 vertical slots for country guesses will be displayed here -->
                     </div>
+                    <div class="play-next-section" id="countryShareSection" style="display: none;">
+                        <button id="shareBtn" class="play-next-btn">Share Result</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="about.html">About Us</a>
+            <span class="footer-sep">|</span>
+            <a href="privacy.html">Privacy Policy</a>
+            <span class="footer-sep">|</span>
+            <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="footer-copy">&copy; 2025 Langlio</div>
+    </footer>
 
     <script src="script.js"></script>
 </body>

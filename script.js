@@ -1,278 +1,163 @@
-// Game data - languages with their sentences and countries
-const gameData = {
-    "Spanish": {
-        sentence: "El sol brilla en el cielo azul",
-        translation: "The sun shines in the blue sky",
-        countries: ["Spain", "Mexico", "Argentina", "Colombia", "Peru", "Venezuela", "Chile", "Ecuador", "Guatemala", "Cuba", "Bolivia", "Dominican Republic", "Honduras", "Paraguay", "El Salvador", "Nicaragua", "Costa Rica", "Panama", "Uruguay", "Equatorial Guinea", "Puerto Rico"],
-        hint: "This language uses 'el' and 'la' articles and has rolling 'r' sounds"
-    },
-    "French": {
-        sentence: "Le soleil brille dans le ciel bleu",
-        translation: "The sun shines in the blue sky",
-        countries: ["France", "Canada", "Belgium", "Switzerland", "Luxembourg", "Monaco", "Haiti", "Senegal", "Mali", "Burkina Faso", "Niger", "Chad", "Central African Republic", "Cameroon", "Gabon", "Congo", "Democratic Republic of the Congo", "Rwanda", "Burundi", "Madagascar", "Comoros", "Seychelles", "Djibouti", "Vanuatu", "New Caledonia", "French Polynesia", "Wallis and Futuna"],
-        hint: "This language uses 'le' and 'la' articles and has nasal sounds"
-    },
-    "German": {
-        sentence: "Die Sonne scheint am blauen Himmel",
-        translation: "The sun shines in the blue sky",
-        countries: ["Germany", "Austria", "Switzerland", "Liechtenstein", "Luxembourg", "Belgium"],
-        hint: "This language capitalizes all nouns and uses 'die', 'der', 'das' articles"
-    },
-    "Italian": {
-        sentence: "Il sole splende nel cielo blu",
-        translation: "The sun shines in the blue sky",
-        countries: ["Italy", "Switzerland", "San Marino", "Vatican City"],
-        hint: "This language uses 'il' and 'la' articles and has musical intonation"
-    },
-    "Portuguese": {
-        sentence: "O sol brilha no céu azul",
-        translation: "The sun shines in the blue sky",
-        countries: ["Portugal", "Brazil", "Angola", "Mozambique", "Guinea-Bissau", "Cape Verde", "São Tomé and Príncipe"],
-        hint: "This language uses 'o' and 'a' articles and has nasal vowels"
-    },
-    "Russian": {
-        sentence: "Солнце светит в голубом небе",
-        translation: "The sun shines in the blue sky",
-        countries: ["Russia", "Belarus", "Kazakhstan", "Kyrgyzstan", "Tajikistan", "Uzbekistan", "Turkmenistan", "Azerbaijan", "Georgia", "Armenia", "Moldova", "Ukraine", "Estonia", "Latvia", "Lithuania", "Poland"],
-        hint: "This language uses the Cyrillic alphabet and has soft/hard consonants"
-    },
-    "Japanese": {
-        sentence: "太陽が青空で輝いている",
-        translation: "The sun shines in the blue sky",
-        countries: ["Japan"],
-        hint: "This language uses three writing systems: hiragana, katakana, and kanji"
-    },
-    "Chinese": {
-        sentence: "太阳在蓝天中闪耀",
-        translation: "The sun shines in the blue sky",
-        countries: ["China", "Taiwan", "Singapore"],
-        hint: "This language uses logographic characters and is tonal"
-    },
-    "Korean": {
-        sentence: "태양이 푸른 하늘에서 빛나고 있다",
-        translation: "The sun shines in the blue sky",
-        countries: ["South Korea", "North Korea"],
-        hint: "This language uses the Hangul alphabet and has honorific speech levels"
-    },
-    "Arabic": {
-        sentence: "الشمس تشرق في السماء الزرقاء",
-        translation: "The sun shines in the blue sky",
-        countries: ["Egypt", "Saudi Arabia", "Iraq", "Syria", "Lebanon", "Jordan", "Palestine", "Israel", "Kuwait", "Bahrain", "Qatar", "United Arab Emirates", "Oman", "Yemen", "Sudan", "South Sudan", "Chad", "Libya", "Tunisia", "Algeria", "Morocco", "Mauritania", "Somalia", "Djibouti", "Eritrea", "Comoros"],
-        hint: "This language is written right-to-left and has guttural sounds"
-    },
-    "Hindi": {
-        sentence: "सूरज नीले आसमान में चमक रहा है",
-        translation: "The sun shines in the blue sky",
-        countries: ["India", "Nepal", "Fiji"],
-        hint: "This language uses the Devanagari script and has retroflex consonants"
-    },
-    "Dutch": {
-        sentence: "De zon schijnt in de blauwe lucht",
-        translation: "The sun shines in the blue sky",
-        countries: ["Netherlands", "Belgium", "Suriname"],
-        hint: "This language uses 'de' and 'het' articles and has guttural 'g' sounds"
-    },
-    "Swedish": {
-        sentence: "Solen skiner på den blå himlen",
-        translation: "The sun shines in the blue sky",
-        countries: ["Sweden", "Finland"],
-        hint: "This language has pitch accent and uses 'en' and 'ett' articles"
-    },
-    "Norwegian": {
-        sentence: "Solen skiner på den blå himmelen",
-        translation: "The sun shines in the blue sky",
-        countries: ["Norway"],
-        hint: "This language has two written forms and uses 'en' and 'et' articles"
-    },
-    "Danish": {
-        sentence: "Solen skiner på den blå himmel",
-        translation: "The sun shines in the blue sky",
-        countries: ["Denmark", "Greenland"],
-        hint: "This language has a stød sound and uses 'en' and 'et' articles"
-    },
-    "Polish": {
-        sentence: "Słońce świeci na niebieskim niebie",
-        translation: "The sun shines in the blue sky",
-        countries: ["Poland"],
-        hint: "This language has many consonant clusters and uses 'ten' and 'ta' articles"
-    },
-    "Turkish": {
-        sentence: "Güneş mavi gökyüzünde parlıyor",
-        translation: "The sun shines in the blue sky",
-        countries: ["Turkey", "Cyprus"],
-        hint: "This language uses vowel harmony and agglutination"
-    },
-    "Greek": {
-        sentence: "Ο ήλιος λάμπει στον μπλε ουρανό",
-        translation: "The sun shines in the blue sky",
-        countries: ["Greece", "Cyprus"],
-        hint: "This language uses the Greek alphabet and has three genders"
-    },
-    "Hebrew": {
-        sentence: "השמש זורחת בשמיים הכחולים",
-        translation: "The sun shines in the blue sky",
-        countries: ["Israel"],
-        hint: "This language is written right-to-left and uses the Hebrew alphabet"
-    },
-    "Thai": {
-        sentence: "ดวงอาทิตย์ส่องแสงในท้องฟ้าสีฟ้า",
-        translation: "The sun shines in the blue sky",
-        countries: ["Thailand"],
-        hint: "This language is tonal and uses its own unique alphabet"
-    },
-    "Vietnamese": {
-        sentence: "Mặt trời chiếu sáng trên bầu trời xanh",
-        translation: "The sun shines in the blue sky",
-        countries: ["Vietnam"],
-        hint: "This language is tonal and uses Latin alphabet with diacritics"
-    },
-    "Indonesian": {
-        sentence: "Matahari bersinar di langit biru",
-        translation: "The sun shines in the blue sky",
-        countries: ["Indonesia"],
-        hint: "This language uses Latin alphabet and has no grammatical gender"
-    },
-    "Malay": {
-        sentence: "Matahari bersinar di langit biru",
-        translation: "The sun shines in the blue sky",
-        countries: ["Malaysia", "Brunei", "Singapore"],
-        hint: "This language uses Latin alphabet and has simple grammar"
-    },
-    "Filipino": {
-        sentence: "Ang araw ay nagniningning sa asul na kalangitan",
-        translation: "The sun shines in the blue sky",
-        countries: ["Philippines"],
-        hint: "This language uses 'ang' and 'ng' markers and has Austronesian roots"
-    },
-    "Finnish": {
-        sentence: "Aurinko paistaa sinisessä taivaassa",
-        translation: "The sun shines in the blue sky",
-        countries: ["Finland"],
-        hint: "This language has 15 cases and uses vowel harmony"
-    },
-    "Hungarian": {
-        sentence: "A nap süt a kék égen",
-        translation: "The sun shines in the blue sky",
-        countries: ["Hungary"],
-        hint: "This language has 18 cases and uses 'a' and 'az' articles"
-    },
-    "Czech": {
-        sentence: "Slunce svítí na modré obloze",
-        translation: "The sun shines in the blue sky",
-        countries: ["Czech Republic"],
-        hint: "This language has 7 cases and uses 'ten' and 'ta' articles"
-    },
-    "Slovak": {
-        sentence: "Slnko svieti na modrom nebi",
-        translation: "The sun shines in the blue sky",
-        countries: ["Slovakia"],
-        hint: "This language has 6 cases and is closely related to Czech"
-    },
-    "Romanian": {
-        sentence: "Soarele strălucește pe cerul albastru",
-        translation: "The sun shines in the blue sky",
-        countries: ["Romania", "Moldova"],
-        hint: "This language is the only Romance language in Eastern Europe"
-    },
-    "Bulgarian": {
-        sentence: "Слънцето грее в синьото небе",
-        translation: "The sun shines in the blue sky",
-        countries: ["Bulgaria"],
-        hint: "This language uses the Cyrillic alphabet and has no cases"
-    },
-    "Croatian": {
-        sentence: "Sunce sjaji na plavom nebu",
-        translation: "The sun shines in the blue sky",
-        countries: ["Croatia", "Bosnia and Herzegovina"],
-        hint: "This language uses Latin alphabet and has 7 cases"
-    },
-    "Serbian": {
-        sentence: "Сунце сија на плавом небу",
-        translation: "The sun shines in the blue sky",
-        countries: ["Serbia", "Bosnia and Herzegovina"],
-        hint: "This language can use both Cyrillic and Latin alphabets"
-    },
-    "Slovenian": {
-        sentence: "Sonce sije na modrem nebu",
-        translation: "The sun shines in the blue sky",
-        countries: ["Slovenia"],
-        hint: "This language has dual number and 6 cases"
-    },
-    "Estonian": {
-        sentence: "Päike paistab sinises taevas",
-        translation: "The sun shines in the blue sky",
-        countries: ["Estonia"],
-        hint: "This language has 14 cases and uses vowel harmony"
-    },
-    "Latvian": {
-        sentence: "Saule spīd zilajā debesī",
-        translation: "The sun shines in the blue sky",
-        countries: ["Latvia"],
-        hint: "This language has 7 cases and uses pitch accent"
-    },
-    "Lithuanian": {
-        sentence: "Saulė spindi mėlyname danguje",
-        translation: "The sun shines in the blue sky",
-        countries: ["Lithuania"],
-        hint: "This language has 7 cases and is considered very conservative"
-    }
-};
+// Game data - will be loaded from Languages_data.json
+let gameData = {};
+let allCountries = [];
+let countryFlags = {};
 
-// All countries for the dropdown
-const allCountries = [
-    "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",
-    "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi",
-    "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic",
-    "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica", "Dominican Republic",
-    "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia",
-    "Fiji", "Finland", "France",
-    "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana",
-    "Haiti", "Honduras", "Hungary",
-    "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Ivory Coast",
-    "Jamaica", "Japan", "Jordan",
-    "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan",
-    "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg",
-    "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar",
-    "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "North Macedonia", "Norway",
-    "Oman",
-    "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal",
-    "Qatar",
-    "Romania", "Russia", "Rwanda",
-    "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria",
-    "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu",
-    "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan",
-    "Vanuatu", "Vatican City", "Venezuela", "Vietnam",
-    "Yemen",
-    "Zambia", "Zimbabwe"
+// Comprehensive list of top 100+ languages
+const allLanguages = [
+    "English", "Mandarin Chinese", "Hindi", "Spanish", "French", "Standard Arabic", "Bengali", "Portuguese", "Russian", "Urdu",
+    "Indonesian", "German", "Japanese", "Nigerian Pidgin", "Marathi", "Telugu", "Turkish", "Tamil", "Yue Chinese (Cantonese)", "Vietnamese",
+    "Korean", "Wu Chinese (Shanghainese)", "Javanese", "Hausa", "Egyptian Arabic", "Swahili", "Italian", "Thai", "Gujarati", "Kannada",
+    "Bhojpuri", "Polish", "Pashto", "Xiang Chinese (Hunanese)", "Malayalam", "Dutch", "Persian", "Ukrainian", "Romanian", "Oromo",
+    "Igbo", "Amharic", "Yoruba", "Sindhi", "Cebuano", "Malay", "Nepali", "Sinhala", "Khmer", "Zulu",
+    "Czech", "Greek", "Hungarian", "Bulgarian", "Slovak", "Catalan", "Hebrew", "Finnish", "Norwegian", "Danish",
+    "Swedish", "Lithuanian", "Latvian", "Estonian", "Icelandic", "Albanian", "Macedonian", "Slovenian", "Croatian", "Serbian",
+    "Bosnian", "Montenegrin", "Georgian", "Armenian", "Azerbaijani", "Kazakh", "Kyrgyz", "Uzbek", "Turkmen", "Tajik",
+    "Mongolian", "Tibetan", "Burmese", "Lao", "Khmer", "Filipino", "Malagasy", "Somali", "Dinka", "Luo",
+    "Kikuyu", "Luhya", "Kamba", "Kalenjin", "Maasai", "Tigrinya", "Tigre", "Afar", "Beja", "Nuer",
+    "Shilluk", "Anuak", "Acholi", "Lango", "Alur", "Kumam", "Iteso", "Karimojong", "Jie", "Tepeth"
 ];
 
-// Country flag mapping
-const countryFlags = {
-    "Afghanistan": "🇦🇫", "Albania": "🇦🇱", "Algeria": "🇩🇿", "Andorra": "🇦🇩", "Angola": "🇦🇴", "Antigua and Barbuda": "🇦🇬", "Argentina": "🇦🇷", "Armenia": "🇦🇲", "Australia": "🇦🇺", "Austria": "🇦🇹", "Azerbaijan": "🇦🇿",
-    "Bahamas": "🇧🇸", "Bahrain": "🇧🇭", "Bangladesh": "🇧🇩", "Barbados": "🇧🇧", "Belarus": "🇧🇾", "Belgium": "🇧🇪", "Belize": "🇧🇿", "Benin": "🇧🇯", "Bhutan": "🇧🇹", "Bolivia": "🇧🇴", "Bosnia and Herzegovina": "🇧🇦", "Botswana": "🇧🇼", "Brazil": "🇧🇷", "Brunei": "🇧🇳", "Bulgaria": "🇧🇬", "Burkina Faso": "🇧🇫", "Burundi": "🇧🇮",
-    "Cabo Verde": "🇨🇻", "Cambodia": "🇰🇭", "Cameroon": "🇨🇲", "Canada": "🇨🇦", "Central African Republic": "🇨🇫", "Chad": "🇹🇩", "Chile": "🇨🇱", "China": "🇨🇳", "Colombia": "🇨🇴", "Comoros": "🇰🇲", "Congo": "🇨🇬", "Costa Rica": "🇨🇷", "Croatia": "🇭🇷", "Cuba": "🇨🇺", "Cyprus": "🇨🇾", "Czech Republic": "🇨🇿",
-    "Democratic Republic of the Congo": "🇨🇩", "Denmark": "🇩🇰", "Djibouti": "🇩🇯", "Dominica": "🇩🇲", "Dominican Republic": "🇩🇴",
-    "East Timor": "🇹🇱", "Ecuador": "🇪🇨", "Egypt": "🇪🇬", "El Salvador": "🇸🇻", "Equatorial Guinea": "🇬🇶", "Eritrea": "🇪🇷", "Estonia": "🇪🇪", "Eswatini": "🇸🇿", "Ethiopia": "🇪🇹",
-    "Fiji": "🇫🇯", "Finland": "🇫🇮", "France": "🇫🇷",
-    "Gabon": "🇬🇦", "Gambia": "🇬🇲", "Georgia": "🇬🇪", "Germany": "🇩🇪", "Ghana": "🇬🇭", "Greece": "🇬🇷", "Grenada": "🇬🇩", "Guatemala": "🇬🇹", "Guinea": "🇬🇳", "Guinea-Bissau": "🇬🇼", "Guyana": "🇬🇾",
-    "Haiti": "🇭🇹", "Honduras": "🇭🇳", "Hungary": "🇭🇺",
-    "Iceland": "🇮🇸", "India": "🇮🇳", "Indonesia": "🇮🇩", "Iran": "🇮🇷", "Iraq": "🇮🇶", "Ireland": "🇮🇪", "Israel": "🇮🇱", "Italy": "🇮🇹", "Ivory Coast": "🇨🇮",
-    "Jamaica": "🇯🇲", "Japan": "🇯🇵", "Jordan": "🇯🇴",
-    "Kazakhstan": "🇰🇿", "Kenya": "🇰🇪", "Kiribati": "🇰🇮", "Kuwait": "🇰🇼", "Kyrgyzstan": "🇰🇬",
-    "Laos": "🇱🇦", "Latvia": "🇱🇻", "Lebanon": "🇱🇧", "Lesotho": "🇱🇸", "Liberia": "🇱🇷", "Libya": "🇱🇾", "Liechtenstein": "🇱🇮", "Lithuania": "🇱🇹", "Luxembourg": "🇱🇺",
-    "Madagascar": "🇲🇬", "Malawi": "🇲🇼", "Malaysia": "🇲🇾", "Maldives": "🇲🇻", "Mali": "🇲🇱", "Malta": "🇲🇹", "Marshall Islands": "🇲🇭", "Mauritania": "🇲🇷", "Mauritius": "🇲🇺", "Mexico": "🇲🇽", "Micronesia": "🇫🇲", "Moldova": "🇲🇩", "Monaco": "🇲🇨", "Mongolia": "🇲🇳", "Montenegro": "🇲🇪", "Morocco": "🇲🇦", "Mozambique": "🇲🇿", "Myanmar": "🇲🇲",
-    "Namibia": "🇳🇦", "Nauru": "🇳🇷", "Nepal": "🇳🇵", "Netherlands": "🇳🇱", "New Zealand": "🇳🇿", "Nicaragua": "🇳🇮", "Niger": "🇳🇪", "Nigeria": "🇳🇬", "North Korea": "🇰🇵", "North Macedonia": "🇲🇰", "Norway": "🇳🇴",
-    "Oman": "🇴🇲",
-    "Pakistan": "🇵🇰", "Palau": "🇵🇼", "Panama": "🇵🇦", "Papua New Guinea": "🇵🇬", "Paraguay": "🇵🇾", "Peru": "🇵🇪", "Philippines": "🇵🇭", "Poland": "🇵🇱", "Portugal": "🇵🇹",
-    "Qatar": "🇶🇦",
-    "Romania": "🇷🇴", "Russia": "🇷🇺", "Rwanda": "🇷🇼",
-    "Saint Kitts and Nevis": "🇰🇳", "Saint Lucia": "🇱🇨", "Saint Vincent and the Grenadines": "🇻🇨", "Samoa": "🇼🇸", "San Marino": "🇸🇲", "Sao Tome and Principe": "🇸🇹", "Saudi Arabia": "🇸🇦", "Senegal": "🇸🇳", "Serbia": "🇷🇸", "Seychelles": "🇸🇨", "Sierra Leone": "🇸🇱", "Singapore": "🇸🇬", "Slovakia": "🇸🇰", "Slovenia": "🇸🇮", "Solomon Islands": "🇸🇧", "Somalia": "🇸🇴", "South Africa": "🇿🇦", "South Korea": "🇰🇷", "South Sudan": "🇸🇸", "Spain": "🇪🇸", "Sri Lanka": "🇱🇰", "Sudan": "🇸🇩", "Suriname": "🇸🇷", "Sweden": "🇸🇪", "Switzerland": "🇨🇭", "Syria": "🇸🇾",
-    "Taiwan": "🇹🇼", "Tajikistan": "🇹🇯", "Tanzania": "🇹🇿", "Thailand": "🇹🇭", "Togo": "🇹🇬", "Tonga": "🇹🇴", "Trinidad and Tobago": "🇹🇹", "Tunisia": "🇹🇳", "Turkey": "🇹🇷", "Turkmenistan": "🇹🇲", "Tuvalu": "🇹🇻",
-    "Uganda": "🇺🇬", "Ukraine": "🇺🇦", "United Arab Emirates": "🇦🇪", "United Kingdom": "🇬🇧", "United States": "🇺🇸", "Uruguay": "🇺🇾", "Uzbekistan": "🇺🇿",
-    "Vanuatu": "🇻🇺", "Vatican City": "🇻🇦", "Venezuela": "🇻🇪", "Vietnam": "🇻🇳",
-    "Yemen": "🇾🇪",
-    "Zambia": "🇿🇲", "Zimbabwe": "🇿🇼"
-};
+// Comprehensive list of all recognized countries
+const allCountriesList = [
+    "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria",
+    "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan",
+    "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia",
+    "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Costa Rica",
+    "Croatia", "Cuba", "Cyprus", "Czech Republic", "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor",
+    "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland",
+    "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea",
+    "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq",
+    "Ireland", "Israel", "Italy", "Ivory Coast", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati",
+    "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania",
+    "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius",
+    "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia",
+    "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "North Macedonia", "Norway",
+    "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal",
+    "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe",
+    "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia",
+    "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria",
+    "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan",
+    "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City",
+    "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
+];
+
+// Load game data from JSON file
+async function loadGameData() {
+    try {
+        const response = await fetch('Languages_data.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        
+        // Convert JSON data to the format expected by the game
+        data.forEach(item => {
+            const language = item.Language;
+            let countries = [];
+            
+            try {
+                // Handle the countries string which uses single quotes
+                const countriesStr = item["Countries that this is a national language"];
+                if (countriesStr) {
+                    // Clean up the string: remove line breaks and extra spaces
+                    const cleanCountriesStr = countriesStr.replace(/\n/g, '').replace(/\s+/g, ' ').trim();
+                    // Replace single quotes with double quotes and parse
+                    countries = JSON.parse(cleanCountriesStr.replace(/'/g, '"'));
+                }
+            } catch (parseError) {
+                console.error('Error parsing countries for', language, ':', parseError);
+                // Fallback: try to extract countries manually
+                const countriesStr = item["Countries that this is a national language"];
+                if (countriesStr) {
+                    countries = countriesStr.match(/'([^']+)'/g)?.map(c => c.slice(1, -1)) || [];
+                }
+            }
+            
+            // Only add to gameData if we have valid data
+            if (language && item["Example Sentence"]) {
+                gameData[language] = {
+                    sentence: item["Example Sentence"],
+                    translation: item.Translation || "",
+                    countries: countries,
+                    hint: item.Hint || "",
+                    script: item.Script || ""
+                };
+                
+                // Add countries to allCountries array
+                countries.forEach(country => {
+                    if (!allCountries.includes(country)) {
+                        allCountries.push(country);
+                    }
+                });
+            }
+        });
+        
+        // Sort allCountries alphabetically
+        allCountries.sort();
+        
+        // Initialize country flags mapping
+        initializeCountryFlags();
+        
+        console.log('Game data loaded successfully:', Object.keys(gameData).length, 'languages');
+        console.log('Available languages:', Object.keys(gameData));
+        console.log('Total countries loaded:', allCountries.length);
+        console.log('Sample game data entry:', Object.keys(gameData)[0], gameData[Object.keys(gameData)[0]]);
+        
+    } catch (error) {
+        console.error('Error loading game data:', error);
+        // Only use fallback if we have no data at all
+        if (Object.keys(gameData).length === 0) {
+            console.log('No data loaded, using fallback comprehensive lists');
+            
+            // Create fallback game data with the comprehensive language list
+            allLanguages.forEach(language => {
+                gameData[language] = {
+                    sentence: `Sample sentence in ${language}`,
+                    translation: `Translation of sample sentence in ${language}`,
+                    countries: ["Sample Country"],
+                    hint: `Hint for ${language}`,
+                    script: "Various scripts"
+                };
+            });
+            
+            allCountries = [...allCountriesList];
+            initializeCountryFlags();
+        } else {
+            console.log('Some data loaded successfully, using available data');
+        }
+    }
+}
+
+// Initialize country flags mapping
+function initializeCountryFlags() {
+    countryFlags = {
+        "Afghanistan": "🇦🇫", "Albania": "🇦🇱", "Algeria": "🇩🇿", "Andorra": "🇦🇩", "Angola": "🇦🇴", "Antigua and Barbuda": "🇦🇬", "Argentina": "🇦🇷", "Armenia": "🇦🇲", "Australia": "🇦🇺", "Austria": "🇦🇹", "Azerbaijan": "🇦🇿",
+        "Bahamas": "🇧🇸", "Bahrain": "🇧🇭", "Bangladesh": "🇧🇩", "Barbados": "🇧🇧", "Belarus": "🇧🇾", "Belgium": "🇧🇪", "Belize": "🇧🇿", "Benin": "🇧🇯", "Bhutan": "🇧🇹", "Bolivia": "🇧🇴", "Bosnia and Herzegovina": "🇧🇦", "Botswana": "🇧🇼", "Brazil": "🇧🇷", "Brunei": "🇧🇳", "Bulgaria": "🇧🇬", "Burkina Faso": "🇧🇫", "Burundi": "🇧🇮",
+        "Cabo Verde": "🇨🇻", "Cambodia": "🇰🇭", "Cameroon": "🇨🇲", "Canada": "🇨🇦", "Central African Republic": "🇨🇫", "Chad": "🇹🇩", "Chile": "🇨🇱", "China": "🇨🇳", "Colombia": "🇨🇴", "Comoros": "🇰🇲", "Congo": "🇨🇬", "Costa Rica": "🇨🇷", "Croatia": "🇭🇷", "Cuba": "🇨🇺", "Cyprus": "🇨🇾", "Czech Republic": "🇨🇿",
+        "Democratic Republic of the Congo": "🇨🇩", "Denmark": "🇩🇰", "Djibouti": "🇩🇯", "Dominica": "🇩🇲", "Dominican Republic": "🇩🇴",
+        "East Timor": "🇹🇱", "Ecuador": "🇪🇨", "Egypt": "🇪🇬", "El Salvador": "🇸🇻", "Equatorial Guinea": "🇬🇶", "Eritrea": "🇪🇷", "Estonia": "🇪🇪", "Eswatini": "🇸🇿", "Ethiopia": "🇪🇹",
+        "Fiji": "🇫🇯", "Finland": "🇫🇮", "France": "🇫🇷",
+        "Gabon": "🇬🇦", "Gambia": "🇬🇲", "Georgia": "🇬🇪", "Germany": "🇩🇪", "Ghana": "🇬🇭", "Greece": "🇬🇷", "Grenada": "🇬🇩", "Guatemala": "🇬🇹", "Guinea": "🇬🇳", "Guinea-Bissau": "🇬🇼", "Guyana": "🇬🇾",
+        "Haiti": "🇭🇹", "Honduras": "🇭🇳", "Hungary": "🇭🇺",
+        "Iceland": "🇮🇸", "India": "🇮🇳", "Indonesia": "🇮🇩", "Iran": "🇮🇷", "Iraq": "🇮🇶", "Ireland": "🇮🇪", "Israel": "🇮🇱", "Italy": "🇮🇹", "Ivory Coast": "🇨🇮",
+        "Jamaica": "🇯🇲", "Japan": "🇯🇵", "Jordan": "🇯🇴",
+        "Kazakhstan": "🇰🇿", "Kenya": "🇰🇪", "Kiribati": "🇰🇮", "Kuwait": "🇰🇼", "Kyrgyzstan": "🇰🇬",
+        "Laos": "🇱🇦", "Latvia": "🇱🇻", "Lebanon": "🇱🇧", "Lesotho": "🇱🇸", "Liberia": "🇱🇷", "Libya": "🇱🇾", "Liechtenstein": "🇱🇮", "Lithuania": "🇱🇹", "Luxembourg": "🇱🇺",
+        "Madagascar": "🇲🇬", "Malawi": "🇲🇼", "Malaysia": "🇲🇾", "Maldives": "🇲🇻", "Mali": "🇲🇱", "Malta": "🇲🇹", "Marshall Islands": "🇲🇭", "Mauritania": "🇲🇷", "Mauritius": "🇲🇺", "Mexico": "🇲🇽", "Micronesia": "🇫🇲", "Moldova": "🇲🇩", "Monaco": "🇲🇨", "Mongolia": "🇲🇳", "Montenegro": "🇲🇪", "Morocco": "🇲🇦", "Mozambique": "🇲🇿", "Myanmar": "🇲🇲",
+        "Namibia": "🇳🇦", "Nauru": "🇳🇷", "Nepal": "🇳🇵", "Netherlands": "🇳🇱", "New Zealand": "🇳🇿", "Nicaragua": "🇳🇮", "Niger": "🇳🇪", "Nigeria": "🇳🇬", "North Korea": "🇰🇵", "North Macedonia": "🇲🇰", "Norway": "🇳🇴",
+        "Oman": "🇴🇲",
+        "Pakistan": "🇵🇰", "Palau": "🇵🇼", "Panama": "🇵🇦", "Papua New Guinea": "🇵🇬", "Paraguay": "🇵🇾", "Peru": "🇵🇪", "Philippines": "🇵🇭", "Poland": "🇵🇱", "Portugal": "🇵🇹",
+        "Qatar": "🇶🇦",
+        "Romania": "🇷🇴", "Russia": "🇷🇺", "Rwanda": "🇷🇼",
+        "Saint Kitts and Nevis": "🇰🇳", "Saint Lucia": "🇱🇨", "Saint Vincent and the Grenadines": "🇻🇨", "Samoa": "🇼🇸", "San Marino": "🇸🇲", "Sao Tome and Principe": "🇸🇹", "Saudi Arabia": "🇸🇦", "Senegal": "🇸🇳", "Serbia": "🇷🇸", "Seychelles": "🇸🇨", "Sierra Leone": "🇸🇱", "Singapore": "🇸🇬", "Slovakia": "🇸🇰", "Slovenia": "🇸🇮", "Solomon Islands": "🇸🇧", "Somalia": "🇸🇴", "South Africa": "🇿🇦", "South Korea": "🇰🇷", "South Sudan": "🇸🇸", "Spain": "🇪🇸", "Sri Lanka": "🇱🇰", "Sudan": "🇸🇩", "Suriname": "🇸🇷", "Sweden": "🇸🇪", "Switzerland": "🇨🇭", "Syria": "🇸🇾",
+        "Taiwan": "🇹🇼", "Tajikistan": "🇹🇯", "Tanzania": "🇹🇿", "Thailand": "🇹🇭", "Togo": "🇹🇬", "Tonga": "🇹🇴", "Trinidad and Tobago": "🇹🇹", "Tunisia": "🇹🇳", "Turkey": "🇹🇷", "Turkmenistan": "🇹🇲", "Tuvalu": "🇹🇻",
+        "Uganda": "🇺🇬", "Ukraine": "🇺🇦", "United Arab Emirates": "🇦🇪", "United Kingdom": "🇬🇧", "United States": "🇺🇸", "Uruguay": "🇺🇾", "Uzbekistan": "🇺🇿",
+        "Vanuatu": "🇻🇺", "Vatican City": "🇻🇦", "Venezuela": "🇻🇪", "Vietnam": "🇻🇳",
+        "Yemen": "🇾🇪",
+        "Zambia": "🇿🇲", "Zimbabwe": "🇿🇼"
+    };
+}
 
 // Get country flag function
 function getCountryFlag(countryName) {
@@ -297,76 +182,101 @@ let currentGame = {
     correctCountryPositions: {} // Track which position each correct country was guessed in
 };
 
-// DOM elements
-const dailySentenceEl = document.getElementById('dailySentence');
-const debugLanguageEl = document.getElementById('debugLanguage');
-const languageGuessEl = document.getElementById('languageGuess');
-const languageDropdownEl = document.getElementById('languageDropdown');
-const submitLanguageGuessEl = document.getElementById('submitLanguageGuess');
-const submitCountryGuessEl = document.getElementById('submitCountryGuess');
-const languagePhaseEl = document.getElementById('languagePhase');
-const countryPhaseEl = document.getElementById('countryPhase');
-const languageResultEl = document.getElementById('languageResult');
-const countryInputsEl = document.getElementById('countryInputs');
-const languageGuessesHistoryEl = document.getElementById('languageGuessesHistory');
-const countryGuessesHistoryEl = document.getElementById('countryGuessesHistory');
-const correctLanguageEl = document.getElementById('correctLanguage');
-const correctCountriesEl = document.getElementById('correctCountries');
-const correctSentenceEl = document.getElementById('correctSentence');
-const hintBtnEl = document.getElementById('hintBtn');
-const hintDisplayEl = document.getElementById('hintDisplay');
-const instructionsPopupEl = document.getElementById('instructionsPopup');
-const closeInstructionsEl = document.getElementById('closeInstructions');
-const startGameBtnEl = document.getElementById('startGameBtn');
-const playNextSectionEl = document.getElementById('playNextSection');
-const playNextBtnEl = document.getElementById('playNextBtn');
-const languageInputRowEl = document.getElementById('languageInputRow');
-const languageResultMessageEl = document.getElementById('languageResultMessage');
-const languageResultTextEl = document.getElementById('languageResultText');
-const shareBtnLanguageEl = document.getElementById('shareBtnLanguage');
-const correctLanguageInfoEl = document.getElementById('correctLanguageInfo');
-const correctLanguageDisplayEl = document.getElementById('correctLanguageDisplay');
-const translationDisplayEl = document.getElementById('translationDisplay');
-const countryResultMessageEl = document.getElementById('countryResultMessage');
-const countryResultTextEl = document.getElementById('countryResultText');
-const allCountriesInfoEl = document.getElementById('allCountriesInfo');
-const allCountriesListEl = document.getElementById('allCountriesList');
-const shareBtnEl = document.getElementById('shareBtn');
-const guessPromptEl = document.querySelector('.guess-prompt');
-const confettiCanvasEl = document.getElementById('confettiCanvas');
+// DOM elements - will be initialized after DOM loads
+let dailySentenceEl, languageGuessEl, languageDropdownEl, submitLanguageGuessEl, submitCountryGuessEl;
+let languagePhaseEl, countryPhaseEl, languageResultEl, countryInputsEl;
+let languageGuessesHistoryEl, countryGuessesHistoryEl, correctLanguageEl, correctCountriesEl;
+let correctSentenceEl, hintBtnEl, hintDisplayEl, instructionsPopupEl, closeInstructionsEl;
+let startGameBtnEl, playNextSectionEl, playNextBtnEl, languageInputRowEl;
+let languageResultMessageEl, languageResultTextEl, shareBtnLanguageEl;
+let correctLanguageInfoEl, correctLanguageDisplayEl, translationDisplayEl;
+let countryResultMessageEl, countryResultTextEl, allCountriesInfoEl, allCountriesListEl, allCountriesTitleEl;
+let shareBtnEl, countryShareSectionEl, guessPromptEl, confettiCanvasEl;
 
-// Debug: Check if all DOM elements are found
-console.log('DOM elements found:', {
-    dailySentenceEl: !!dailySentenceEl,
-    languageGuessEl: !!languageGuessEl,
-    submitLanguageGuessEl: !!submitLanguageGuessEl,
-    submitCountryGuessEl: !!submitCountryGuessEl,
-    languagePhaseEl: !!languagePhaseEl,
-    countryPhaseEl: !!countryPhaseEl,
-    languageResultEl: !!languageResultEl,
-    countryInputsEl: !!countryInputsEl,
-    languageGuessesHistoryEl: !!languageGuessesHistoryEl,
-    countryGuessesHistoryEl: !!countryGuessesHistoryEl,
-    correctLanguageEl: !!correctLanguageEl,
-    correctCountriesEl: !!correctCountriesEl,
-    hintBtnEl: !!hintBtnEl,
-    hintDisplayEl: !!hintDisplayEl,
-    shareBtnEl: !!shareBtnEl,
-    shareBtnLanguageEl: !!shareBtnLanguageEl
-});
+// Initialize DOM elements
+function initializeDOMElements() {
+    dailySentenceEl = document.getElementById('dailySentence');
+    languageGuessEl = document.getElementById('languageGuess');
+    languageDropdownEl = document.getElementById('languageDropdown');
+    submitLanguageGuessEl = document.getElementById('submitLanguageGuess');
+    submitCountryGuessEl = document.getElementById('submitCountryGuess');
+    languagePhaseEl = document.getElementById('languagePhase');
+    countryPhaseEl = document.getElementById('countryPhase');
+    languageResultEl = document.getElementById('languageResult');
+    countryInputsEl = document.getElementById('countryInputs');
+    languageGuessesHistoryEl = document.getElementById('languageGuessesHistory');
+    countryGuessesHistoryEl = document.getElementById('countryGuessesHistory');
+    correctLanguageEl = document.getElementById('correctLanguage');
+    correctCountriesEl = document.getElementById('correctCountries');
+    correctSentenceEl = document.getElementById('correctSentence');
+    hintBtnEl = document.getElementById('hintBtn');
+    hintDisplayEl = document.getElementById('hintDisplay');
+    instructionsPopupEl = document.getElementById('instructionsPopup');
+    closeInstructionsEl = document.getElementById('closeInstructions');
+    startGameBtnEl = document.getElementById('startGameBtn');
+    playNextSectionEl = document.getElementById('playNextSection');
+    playNextBtnEl = document.getElementById('playNextBtn');
+    languageInputRowEl = document.getElementById('languageInputRow');
+    languageResultMessageEl = document.getElementById('languageResultMessage');
+    languageResultTextEl = document.getElementById('languageResultText');
+    shareBtnLanguageEl = document.getElementById('shareBtnLanguage');
+    correctLanguageInfoEl = document.getElementById('correctLanguageInfo');
+    correctLanguageDisplayEl = document.getElementById('correctLanguageDisplay');
+    translationDisplayEl = document.getElementById('translationDisplay');
+    countryResultMessageEl = document.getElementById('countryResultMessage');
+    countryResultTextEl = document.getElementById('countryResultText');
+    allCountriesInfoEl = document.getElementById('allCountriesInfo');
+    allCountriesListEl = document.getElementById('allCountriesList');
+    allCountriesTitleEl = document.getElementById('allCountriesTitle');
+    shareBtnEl = document.getElementById('shareBtn');
+    countryShareSectionEl = document.getElementById('countryShareSection');
+    guessPromptEl = document.querySelector('.guess-prompt');
+    confettiCanvasEl = document.getElementById('confettiCanvas');
+    
+    // Debug: Check if all DOM elements are found
+    console.log('DOM elements found:', {
+        dailySentenceEl: !!dailySentenceEl,
+        languageGuessEl: !!languageGuessEl,
+        submitLanguageGuessEl: !!submitLanguageGuessEl,
+        submitCountryGuessEl: !!submitCountryGuessEl,
+        languagePhaseEl: !!languagePhaseEl,
+        countryPhaseEl: !!countryPhaseEl,
+        languageResultEl: !!languageResultEl,
+        countryInputsEl: !!countryInputsEl,
+        languageGuessesHistoryEl: !!languageGuessesHistoryEl,
+        countryGuessesHistoryEl: !!countryGuessesHistoryEl,
+        correctLanguageEl: !!correctLanguageEl,
+        correctCountriesEl: !!correctCountriesEl,
+        hintBtnEl: !!hintBtnEl,
+        hintDisplayEl: !!hintDisplayEl,
+        shareBtnEl: !!shareBtnEl,
+        shareBtnLanguageEl: !!shareBtnLanguageEl
+    });
+}
 
 // Initialize the game
-function initGame() {
+async function initGame() {
     try {
         console.log('Initializing game...');
+        
+        // Initialize DOM elements first
+        initializeDOMElements();
+        
+        // Load game data from JSON file
+        await loadGameData();
         
         // Set current date
         const today = new Date();
         
         // Generate random sentence (not date-based for new games)
-        const languages = Object.keys(gameData);
-        const languageIndex = Math.floor(Math.random() * languages.length);
-        const selectedLanguage = languages[languageIndex];
+        // Only select from languages that have actual data in the JSON file
+        const availableLanguages = Object.keys(gameData);
+        console.log('Available languages for selection:', availableLanguages);
+        console.log('Number of languages with data:', availableLanguages.length);
+        const languageIndex = Math.floor(Math.random() * availableLanguages.length);
+        const selectedLanguage = availableLanguages[languageIndex];
+        console.log('Selected language index:', languageIndex);
+        console.log('Selected language:', selectedLanguage);
         
         currentGame.correctLanguage = selectedLanguage;
         // Select random countries from the language's country list (max 3, or all if less than 3)
@@ -396,6 +306,11 @@ function initGame() {
         // Update UI to show empty slots immediately
         updateUI();
         
+        // Initialize confetti after DOM elements are ready
+        if (confettiCanvasEl) {
+            confetti = new Confetti(confettiCanvasEl);
+        }
+        
         console.log('Game initialized successfully');
     } catch (error) {
         console.error('Error initializing game:', error);
@@ -422,7 +337,10 @@ function populateDropdowns() {
 
 // Set up searchable language input
 function setupSearchableLanguageInput() {
-    const languages = Object.keys(gameData).sort();
+    // Use the comprehensive language list for the dropdown
+    const languages = allLanguages.sort();
+    console.log('Setting up language dropdown with languages:', languages);
+    console.log('Number of languages for dropdown:', languages.length);
     
     // Store languages for filtering
     languageGuessEl.dataset.languages = JSON.stringify(languages);
@@ -526,15 +444,15 @@ function addEventListeners() {
     // Add keyboard shortcuts
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' && !currentGame.gameOver) {
+            // Only submit language guesses when Enter is pressed
+            // Country guesses should be submitted manually via the submit button
             if (currentGame.currentPhase === 'language') {
                 submitLanguageGuess();
-            } else {
-                submitCountryGuess();
             }
-        }
-        // Close instructions with Escape key
-        if (e.key === 'Escape' && instructionsPopupEl.style.display !== 'none') {
-            closeInstructions();
+            // Close instructions with Escape key
+            if (e.key === 'Escape' && instructionsPopupEl.style.display !== 'none') {
+                closeInstructions();
+            }
         }
     });
 }
@@ -548,6 +466,9 @@ function toggleHint() {
         // Show hint (only once)
         currentGame.hintRevealed = true;
         updateHintDisplay();
+        
+        // Disable the hint button after first click
+        hintBtnEl.disabled = true;
     }
     
     // Save game state
@@ -621,6 +542,13 @@ function submitLanguageGuess() {
         return;
     }
     
+    // Check if this language has already been guessed
+    const previouslyGuessed = currentGame.guesses.some(guess => guess.language === languageGuess);
+    if (previouslyGuessed) {
+        alert('You have already guessed this language. Please try a different one.');
+        return;
+    }
+    
     // Check if language is correct
     const isCorrect = languageGuess === currentGame.correctLanguage;
     
@@ -672,6 +600,7 @@ function submitLanguageGuess() {
         const languageData = gameData[currentGame.correctLanguage];
         if (languageData && languageData.translation) {
             translationDisplayEl.textContent = languageData.translation;
+            translationDisplayEl.style.display = 'block';
         }
         
         // Show "Play Next" button
@@ -701,10 +630,11 @@ function submitLanguageGuess() {
             const languageData = gameData[currentGame.correctLanguage];
             if (languageData && languageData.translation) {
                 translationDisplayEl.textContent = languageData.translation;
+                translationDisplayEl.style.display = 'block';
             }
             
-            // End game
-            endGame(false);
+            // Show "Play Next" button even on loss
+            playNextSectionEl.style.display = 'block';
         } else {
             // Clear language input for next attempt
             languageGuessEl.value = '';
@@ -760,7 +690,6 @@ function generateCountryInputs(correctLanguage) {
         console.log(`Country ${i + 1}: position ${i}, isCorrectlyGuessed: ${isCorrectlyGuessed}, country: ${correctCountryForPosition}`);
         
         countryInput.innerHTML = `
-            <label for="countryGuess${i}">Country ${i + 1}:</label>
             <div class="searchable-dropdown">
                 <input type="text" id="countryGuess${i}" class="searchable-input" placeholder="Type to search countries..." ${isCorrectlyGuessed ? 'disabled' : ''}>
                 <div id="countryDropdown${i}" class="dropdown-options" style="display: none;"></div>
@@ -771,8 +700,8 @@ function generateCountryInputs(correctLanguage) {
         const countryInputEl = countryInput.querySelector('input');
         const countryDropdownEl = countryInput.querySelector('.dropdown-options');
         
-        // Store countries for filtering
-        countryInputEl.dataset.countries = JSON.stringify(allCountries.sort());
+        // Store countries for filtering - use comprehensive country list
+        countryInputEl.dataset.countries = JSON.stringify(allCountriesList.sort());
         
         // Add event listeners for searchable input (only if not disabled)
         if (!isCorrectlyGuessed) {
@@ -871,6 +800,29 @@ function submitCountryGuess() {
             alert(`Please select a valid country from the dropdown: ${country}`);
             return;
         }
+    }
+    
+    // Check for duplicate countries within this guess
+    const uniqueCountries = new Set(countryGuesses);
+    if (uniqueCountries.size !== countryGuesses.length) {
+        alert('You cannot guess the same country twice in one attempt. Please select different countries.');
+        return;
+    }
+    
+    // Check if any of these countries have already been guessed in previous attempts
+    // But exclude countries that are already correctly guessed (they can be resubmitted)
+    const previouslyGuessedCountries = currentGame.guesses
+        .filter(guess => guess.countries && guess.countries.length > 0)
+        .flatMap(guess => guess.countries);
+    
+    const duplicateCountries = countryGuesses.filter(country => 
+        previouslyGuessedCountries.includes(country) && 
+        !currentGame.correctlyGuessedCountries.includes(country)
+    );
+    
+    if (duplicateCountries.length > 0) {
+        alert(`You have already guessed these countries: ${duplicateCountries.join(', ')}. Please try different countries.`);
+        return;
     }
     
     // Create complete guess object
@@ -1049,6 +1001,10 @@ function endGame(won) {
         
         // Show all countries that speak this language
         allCountriesInfoEl.style.display = 'block';
+        
+        // Update the title with the actual language name
+        allCountriesTitleEl.textContent = `All countries that speak ${currentGame.correctLanguage}:`;
+        
         const languageData = gameData[currentGame.correctLanguage];
         if (languageData && languageData.countries) {
             allCountriesListEl.innerHTML = '';
@@ -1064,6 +1020,9 @@ function endGame(won) {
         submitCountryGuessEl.disabled = true;
         const countryInputs = countryInputsEl.querySelectorAll('input[type="text"]');
         countryInputs.forEach(input => input.disabled = true);
+        
+        // Show share button section
+        countryShareSectionEl.style.display = 'block';
         
         // Update UI to show final guess history
         updateUI();
@@ -1097,6 +1056,7 @@ function resetGame() {
     countryGuessesHistoryEl.innerHTML = '';
     countryResultMessageEl.style.display = 'none';
     allCountriesInfoEl.style.display = 'none';
+    allCountriesTitleEl.textContent = 'All countries that speak this language:';
     submitLanguageGuessEl.disabled = false;
     submitCountryGuessEl.disabled = false;
     hintBtnEl.disabled = false; // Re-enable hint button
@@ -1109,6 +1069,7 @@ function resetGame() {
     languagePhaseEl.style.display = 'block';
     countryPhaseEl.style.display = 'none';
     languageResultEl.innerHTML = '';
+    countryShareSectionEl.style.display = 'none';
     
     // Reset language input section
     languageInputRowEl.style.display = 'grid';
@@ -1118,14 +1079,16 @@ function resetGame() {
     
     // Reset guess prompt
     guessPromptEl.textContent = 'Guess the language';
-    guessPromptEl.style.color = '#87CEEB'; // Light blue color to match country phase
+    guessPromptEl.style.color = '00beed'; // Light blue color to match country phase
     
     // Re-enable language input and show hint button
     languageGuessEl.disabled = false;
     hintBtnEl.style.display = 'block';
     
     // Reinitialize with new random language
-    initGame();
+    initGame().catch(error => {
+        console.error('Error reinitializing game:', error);
+    });
 }
 
 // Save game state to localStorage
@@ -1249,7 +1212,7 @@ function startCountryPhase() {
     
     // Update the guess prompt for country phase
     guessPromptEl.innerHTML = `Guess what countries speak <span style="color: #D2B48C;">${currentGame.correctLanguage}</span>`;
-    guessPromptEl.style.color = '#87CEEB'; // Light blue color for the main text
+    guessPromptEl.style.color = '00beed'; // Light blue color for the main text
     
     // Switch to country phase
     currentGame.currentPhase = 'countries';
@@ -1263,6 +1226,9 @@ function startCountryPhase() {
     // Hide "Play Next" button and correct language info
     playNextSectionEl.style.display = 'none';
     correctLanguageInfoEl.style.display = 'none';
+    
+    // Hide translation
+    translationDisplayEl.style.display = 'none';
     
     // Save game state
     saveGameState();
@@ -1349,12 +1315,64 @@ class Confetti {
     }
 }
 
-// Initialize confetti
-const confetti = new Confetti(confettiCanvasEl);
+// Confetti instance - will be initialized after DOM loads
+let confetti;
 
 // Trigger confetti function
 function triggerConfetti() {
-    confetti.start();
+    if (confetti) {
+        confetti.start();
+    }
+}
+
+// Show popup message
+function showPopup(message, duration = 2000) {
+    // Create popup element
+    const popup = document.createElement('div');
+    popup.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, 0.9);
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        z-index: 10000;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        animation: popupFadeIn 0.3s ease-out;
+    `;
+    popup.textContent = message;
+    
+    // Add CSS animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes popupFadeIn {
+            from { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+            to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // Add to page
+    document.body.appendChild(popup);
+    
+    // Remove after duration
+    setTimeout(() => {
+        popup.style.animation = 'popupFadeOut 0.3s ease-in';
+        style.textContent += `
+            @keyframes popupFadeOut {
+                from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+                to { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+            }
+        `;
+        setTimeout(() => {
+            document.body.removeChild(popup);
+            document.head.removeChild(style);
+        }, 300);
+    }, duration);
 }
 
 // Share result function
@@ -1371,33 +1389,23 @@ function shareResult(event) {
         shareText = `🌍 I just played Langlio and tried to guess the language but couldn't get it in 6 attempts. Can you do better? 🎯`;
     }
     
-    // Determine which button was clicked
-    const clickedButton = event.target;
-    
     // Try to copy to clipboard
     if (navigator.clipboard && window.isSecureContext) {
         navigator.clipboard.writeText(shareText).then(() => {
-            // Show success feedback
-            const originalText = clickedButton.textContent;
-            clickedButton.textContent = 'Copied!';
-            clickedButton.style.background = 'linear-gradient(135deg, #059669 0%, #047857 100%)';
-            
-            setTimeout(() => {
-                clickedButton.textContent = originalText;
-                clickedButton.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
-            }, 2000);
+            // Show popup instead of changing button
+            showPopup('Copied to clipboard!');
         }).catch(err => {
             console.error('Failed to copy: ', err);
-            fallbackCopyTextToClipboard(shareText, clickedButton);
+            fallbackCopyTextToClipboard(shareText);
         });
     } else {
         // Fallback for older browsers
-        fallbackCopyTextToClipboard(shareText, clickedButton);
+        fallbackCopyTextToClipboard(shareText);
     }
 }
 
 // Fallback copy function for older browsers
-function fallbackCopyTextToClipboard(text, button) {
+function fallbackCopyTextToClipboard(text) {
     const textArea = document.createElement('textarea');
     textArea.value = text;
     textArea.style.position = 'fixed';
@@ -1409,27 +1417,20 @@ function fallbackCopyTextToClipboard(text, button) {
     
     try {
         document.execCommand('copy');
-        const originalText = button.textContent;
-        button.textContent = 'Copied!';
-        button.style.background = 'linear-gradient(135deg, #059669 0%, #047857 100%)';
-        
-        setTimeout(() => {
-            button.textContent = originalText;
-            button.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
-        }, 2000);
+        showPopup('Copied to clipboard!');
     } catch (err) {
         console.error('Fallback: Oops, unable to copy', err);
-        alert('Failed to copy to clipboard. Please copy manually: ' + text);
+        showPopup('Failed to copy to clipboard. Please copy manually.');
     }
     
     document.body.removeChild(textArea);
 }
 
 // Initialize the game when the page loads
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     try {
         console.log('DOM loaded, starting initialization...');
-        initGame();
+        await initGame();
         
         // Show instructions if user hasn't seen them before
         const instructionsSeen = localStorage.getItem('langlioInstructionsSeen');

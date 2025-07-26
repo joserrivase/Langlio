@@ -1,0 +1,282 @@
+[
+  {
+    "Language": "English",
+    "Example Sentence": "I forgot my umbrella, but it’s not raining!",
+    "Translation": "",
+    "Hint": "The language of Shakespeare and Google",
+    "Countries that this is a national language": "['United States', 'United Kingdom', 'Canada', 'Australia', 'Ireland', 'New Zealand', 'South Africa', 'India', 'Philippines', 'Nigeria', 'Kenya', 'Uganda', 'Pakistan', 'Jamaica', 'Trinidad and Tobago', 'Barbados', 'Zimbabwe', 'Namibia', 'Botswana', 'Singapore']",
+    "Script": "Latin alphabet"
+  },
+  {
+    "Language": "Mandarin Chinese",
+    "Example Sentence": "我想养一只小恐龙。",
+    "Translation": "I want to raise a baby dinosaur.",
+    "Hint": "Spoken by over a billion people",
+    "Countries that this is a national language": "['China', 'Taiwan', 'Singapore']",
+    "Script": "Simplified Chinese (or Traditional)"
+  },
+  {
+    "Language": "Hindi",
+    "Example Sentence": "मेरे पास एक जादुई पेंसिल है।",
+    "Translation": "I have a magical pencil.",
+    "Hint": "Bollywood speaks this language",
+    "Countries that this is a national language": "['India', 'Fiji', 'Nepal']",
+    "Script": "Devanagari"
+  },
+  {
+    "Language": "Spanish",
+    "Example Sentence": "Los gatos planean conquistar el mundo.",
+    "Translation": "The cats are planning to take over the world.",
+    "Hint": "This language is full of ¡energía!",
+    "Countries that this is a national language": "['Spain', 'Mexico', 'Colombia', 'Argentina', 'Peru', 'Venezuela', 'Chile', 'Ecuador', 'Guatemala', 'Cuba', 'Bolivia', 'Dominican Republic', 'Honduras', 'Paraguay', 'El Salvador', 'Nicaragua', 'Costa Rica', 'Puerto Rico', 'Panama', 'Uruguay', 'Equatorial Guinea']",
+    "Script": "Latin alphabet"
+  },
+  {
+    "Language": "French",
+    "Example Sentence": "J’ai dansé avec un pingouin hier soir.",
+    "Translation": "I danced with a penguin last night.",
+    "Hint": "The language of love and baguettes",
+    "Countries that this is a national language": "['France', 'Canada', 'Belgium', 'Switzerland', 'Luxembourg', 'Monaco', 'Haiti', 'Democratic Republic of the Congo', 'Ivory Coast', 'Senegal', 'Madagascar', 'Cameroon', 'Burkina Faso', 'Niger', 'Mali', 'Rwanda', 'Benin', 'Burundi', 'Chad', 'Guinea', 'Republic of the Congo', 'Togo', 'Central African Republic', 'Djibouti', 'Equatorial Guinea', 'Gabon', 'Comoros', 'Vanuatu', 'Seychelles']",
+    "Script": "Latin alphabet"
+  },
+  {
+    "Language": "Standard Arabic",
+    "Example Sentence": "رأيت سمكة تطير في الحديقة.",
+    "Translation": "I saw a fish flying in the garden.",
+    "Hint": "A language of the Quran and calligraphy",
+    "Countries that this is a national language": "['Algeria', 'Bahrain', 'Comoros', 'Chad', 'Djibouti', 'Egypt', 'Iraq', 'Jordan', 'Kuwait', 'Lebanon', 'Libya', 'Mauritania', 'Morocco', 'Oman', 'Palestine', 'Qatar', 'Saudi Arabia', 'Somalia', 'Sudan', 'Syria', 'Tunisia', 'United Arab Emirates', 'Yemen']",
+    "Script": "Arabic script"
+  },
+  {
+    "Language": "Bengali",
+    "Example Sentence": "আমার ঘরে একটা বাঘ লুকিয়ে আছে।",
+    "Translation": "There’s a tiger hiding in my room.",
+    "Hint": "This language flows like the rivers of the Ganges delta",
+    "Countries that this is a national language": "['Bangladesh', 'India', 'Sierra Leone']",
+    "Script": "Bengali script"
+  },
+  {
+    "Language": "Portuguese",
+    "Example Sentence": "Ontem, falei com um papagaio muito educado.",
+    "Translation": "Yesterday, I spoke with a very polite parrot.",
+    "Hint": "This language sails from Brazil to Mozambique",
+    "Countries that this is a national language": "['Portugal', 'Brazil', 'Mozambique', 'Angola', 'Guinea-Bissau', 'East Timor', 'Equatorial Guinea', 'Cape Verde', 'São Tomé and Príncipe']",
+    "Script": "Latin alphabet"
+  },
+  {
+    "Language": "Russian",
+    "Example Sentence": "У меня есть летающий тостер.",
+    "Translation": "I have a flying toaster.",
+    "Hint": "This language launched the first man into space",
+    "Countries that this is a national language": "['Russia', 'Belarus', 'Kazakhstan', 'Kyrgyzstan', 'Tajikistan', 'Abkhazia', 'South Ossetia', 'Transnistria']",
+    "Script": "Cyrillic alphabet"
+  },
+  {
+    "Language": "Urdu",
+    "Example Sentence": "میری کتاب نے مجھ سے بات کی۔",
+    "Translation": "My book talked to me.",
+    "Hint": "A poetic sibling of Hindi written in Arabic script",
+    "Countries that this is a national language": "['Pakistan',]",
+    "Script": "Perso-Arabic script (Nastaʿlīq)"
+  },
+  {
+    "Language": "Indonesian",
+    "Example Sentence": "Saya lupa kacamata saya di pantai.",
+    "Translation": "I forgot my glasses at the beach.",
+    "Hint": "This is the official language of the world’s largest island country.",
+    "Countries that this is a national language": "['Indonesia']",
+    "Script": "Latin alphabet"
+  },
+  {
+    "Language": "German",
+    "Example Sentence": "Mein Hund trägt eine Sonnenbrille.",
+    "Translation": "My dog is wearing sunglasses.",
+    "Hint": "The language of pretzels and philosophers.",
+    "Countries that this is a national language": "['Germany', 'Austria', 'Switzerland', 'Belgium', 'Liechtenstein', 'Luxembourg']",
+    "Script": "Latin alphabet"
+  },
+  {
+    "Language": "Japanese",
+    "Example Sentence": "猫がドアを開けました。",
+    "Translation": "The cat opened the door.",
+    "Hint": "This island nation’s language uses three scripts.",
+    "Countries that this is a national language": "['Japan']",
+    "Script": "Kanji, Hiragana, Katakana"
+  },
+  {
+    "Language": "Nigerian Pidgin",
+    "Example Sentence": "I no get am for house.",
+    "Translation": "I don’t have it at home.",
+    "Hint": "A creole widely spoken in West Africa.",
+    "Countries that this is a national language": "['Nigeria']",
+    "Script": "Latin alphabet"
+  },
+  {
+    "Language": "Marathi",
+    "Example Sentence": "माझा फुगा आकाशात उडाला.",
+    "Translation": "My balloon flew into the sky.",
+    "Hint": "A major language spoken in Maharashtra, India.",
+    "Countries that this is a national language": "['India']",
+    "Script": "Devanagari"
+  },
+  {
+    "Language": "Telugu",
+    "Example Sentence": "నాకు నీలి రంగు గుబ్బలంటే ఇష్టం.",
+    "Translation": "I like blue balloons.",
+    "Hint": "A Dravidian language spoken in southern India.",
+    "Countries that this is a national language": "['India']",
+    "Script": "Telugu script"
+  },
+  {
+    "Language": "Turkish",
+    "Example Sentence": "Kedim kahve içiyor.",
+    "Translation": "My cat is drinking coffee.",
+    "Hint": "Spoken in a country that bridges Europe and Asia.",
+    "Countries that this is a national language": "['Turkey', 'Cyprus']",
+    "Script": "Latin alphabet"
+  },
+  {
+    "Language": "Tamil",
+    "Example Sentence": "என் நண்பர் ஒரு ரோபோட்டுடன் பேசுகிறார்.",
+    "Translation": "My friend is talking to a robot.",
+    "Hint": "One of the oldest surviving classical languages.",
+    "Countries that this is a national language": "['India', 'Sri Lanka', 'Singapore']",
+    "Script": "Tamil script"
+  },
+  {
+    "Language": "Yue Chinese (Cantonese)",
+    "Example Sentence": "我隻狗識得打機。",
+    "Translation": "My dog knows how to play video games.",
+    "Hint": "A major Chinese dialect spoken in Hong Kong.",
+    "Countries that this is a national language": "['China', 'Hong Kong', 'Macau']",
+    "Script": "Traditional Chinese"
+  },
+  {
+    "Language": "Vietnamese",
+    "Example Sentence": "Con mèo của tôi thích ăn kem.",
+    "Translation": "My cat likes eating ice cream.",
+    "Hint": "Uses the Latin alphabet but sounds totally different.",
+    "Countries that this is a national language": "['Vietnam']",
+    "Script": "Latin alphabet"
+  },
+  {
+    "Language": "Korean",
+    "Example Sentence": "고양이가 창문을 열었어요.",
+    "Translation": "The cat opened the window.",
+    "Hint": "Uses a unique alphabet called Hangul.",
+    "Countries that this is a national language": "['South Korea', 'North Korea']",
+    "Script": "Hangul"
+  },
+  {
+    "Language": "Wu Chinese (Shanghainese)",
+    "Example Sentence": "阿拉宁愿呒看电视。",
+    "Translation": "We would rather not watch TV.",
+    "Hint": "A regional dialect spoken in Shanghai.",
+    "Countries that this is a national language": "['China']",
+    "Script": "Simplified Chinese"
+  },
+  {
+    "Language": "Javanese",
+    "Example Sentence": "Aku nyanyi bareng kucingku.",
+    "Translation": "I sing with my cat.",
+    "Hint": "The most spoken language in Indonesia after Indonesian itself.",
+    "Countries that this is a national language": "['Indonesia']",
+    "Script": "Latin alphabet (and Javanese script)"
+  },
+  {
+    "Language": "Hausa",
+    "Example Sentence": "Kare na yana rawa.",
+    "Translation": "My dog is dancing.",
+    "Hint": "Widely spoken in West Africa and uses both Latin and Arabic scripts.",
+    "Countries that this is a national language": "['Nigeria', 'Niger', 'Ghana']",
+    "Script": "Latin alphabet (Ajami script also used)"
+  },
+  {
+    "Language": "Egyptian Arabic",
+    "Example Sentence": "القطة نطّت من الشباك.",
+    "Translation": "The cat jumped out the window.",
+    "Hint": "The most widely spoken Arabic dialect.",
+    "Countries that this is a national language": "['Egypt']",
+    "Script": "Arabic script"
+  },
+  {
+    "Language": "Swahili",
+    "Example Sentence": "Paka wangu anacheza muziki.",
+    "Translation": "My cat is playing music.",
+    "Hint": "A major trade language of East Africa.",
+    "Countries that this is a national language": "['Tanzania', 'Kenya', 'Uganda', 'DR Congo', 'Rwanda']",
+    "Script": "Latin alphabet"
+  },
+  {
+    "Language": "Italian",
+    "Example Sentence": "Il mio cane ha mangiato la pizza.",
+    "Translation": "My dog ate the pizza.",
+    "Hint": "The language of pasta and opera.",
+    "Countries that this is a national language": "['Italy', 'Switzerland', 'San Marino', 'Vatican City']",
+    "Script": "Latin alphabet"
+  },
+  {
+    "Language": "Thai",
+    "Example Sentence": "แมวของฉันเล่นโยคะตอนเช้า.",
+    "Translation": "My cat does yoga in the morning.",
+    "Hint": "This language has its own beautiful curvy script.",
+    "Countries that this is a national language": "['Thailand']",
+    "Script": "Thai script"
+  },
+  {
+    "Language": "Gujarati",
+    "Example Sentence": "મારું બિલાડી ગિટાર વગાડે છે.",
+    "Translation": "My cat plays the guitar.",
+    "Hint": "A major language of western India.",
+    "Countries that this is a national language": "['India']",
+    "Script": "Gujarati script"
+  },
+  {
+    "Language": "Kannada",
+    "Example Sentence": "ನನ್ನ ನಾಯಿ ಬೈಸಿಕಲ್ ಓಡಿಸುತ್ತಿದೆ.",
+    "Translation": "My dog is riding a bicycle.",
+    "Hint": "Spoken in Karnataka, India.",
+    "Countries that this is a national language": "['India']",
+    "Script": "Kannada script"
+  },
+  {
+    "Language": "Bhojpuri",
+    "Example Sentence": "हमार बिलइया मोबाइल चला रहल बा.",
+    "Translation": "My cat is using a phone.",
+    "Hint": "Spoken in parts of eastern India and Nepal.",
+    "Countries that this is a national language": "['India', 'Nepal', 'Mauritius', 'Fiji', 'Suriname']",
+    "Script": "Devanagari"
+  },
+  {
+    "Language": "Polish",
+    "Example Sentence": "Mój kot gra na pianinie.",
+    "Translation": "My cat plays the piano.",
+    "Hint": "A Slavic language with lots of consonants.",
+    "Countries that this is a national language": "['Poland']",
+    "Script": "Latin alphabet"
+  },
+  {
+    "Language": "Pashto",
+    "Example Sentence": "زما پيشو سندرې وايي.",
+    "Translation": "My cat sings songs.",
+    "Hint": "Spoken in Afghanistan and Pakistan.",
+    "Countries that this is a national language": "['Afghanistan', 'Pakistan']",
+    "Script": "Pashto (Arabic) script"
+  },
+  {
+    "Language": "Xiang Chinese (Hunanese)",
+    "Example Sentence": "俺屋里个猫会唱歌。",
+    "Translation": "The cat in our house can sing.",
+    "Hint": "A dialect from Hunan province.",
+    "Countries that this is a national language": "['China']",
+    "Script": "Simplified Chinese"
+  },
+  {
+    "Language": "Malayalam",
+    "Example Sentence": "എന്റെ പൂച്ച ബൈസിക്കിള് ഓടിക്കുന്നു.",
+    "Translation": "My cat is riding a bicycle.",
+    "Hint": "Spoken in the state of Kerala, India.",
+    "Countries that this is a national language": "['India']",
+    "Script": "Malayalam script"
+  }
+]

@@ -49,7 +49,7 @@ header h1 {
 
 .subtitle {
     font-size: 1.2rem;
-    color: #a0a0a0;
+    color: #ffffff;
     font-weight: 400;
     margin-top: 0.5rem;
 }
@@ -121,7 +121,7 @@ header h1 {
     align-items: center;
     padding: 0 1rem;
     box-sizing: border-box;
-    margin-bottom: 0.5rem;
+    margin: 0;
 }
 #hintDisplay.hint-display {
     display: none;
@@ -130,11 +130,11 @@ header h1 {
     min-height: 38px;
     height: 38px;
     padding: 0 1rem;
-    margin: 0 0 0.5rem 0;
-    background: rgba(255, 215, 0, 0.1);
-    border: 1px solid rgba(255, 215, 0, 0.3);
+    margin: 0;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
-    color: #ffd700;
+    color: #ffffff;
     font-size: 0.95rem;
     font-style: italic;
     line-height: 1.4;
@@ -272,9 +272,16 @@ header h1 {
 }
 
 .translation {
-    font-size: 1rem;
+    font-size: 2rem;
+    font-weight: 600;
     color: #a0a0a0;
-    font-style: italic;
+    line-height: 1.4;
+    min-height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 0.5rem;
 }
 
 .country-inputs {
@@ -609,7 +616,7 @@ header h1 {
 
 .submit-btn {
     padding: 0.75rem 1.5rem;
-    background: linear-gradient(135deg, #ff8c42 0%, #ff6b35 100%);
+    background: linear-gradient(135deg, #D2B48C 0%, #B8860B 100%);
     border: none;
     border-radius: 10px;
     color: #ffffff;
@@ -622,7 +629,7 @@ header h1 {
 
 .submit-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(255, 140, 66, 0.3);
+    box-shadow: 0 10px 20px rgba(210, 180, 140, 0.3);
 }
 
 .submit-btn:disabled {
@@ -804,7 +811,6 @@ header h1 {
     justify-content: flex-start;
     gap: 1rem;
     margin-top: 0.5rem;
-    align-items: flex-start;
 } 
 
 /* Make guess slots fill the whole width and center content */
@@ -965,6 +971,11 @@ header h1 {
     text-align: center;
     margin-top: 1rem;
     padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .play-next-btn {
@@ -1074,4 +1085,52 @@ header h1 {
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+
+/* Footer Styles */
+.site-footer {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.footer-links {
+    margin-bottom: 1rem;
+}
+
+.footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    margin: 0 0.5rem;
+}
+
+.footer-links a:hover {
+    color: #60a5fa;
+}
+
+.footer-sep {
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0 0.5rem;
+}
+
+.footer-copy {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .footer-sep {
+        display: none;
+    }
 } 
