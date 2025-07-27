@@ -1,282 +1,1154 @@
 [
   {
-    "Language": "English",
-    "Example Sentence": "I forgot my umbrella, but it’s not raining!",
-    "Translation": "",
-    "Hint": "The language of Shakespeare and Google",
-    "Countries that this is a national language": "['United States', 'United Kingdom', 'Canada', 'Australia', 'Ireland', 'New Zealand', 'South Africa', 'India', 'Philippines', 'Nigeria', 'Kenya', 'Uganda', 'Pakistan', 'Jamaica', 'Trinidad and Tobago', 'Barbados', 'Zimbabwe', 'Namibia', 'Botswana', 'Singapore']",
-    "Script": "Latin alphabet"
-  },
-  {
-    "Language": "Mandarin Chinese",
-    "Example Sentence": "我想养一只小恐龙。",
-    "Translation": "I want to raise a baby dinosaur.",
-    "Hint": "Spoken by over a billion people",
-    "Countries that this is a national language": "['China', 'Taiwan', 'Singapore']",
-    "Script": "Simplified Chinese (or Traditional)"
-  },
-  {
-    "Language": "Hindi",
-    "Example Sentence": "मेरे पास एक जादुई पेंसिल है।",
-    "Translation": "I have a magical pencil.",
-    "Hint": "Bollywood speaks this language",
-    "Countries that this is a national language": "['India', 'Fiji', 'Nepal']",
-    "Script": "Devanagari"
-  },
-  {
     "Language": "Spanish",
-    "Example Sentence": "Los gatos planean conquistar el mundo.",
-    "Translation": "The cats are planning to take over the world.",
+    "Example Sentence": "Tenía el corazón de un bailarín y se movía como el viento. Era conocido como el Salsero.",
+    "Translation": "He had a heart of a dancer, and moved like the wind. He was known as the Salsero.",
     "Hint": "This language is full of ¡energía!",
-    "Countries that this is a national language": "['Spain', 'Mexico', 'Colombia', 'Argentina', 'Peru', 'Venezuela', 'Chile', 'Ecuador', 'Guatemala', 'Cuba', 'Bolivia', 'Dominican Republic', 'Honduras', 'Paraguay', 'El Salvador', 'Nicaragua', 'Costa Rica', 'Puerto Rico', 'Panama', 'Uruguay', 'Equatorial Guinea']",
-    "Script": "Latin alphabet"
+    "Countries that this is a national language": "['Spain', 'Mexico', 'Colombia', 'Argentina', 'Peru', 'Venezuela', 'Chile', 'Ecuador', 'Guatemala', 'Cuba', 'Bolivia', 'Dominican Republic', 'Honduras', 'Paraguay', 'El Salvador', 'Nicaragua', 'Costa Rica', 'Panama', 'Uruguay', 'Puerto Rico', 'Equatorial Guinea']",
+    "Script": "Latin alphabet",
+    "Country of origin (Modern Day)": "Spain"
   },
   {
     "Language": "French",
-    "Example Sentence": "J’ai dansé avec un pingouin hier soir.",
-    "Translation": "I danced with a penguin last night.",
+    "Example Sentence": "J'ai dansé avec un manchot hier soir. Il portait un très beau costume.",
+    "Translation": "I danced with a penguin last night. He wore a very handsome suit.",
     "Hint": "The language of love and baguettes",
-    "Countries that this is a national language": "['France', 'Canada', 'Belgium', 'Switzerland', 'Luxembourg', 'Monaco', 'Haiti', 'Democratic Republic of the Congo', 'Ivory Coast', 'Senegal', 'Madagascar', 'Cameroon', 'Burkina Faso', 'Niger', 'Mali', 'Rwanda', 'Benin', 'Burundi', 'Chad', 'Guinea', 'Republic of the Congo', 'Togo', 'Central African Republic', 'Djibouti', 'Equatorial Guinea', 'Gabon', 'Comoros', 'Vanuatu', 'Seychelles']",
-    "Script": "Latin alphabet"
+    "Countries that this is a national language": "['France', 'Canada', 'Belgium', 'Switzerland', 'Luxembourg', 'Monaco', 'Haiti', 'Democratic Republic of the Congo', 'Ivory Coast', 'Senegal', 'Madagascar', 'Cameroon', 'Niger', 'Mali', 'Rwanda', 'Mauritius', 'Benin', 'Burundi', 'Chad', 'Guinea', 'Republic of the Congo', 'Togo', 'Central African Republic', 'Djibouti', 'Equatorial Guinea', 'Gabon', 'Comoros', 'Vanuatu', 'Seychelles']",
+    "Script": "Latin alphabet",
+    "Country of origin (Modern Day)": "France"
   },
   {
-    "Language": "Standard Arabic",
-    "Example Sentence": "رأيت سمكة تطير في الحديقة.",
-    "Translation": "I saw a fish flying in the garden.",
+    "Language": "Mandarin Chinese",
+    "Example Sentence": "我和我的情妇喜欢一起去听音乐会。",
+    "Translation": "Me and my mistress love going to concerts together.",
+    "Hint": "Spoken by over a billion people",
+    "Countries that this is a national language": "['China', 'Taiwan', 'Singapore']",
+    "Script": "Simplified Chinese (or Traditional)",
+    "Country of origin (Modern Day)": "China"
+  },
+  {
+    "Language": "Hindi",
+    "Example Sentence": "अच्छी यात्रा करने के लिए अमीर होना ज़रूरी नहीं है।",
+    "Translation": "You don’t have to be rich to travel well.",
+    "Hint": "Bollywood speaks this language",
+    "Countries that this is a national language": "['India', 'Fiji']",
+    "Script": "Devanagari",
+    "Country of origin (Modern Day)": "India"
+  },
+  {
+    "Language": "Arabic",
+    "Example Sentence": "تم اعتقال الدجاجة لعبورها الطريق بشكل غير قانوني.",
+    "Translation": "The chicken was arrested for crossing the road illegally.",
     "Hint": "A language of the Quran and calligraphy",
     "Countries that this is a national language": "['Algeria', 'Bahrain', 'Comoros', 'Chad', 'Djibouti', 'Egypt', 'Iraq', 'Jordan', 'Kuwait', 'Lebanon', 'Libya', 'Mauritania', 'Morocco', 'Oman', 'Palestine', 'Qatar', 'Saudi Arabia', 'Somalia', 'Sudan', 'Syria', 'Tunisia', 'United Arab Emirates', 'Yemen']",
-    "Script": "Arabic script"
+    "Script": "Arabic script",
+    "Country of origin (Modern Day)": "Saudi Arabia"
   },
   {
     "Language": "Bengali",
-    "Example Sentence": "আমার ঘরে একটা বাঘ লুকিয়ে আছে।",
-    "Translation": "There’s a tiger hiding in my room.",
+    "Example Sentence": "মুরগিটি দোষী নয়, আপনার সম্মান।",
+    "Translation": "The chicken is not guilty, your honor.",
     "Hint": "This language flows like the rivers of the Ganges delta",
-    "Countries that this is a national language": "['Bangladesh', 'India', 'Sierra Leone']",
-    "Script": "Bengali script"
+    "Countries that this is a national language": "['Bangladesh', 'India']",
+    "Script": "Bengali script",
+    "Country of origin (Modern Day)": "Bangladesh"
   },
   {
     "Language": "Portuguese",
-    "Example Sentence": "Ontem, falei com um papagaio muito educado.",
-    "Translation": "Yesterday, I spoke with a very polite parrot.",
+    "Example Sentence": "A galinha foi condenada à prisão perpétua.",
+    "Translation": "The chicken has been sentenced to jail for life.",
     "Hint": "This language sails from Brazil to Mozambique",
-    "Countries that this is a national language": "['Portugal', 'Brazil', 'Mozambique', 'Angola', 'Guinea-Bissau', 'East Timor', 'Equatorial Guinea', 'Cape Verde', 'São Tomé and Príncipe']",
-    "Script": "Latin alphabet"
+    "Countries that this is a national language": "['Portugal', 'Brazil', 'Mozambique', 'Angola', 'Guinea-Bissau', 'Timor-Leste', 'Equatorial Guinea', 'Cape Verde', 'Sao Tome and Principe']",
+    "Script": "Latin alphabet",
+    "Country of origin (Modern Day)": "Portugal"
   },
   {
     "Language": "Russian",
-    "Example Sentence": "У меня есть летающий тостер.",
-    "Translation": "I have a flying toaster.",
+    "Example Sentence": "Русский мужчина поспешил на работу. Он сильно опаздывал.",
+    "Translation": "The Russian man rushed to his job. He was very late.",
     "Hint": "This language launched the first man into space",
-    "Countries that this is a national language": "['Russia', 'Belarus', 'Kazakhstan', 'Kyrgyzstan', 'Tajikistan', 'Abkhazia', 'South Ossetia', 'Transnistria']",
-    "Script": "Cyrillic alphabet"
+    "Countries that this is a national language": "['Russia', 'Belarus', 'Kazakhstan', 'Kyrgyzstan', 'Tajikistan']",
+    "Script": "Cyrillic alphabet",
+    "Country of origin (Modern Day)": "Russia"
   },
   {
     "Language": "Urdu",
-    "Example Sentence": "میری کتاب نے مجھ سے بات کی۔",
-    "Translation": "My book talked to me.",
+    "Example Sentence": "آدمی، جو اپنی نوکری پر جا رہا تھا، نے غلطی سے مرغی کو ٹکر مار دی۔",
+    "Translation": "The man, who was rushing to his job, accidentally hit the chicken.",
     "Hint": "A poetic sibling of Hindi written in Arabic script",
     "Countries that this is a national language": "['Pakistan']",
-    "Script": "Perso-Arabic script (Nastaʿlīq)"
+    "Script": "Perso-Arabic script",
+    "Country of origin (Modern Day)": "India"
   },
   {
     "Language": "Indonesian",
-    "Example Sentence": "Saya lupa kacamata saya di pantai.",
-    "Translation": "I forgot my glasses at the beach.",
+    "Example Sentence": "Pemakaman ayam akan diadakan pada hari Sabtu.",
+    "Translation": "The chicken's funeral will be held on Saturday.",
     "Hint": "This is the official language of the world’s largest island country.",
     "Countries that this is a national language": "['Indonesia']",
-    "Script": "Latin alphabet"
+    "Script": "Latin alphabet",
+    "Country of origin (Modern Day)": "Indonesia"
   },
   {
     "Language": "German",
-    "Example Sentence": "Mein Hund trägt eine Sonnenbrille.",
-    "Translation": "My dog is wearing sunglasses.",
+    "Example Sentence": "Der Waschbär war ein sehr guter Schachspieler.",
+    "Translation": "The raccoon was a very good Chess player",
     "Hint": "The language of pretzels and philosophers.",
     "Countries that this is a national language": "['Germany', 'Austria', 'Switzerland', 'Belgium', 'Liechtenstein', 'Luxembourg']",
-    "Script": "Latin alphabet"
+    "Script": "Latin alphabet",
+    "Country of origin (Modern Day)": "Germany"
   },
   {
     "Language": "Japanese",
-    "Example Sentence": "猫がドアを開けました。",
-    "Translation": "The cat opened the door.",
+    "Example Sentence": "私はアライグマにチェスを挑んで、負けました。",
+    "Translation": "I challenged the raccoon to chess and lost.",
     "Hint": "This island nation’s language uses three scripts.",
     "Countries that this is a national language": "['Japan']",
-    "Script": "Kanji, Hiragana, Katakana"
+    "Script": "Kanji, Hiragana, Katakana",
+    "Country of origin (Modern Day)": "Japan"
   },
   {
-    "Language": "Nigerian Pidgin",
-    "Example Sentence": "I no get am for house.",
-    "Translation": "I don’t have it at home.",
-    "Hint": "A creole widely spoken in West Africa.",
-    "Countries that this is a national language": "['Nigeria']",
-    "Script": "Latin alphabet"
-  },
-  {
-    "Language": "Marathi",
-    "Example Sentence": "माझा फुगा आकाशात उडाला.",
-    "Translation": "My balloon flew into the sky.",
-    "Hint": "A major language spoken in Maharashtra, India.",
-    "Countries that this is a national language": "['India']",
-    "Script": "Devanagari"
-  },
-  {
-    "Language": "Telugu",
-    "Example Sentence": "నాకు నీలి రంగు గుబ్బలంటే ఇష్టం.",
-    "Translation": "I like blue balloons.",
-    "Hint": "A Dravidian language spoken in southern India.",
-    "Countries that this is a national language": "['India']",
-    "Script": "Telugu script"
-  },
-  {
-    "Language": "Turkish",
-    "Example Sentence": "Kedim kahve içiyor.",
-    "Translation": "My cat is drinking coffee.",
-    "Hint": "Spoken in a country that bridges Europe and Asia.",
-    "Countries that this is a national language": "['Turkey', 'Cyprus']",
-    "Script": "Latin alphabet"
-  },
-  {
-    "Language": "Tamil",
-    "Example Sentence": "என் நண்பர் ஒரு ரோபோட்டுடன் பேசுகிறார்.",
-    "Translation": "My friend is talking to a robot.",
-    "Hint": "One of the oldest surviving classical languages.",
-    "Countries that this is a national language": "['India', 'Sri Lanka', 'Singapore']",
-    "Script": "Tamil script"
-  },
-  {
-    "Language": "Yue Chinese (Cantonese)",
-    "Example Sentence": "我隻狗識得打機。",
-    "Translation": "My dog knows how to play video games.",
-    "Hint": "A major Chinese dialect spoken in Hong Kong.",
-    "Countries that this is a national language": "['China', 'Hong Kong', 'Macau']",
-    "Script": "Traditional Chinese"
-  },
-  {
-    "Language": "Vietnamese",
-    "Example Sentence": "Con mèo của tôi thích ăn kem.",
-    "Translation": "My cat likes eating ice cream.",
-    "Hint": "Uses the Latin alphabet but sounds totally different.",
-    "Countries that this is a national language": "['Vietnam']",
-    "Script": "Latin alphabet"
-  },
-  {
-    "Language": "Korean",
-    "Example Sentence": "고양이가 창문을 열었어요.",
-    "Translation": "The cat opened the window.",
-    "Hint": "Uses a unique alphabet called Hangul.",
-    "Countries that this is a national language": "['South Korea', 'North Korea']",
-    "Script": "Hangul"
-  },
-  {
-    "Language": "Wu Chinese (Shanghainese)",
-    "Example Sentence": "阿拉宁愿呒看电视。",
-    "Translation": "We would rather not watch TV.",
-    "Hint": "A regional dialect spoken in Shanghai.",
-    "Countries that this is a national language": "['China']",
-    "Script": "Simplified Chinese"
-  },
-  {
-    "Language": "Javanese",
-    "Example Sentence": "Aku nyanyi bareng kucingku.",
-    "Translation": "I sing with my cat.",
-    "Hint": "The most spoken language in Indonesia after Indonesian itself.",
-    "Countries that this is a national language": "['Indonesia']",
-    "Script": "Latin alphabet (and Javanese script)"
-  },
-  {
-    "Language": "Hausa",
-    "Example Sentence": "Kare na yana rawa.",
-    "Translation": "My dog is dancing.",
-    "Hint": "Widely spoken in West Africa and uses both Latin and Arabic scripts.",
-    "Countries that this is a national language": "['Nigeria', 'Niger', 'Ghana']",
-    "Script": "Latin alphabet (Ajami script also used)"
-  },
-  {
-    "Language": "Egyptian Arabic",
-    "Example Sentence": "القطة نطّت من الشباك.",
-    "Translation": "The cat jumped out the window.",
-    "Hint": "The most widely spoken Arabic dialect.",
-    "Countries that this is a national language": "['Egypt']",
-    "Script": "Arabic script"
-  },
-  {
-    "Language": "Swahili",
-    "Example Sentence": "Paka wangu anacheza muziki.",
-    "Translation": "My cat is playing music.",
-    "Hint": "A major trade language of East Africa.",
-    "Countries that this is a national language": "['Tanzania', 'Kenya', 'Uganda', 'DR Congo', 'Rwanda']",
-    "Script": "Latin alphabet"
+    "Language": "Catalan",
+    "Example Sentence": "Viatjar és fatal per al prejudici, la intolerància i la mentalitat tancada.",
+    "Translation": "Travel is fatal to prejudice, bigotry, and narrow-mindedness.",
+    "Hint": "Andorra and a very famous soccer team speak this langauge",
+    "Countries that this is a national language": "['Andorra']",
+    "Script": "Latin script",
+    "Country of origin (Modern Day)": "Spain"
   },
   {
     "Language": "Italian",
-    "Example Sentence": "Il mio cane ha mangiato la pizza.",
-    "Translation": "My dog ate the pizza.",
+    "Example Sentence": "Il podcast presentava una conversazione poco ispirata su tralallero e trallalà.",
+    "Translation": "The podcast featured uninspired talk about tralallero and trallala.",
     "Hint": "The language of pasta and opera.",
     "Countries that this is a national language": "['Italy', 'Switzerland', 'San Marino', 'Vatican City']",
-    "Script": "Latin alphabet"
+    "Script": "Latin alphabet",
+    "Country of origin (Modern Day)": "Italy"
+  },
+  {
+    "Language": "Vietnamese",
+    "Example Sentence": "Liệu con gà và con gấu trúc Mỹ sẽ là bạn hay là người yêu?",
+    "Translation": "Will the chicken and raccons be friends or will they be lovers?",
+    "Hint": "Spoken in the land of motorbikes and bánh mì.",
+    "Countries that this is a national language": "['Vietnam']",
+    "Script": "Latin alphabet",
+    "Country of origin (Modern Day)": "Vietnam"
+  },
+  {
+    "Language": "Korean",
+    "Example Sentence": "여행은 모든 사람이 다른 나라에 대해 잘못 알고 있다는 것을 발견하는 것이다.",
+    "Translation": "To travel is to discover that everyone is wrong about other countries.",
+    "Hint": "Your favorite K-drama is in this langauge.",
+    "Countries that this is a national language": "['South Korea', 'North Korea']",
+    "Script": "Hangul",
+    "Country of origin (Modern Day)": "Korea"
+  },
+  {
+    "Language": "Armenian",
+    "Example Sentence": "Երանի՛ հետաքրքրասերներին, որովհետև նրանք արկածներ են ունենալու։",
+    "Translation": "Blessed are the curious, for they shall have adventures.",
+    "Hint": "This ancient language uses its own alphabet, has letters that look like magic symbols, and is spoken in a country where apricots are a national treasure.",
+    "Countries that this is a national language": "['Armenia']",
+    "Script": "Armenian script",
+    "Country of origin (Modern Day)": "Armenia"
+  },
+  {
+    "Language": "Hausa",
+    "Example Sentence": "Berayen hamada suna gudu da hauka idan suka ga kaza.",
+    "Translation": "Desert rats run wildly when they see a chicken.",
+    "Hint": "Spoken from Nigeria to Niger, this language rides across deserts and cities alike, uniting people with rhythm and tone.",
+    "Countries that this is a national language": "['Niger']",
+    "Script": "Latin alphabet",
+    "Country of origin (Modern Day)": "Nigeria"
+  },
+  {
+    "Language": "Swahili",
+    "Example Sentence": "Kuku alienda sokoni kufanya ununuzi.",
+    "Translation": "The chicken went to the market to do some shopping.",
+    "Hint": "This smooth East African language blends African roots with Arabic flair. It's also the only one with a Lion King soundtrack",
+    "Countries that this is a national language": "['Tanzania', 'Kenya', 'Uganda', 'Democratic Republic of the Congo', 'Rwanda']",
+    "Script": "Latin alphabet",
+    "Country of origin (Modern Day)": "Tanzania"
   },
   {
     "Language": "Thai",
-    "Example Sentence": "แมวของฉันเล่นโยคะตอนเช้า.",
-    "Translation": "My cat does yoga in the morning.",
-    "Hint": "This language has its own beautiful curvy script.",
+    "Example Sentence": "หนูเป็นแฟนพันธุ์แท้ของก๋วยเตี๋ยวเผ็ด มันขโมยก๋วยเตี๋ยวจากร้านอาหารทุกวัน",
+    "Translation": "The rat was a big fan of spicy noodles. He stole them from the restaurant every day.",
+    "Hint": "This language loops, swirls, and curls, just like the noodles you’ll find on every corner of it's capital city",
     "Countries that this is a national language": "['Thailand']",
-    "Script": "Thai script"
-  },
-  {
-    "Language": "Gujarati",
-    "Example Sentence": "મારું બિલાડી ગિટાર વગાડે છે.",
-    "Translation": "My cat plays the guitar.",
-    "Hint": "A major language of western India.",
-    "Countries that this is a national language": "['India']",
-    "Script": "Gujarati script"
-  },
-  {
-    "Language": "Kannada",
-    "Example Sentence": "ನನ್ನ ನಾಯಿ ಬೈಸಿಕಲ್ ಓಡಿಸುತ್ತಿದೆ.",
-    "Translation": "My dog is riding a bicycle.",
-    "Hint": "Spoken in Karnataka, India.",
-    "Countries that this is a national language": "['India']",
-    "Script": "Kannada script"
-  },
-  {
-    "Language": "Bhojpuri",
-    "Example Sentence": "हमार बिलइया मोबाइल चला रहल बा.",
-    "Translation": "My cat is using a phone.",
-    "Hint": "Spoken in parts of eastern India and Nepal.",
-    "Countries that this is a national language": "['India', 'Nepal', 'Mauritius', 'Fiji', 'Suriname']",
-    "Script": "Devanagari"
+    "Script": "Thai script",
+    "Country of origin (Modern Day)": "Thailand"
   },
   {
     "Language": "Polish",
-    "Example Sentence": "Mój kot gra na pianinie.",
-    "Translation": "My cat plays the piano.",
-    "Hint": "A Slavic language with lots of consonants.",
+    "Example Sentence": "Szczur był kucharzem i miał słynną zupę.",
+    "Translation": "The rat was a chef and had a famous soup.",
+    "Hint": "Spoken from Warsaw to Chicago, this language doesn’t mess around. Neither with grammar or soup.",
     "Countries that this is a national language": "['Poland']",
-    "Script": "Latin alphabet"
+    "Script": "Latin alphabet",
+    "Country of origin (Modern Day)": "Poland"
   },
   {
     "Language": "Pashto",
-    "Example Sentence": "زما پيشو سندرې وايي.",
-    "Translation": "My cat sings songs.",
-    "Hint": "Spoken in Afghanistan and Pakistan.",
-    "Countries that this is a national language": "['Afghanistan', 'Pakistan']",
-    "Script": "Pashto (Arabic) script"
+    "Example Sentence": "چرګې یو ځل په کلي کې ټولو ته وویل چې اسمان لوېږي.",
+    "Translation": "The chicken once told everyone in the town that the sky was falling.",
+    "Hint": "This warrior language flows through the hills of the Hindu Kush.",
+    "Countries that this is a national language": "['Afghanistan']",
+    "Script": "Arabic Script",
+    "Country of origin (Modern Day)": "Afghanistan"
   },
   {
-    "Language": "Xiang Chinese (Hunanese)",
-    "Example Sentence": "俺屋里个猫会唱歌。",
-    "Translation": "The cat in our house can sing.",
-    "Hint": "A dialect from Hunan province.",
-    "Countries that this is a national language": "['China']",
-    "Script": "Simplified Chinese"
+    "Language": "Turkish",
+    "Example Sentence": "Çarşıda tavuk için birçok iyi fırsat vardı.",
+    "Translation": "The bazaar had many good deals on chicken.",
+    "Hint": "Spoken in a country that bridges Europe and Asia.",
+    "Countries that this is a national language": "['Türkiye', 'Cyprus']",
+    "Script": "Latin alphabet",
+    "Country of origin (Modern Day)": "Türkiye"
   },
   {
-    "Language": "Malayalam",
-    "Example Sentence": "എന്റെ പൂച്ച ബൈസിക്കിള് ഓടിക്കുന്നു.",
-    "Translation": "My cat is riding a bicycle.",
-    "Hint": "Spoken in the state of Kerala, India.",
+    "Language": "Burmese",
+    "Example Sentence": "သင်သွားသည့်နေရာတိုင်းဟာ တစ်နည်းနည်းနဲ့ သင့်အဖြစ်အစိတ်အပိုင်းတစ်ခုဖြစ်သွားပါတယ်။",
+    "Translation": "Wherever you go becomes a part of you somehow.",
+    "Hint": "This language echoes through centuries of empire—from the Pagan Kingdom to British Burma—carried by kings, monks, and revolutionaries alike.",
+    "Countries that this is a national language": "['Myanmar']",
+    "Script": "Burmese script",
+    "Country of origin (Modern Day)": "Myanmar"
+  },
+  {
+    "Language": "Ukrainian",
+    "Example Sentence": "Ми побачили пожежний гідрант під час прогулянки містом.",
+    "Translation": "We saw a fire hyrdrant on our walk through the city.",
+    "Hint": "Rooted in the Kyivan Rus', this language has survived empires, bans, and wars.",
+    "Countries that this is a national language": "['Ukraine']",
+    "Script": "Cyrillic script",
+    "Country of origin (Modern Day)": "Ukraine"
+  },
+  {
+    "Language": "Romanian",
+    "Example Sentence": "Șobolanul a plecat într-o aventură prin ocean.",
+    "Translation": "The rat went off on an adventure through the ocean.",
+    "Hint": "This Romance language is spoken where vampires roam, castles rise, and Latin meets Slavic flair.",
+    "Countries that this is a national language": "['Romania', 'Moldova']",
+    "Script": "Latin script",
+    "Country of origin (Modern Day)": "Romania"
+  },
+  {
+    "Language": "Dutch",
+    "Example Sentence": "Het regende op de bruiloft van de aap. Toch kuste hij zijn bruid.",
+    "Translation": "It rained on the monkey's wedding. He kissed his bride anyway.",
+    "Hint": "This language sails in on tall ships and bikes. spoken in the land of windmills, and waffles.",
+    "Countries that this is a national language": "['Netherlands', 'Belgium', 'Suriname']",
+    "Script": "Latin script",
+    "Country of origin (Modern Day)": "Netherlands"
+  },
+  {
+    "Language": "Estonian",
+    "Example Sentence": "Mõistus, mida on venitanud uus kogemus, ei saa kunagi naasta oma vanadesse mõõtmetesse.",
+    "Translation": "A mind that is stretched by a new experience can never go back to its old dimensions.",
+    "Hint": "This language sounds like Elvish, comes from the digital republic of the north, and has more vowels than your keyboard can handle.",
+    "Countries that this is a national language": "['Estonia']",
+    "Script": "Latin script",
+    "Country of origin (Modern Day)": "Estonia"
+  },
+  {
+    "Language": "Lao",
+    "Example Sentence": "ລິງແລະໜູມັກໄປທ່ອງທ່ຽວດ້ວຍກັນ.",
+    "Translation": "Monkeys and rats like to travel together.",
+    "Hint": "Spoken in the land of waterfalls, sticky rice, and silent power—this language flows as gently as the Mekong River.",
+    "Countries that this is a national language": "['Laos']",
+    "Script": "Lao script",
+    "Country of origin (Modern Day)": "Laos"
+  },
+  {
+    "Language": "Georgian",
+    "Example Sentence": "შეგიძლია იპოვო ვირი ისეთ ქვეყანაში, რომლის შესახებაც ჯერ არავის",
+    "Translation": "You can find the rat in a country no one has ever heard of before.",
+    "Hint": "This ancient language has its own curvy script, its own mountains, and zero linguistic relatives—spoken where Europe and Asia shake hands.",
+    "Countries that this is a national language": "['Georgia']",
+    "Script": "Georgian script",
+    "Country of origin (Modern Day)": "Georgia"
+  },
+  {
+    "Language": "Amharic",
+    "Example Sentence": "ብልውን ሥራ ነበረው ፣ ነገር ግን አልደሰተም። ምናልባት መተው ጊዜው ነው።",
+    "Translation": "The monkey had a job but he wasn't happy. It might be time to quit.",
+    "Hint": "This ancient Semitic language is written with its own script and spoken in the highlands of East Africa—where coffee was born and kings once ruled from stone castles.",
+    "Countries that this is a national language": "['Ethiopia']",
+    "Script": "Ge'ez (Ethiopic) script",
+    "Country of origin (Modern Day)": "Ethiopia"
+  },
+  {
+    "Language": "Filipino",
+    "Example Sentence": "Tipunin mo ang mga alaala, hindi mga bagay.",
+    "Translation": "Collect moments, not things.",
+    "Hint": "Spoken in the islands where volcanoes roar and karaoke never sleeps. This language dances through this island country with heart and humor.",
+    "Countries that this is a national language": "['Philippines']",
+    "Script": "Latin script",
+    "Country of origin (Modern Day)": "Philippines"
+  },
+  {
+    "Language": "Hungarian",
+    "Example Sentence": "Az utazó azt látja, amit lát. A turista azt látja, amit látni jött.",
+    "Translation": "The traveler sees what he sees. The tourist sees what he has come to see.",
+    "Hint": "This Central European language is one of a kind—full of logic, mystery, and more accents than vowels.",
+    "Countries that this is a national language": "['Hungary']",
+    "Script": "Latin script",
+    "Country of origin (Modern Day)": "Hungary"
+  },
+  {
+    "Language": "Greek",
+    "Example Sentence": "Ο αρουραίος και η μαϊμού ήθελαν να ταξιδέψουν μαζί στις επτά θάλασσες.",
+    "Translation": "The rat and the monkey wanted to sail the seven seas together.",
+    "Hint": "Spoken in the land of philosophers, olives, and gods—this ancient language helped invent Western civilization and still slaps today.",
+    "Countries that this is a national language": "['Greece', 'Cyprus']",
+    "Script": "Greek script",
+    "Country of origin (Modern Day)": "Greece"
+  },
+  {
+    "Language": "Sinhalese",
+    "Example Sentence": "හොඳ සංචාරකයෙකුට ස්ථිර සැලසුම් නොමැති අතර, ළඟා වීමටත් ඔහු බලාපොරොත්තු වන්නේ නැත.",
+    "Translation": "A good traveler has no fixed plans and is not intent on arriving.",
+    "Hint": "Spoken on the teardrop island below India, this curly-scripted language flows like a jungle river and sips tea like royalty.",
+    "Countries that this is a national language": "['Sri Lanka']",
+    "Script": "Sinhala script",
+    "Country of origin (Modern Day)": "Sri Lanka"
+  },
+  {
+    "Language": "Malagasy",
+    "Example Sentence": "Nanana volombava hafahafa ilay gidro.",
+    "Translation": "The monkey had a funny looking mustache.",
+    "Hint": "Spoken on the giant island off Africa’s east coast, this language is part African, part Southeast Asian, and 100% unexpected.",
+    "Countries that this is a national language": "['Madagascar']",
+    "Script": "Latin script",
+    "Country of origin (Modern Day)": "Madagascar"
+  },
+  {
+    "Language": "Azerbaijani",
+    "Example Sentence": "Səyahət etməmiş adam elə bilir ki, onun anası ən yaxşı aşpazdır.",
+    "Translation": "He who has not traveled thinks his mother is the best cook.",
+    "Hint": "Spoken between mountains and oil fields, this language blends Turkish vibes with Persian poetry and Soviet spice.",
+    "Countries that this is a national language": "['Azerbaijan']",
+    "Script": "Latin script",
+    "Country of origin (Modern Day)": "Azerbaijan"
+  },
+  {
+    "Language": "Khmer",
+    "Example Sentence": "អៀង មកទីនេះ!\" កន្ទុយមាន់និយាយទៅកាន់ស្វា។",
+    "Translation": "Hey, come here!\" said the rat to the monkey.",
+    "Hint": "Spoken in the land of ancient temples and street food dreams, this language has a script that looks like it belongs in a secret treasure map.",
+    "Countries that this is a national language": "['Cambodia']",
+    "Script": "Khmer script",
+    "Country of origin (Modern Day)": "Cambodia"
+  },
+  {
+    "Language": "Hebrew",
+    "Example Sentence": "הרגע המשמח ביותר בחיי האדם הוא היציאה לארצות לא נודעות.",
+    "Translation": "The gladdest moment in human life is a departure into unknown lands.",
+    "Hint": "This ancient language came back from the dead, and now it’s spoken from the synagogues to the startup scene.",
+    "Countries that this is a national language": "['Israel']",
+    "Script": "Hebrew script",
+    "Country of origin (Modern Day)": "Israel"
+  },
+  {
+    "Language": "Norwegian",
+    "Example Sentence": "Livet er enten et dristig eventyr eller ingenting i det hele tatt.",
+    "Translation": "Life is either a daring adventure or nothing at all.",
+    "Hint": "This language loves waffles, fjords, and trolls in the forest. Spoken where the sun doesn't set in summer.",
+    "Countries that this is a national language": "['Norway']",
+    "Script": "Latin script",
+    "Country of origin (Modern Day)": "Norway"
+  },
+  {
+    "Language": "Danish",
+    "Example Sentence": "Rejser er det eneste, du køber, som gør dig rigere.",
+    "Translation": "Travel is the only thing you buy that makes you richer.",
+    "Hint": "This language sounds like it’s spoken with a potato in the mouth — but they make the best pastries.",
+    "Countries that this is a national language": "['Denmark']",
+    "Script": "Latin script",
+    "Country of origin (Modern Day)": "Denmark"
+  },
+  {
+    "Language": "Māori",
+    "Example Sentence": "Ko te haere, ko te ora.",
+    "Translation": "To travel is to live.",
+    "Hint": "An indigenous language from the land of the long white cloud — where haka meets hobbits.",
+    "Countries that this is a national language": "['New Zealand']",
+    "Script": "Latin script",
+    "Country of origin (Modern Day)": "New Zealand"
+  },
+  {
+    "Language": "Persian",
+    "Example Sentence": "همهٔ کسانی که سرگردانند، گم‌گشته نیستند.",
+    "Translation": "Not all those who wander are lost.",
+    "Hint": "This poetic language gave the world Rumi, saffron rice, and legendary carpets.",
+    "Countries that this is a national language": "['Iran', 'Afghanistan', 'Tajikistan']",
+    "Script": "Persian script",
+    "Country of origin (Modern Day)": "Iran"
+  },
+  {
+    "Language": "Serbo-Croatian",
+    "Example Sentence": "Svijet je knjiga, a oni koji ne putuju čitaju samo jednu stranicu.",
+    "Translation": "The world is a book, and those who do not travel read only one page.",
+    "Hint": "Spoken across the Balkans — think rakija, Roman ruins, and dramatic coastline drama.",
+    "Countries that this is a national language": "['Serbia', 'Croatia', 'Bosnia and Herzegovina', 'Montenegro']",
+    "Script": "Latin and Cyrillic scripts",
+    "Country of origin (Modern Day)": "Serbia/Croatia"
+  },
+  {
+    "Language": "Icelandic",
+    "Example Sentence": "Við ferðast á yfirborði kúlunnar. Ég veit að leiðir okkar hljóta að mætast.",
+    "Translation": "We travel on the surface of a sphere. I know our paths must cross.",
+    "Hint": "Vikings spoke it. Elves still might. The letters look like magic spells. Spoken on a land of fire and ice.",
+    "Countries that this is a national language": "['Iceland']",
+    "Script": "Latin script",
+    "Country of origin (Modern Day)": "Iceland"
+  },
+  {
+    "Language": "Malay",
+    "Example Sentence": "Saya membaca untuk memahami makna kehidupan.",
+    "Translation": "I read to make sense of life.",
+    "Hint": "A breezy language from tropical islands, shared by nasi lemak lovers and jungle trekkers.",
+    "Countries that this is a national language": "",
+    "Script": "Latin Script",
+    "Country of origin (Modern Day)": "Malaysia"
+  },
+  {
+    "Language": "Finnish",
+    "Example Sentence": "Ota mukaasi vain muistot, jätä jälkeesi vain jalanjäljet.",
+    "Translation": "Take only memories, leave only footprints",
+    "Hint": "Sounds like Elvish. Has 15 grammatical cases. Used by sauna masters and heavy metal fans.",
+    "Countries that this is a national language": "['Finland']",
+    "Script": "Latin script",
+    "Country of origin (Modern Day)": "Finland"
+  },
+  {
+    "Language": "Swedish",
+    "Example Sentence": "Jobb fyller fickan, men äventyr fyller själen.",
+    "Translation": "Jobs fill your pocket, but adventures fill your soul",
+    "Hint": "ABBA, IKEA, and meatballs. This melodic language comes from the land of minimalist vibes.",
+    "Countries that this is a national language": "['Sweden', 'Finland']",
+    "Script": "Latin script",
+    "Country of origin (Modern Day)": "Sweden"
+  },
+  {
+    "Language": "Czech",
+    "Example Sentence": "Ať jdeš kamkoli, jdi tam celým svým srdcem.",
+    "Translation": "Wherever you go, go with all your heart.",
+    "Hint": "Spoken in the land of castles, chimney cakes, and the world’s best beer. Sounds a bit like a Slavic tongue twist.",
+    "Countries that this is a national language": "['Czech Republic']",
+    "Script": "Latin script",
+    "Country of origin (Modern Day)": "Czech Republic"
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "",
+    "Example Sentence": "",
+    "Translation": "",
+    "Hint": "",
+    "Countries that this is a national language": "",
+    "Script": "",
+    "Country of origin (Modern Day)": ""
+  },
+  {
+    "Language": "Marathi",
+    "Example Sentence": "मी त्या रॅकूनला आग लावण्याच्या आरोपात अडकवलं.",
+    "Translation": "I framed the raccoon for arson.",
+    "Hint": "This language is spoken in the land of Bollywood dreams and spicy street food—especially around Mumbai!",
     "Countries that this is a national language": "['India']",
-    "Script": "Malayalam script"
+    "Script": "Devanagari",
+    "Country of origin (Modern Day)": "India"
   }
 ]

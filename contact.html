@@ -127,6 +127,15 @@
             box-shadow: 0 10px 20px rgba(96, 165, 250, 0.3);
         }
     </style>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-QMGXRKWLM5"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+    
+        gtag('config', 'G-QMGXRKWLM5');
+        </script>
 </head>
 <body>
     <div class="world-map-bg"></div>
@@ -155,7 +164,7 @@
                     <form id="contactForm" action="https://formspree.io/f/xvgqabbd" method="POST">
                         <input type="hidden" name="_replyto" value="contactmichaelandjose@gmail.com">
                         <input type="hidden" name="_subject" value="New Contact Form Submission - Langlio">
-                        <input type="hidden" name="_next" value="http://localhost:8000/contact.html?success=true">
+                        <input type="hidden" name="_next" value="https://joserivas.github.io/Langlio/contact.html?success=true">
                         <div class="form-group">
                             <label for="name">Name:</label>
                             <input type="text" id="name" name="name" required>
@@ -182,7 +191,7 @@
                 
                 <div class="contact-info">
                     <h3>Other Ways to Reach Us</h3>
-                    <p><strong>Email:</strong> hello@langlio.com</p>
+                    <p><strong>Email:</strong> contactmichaelandjose@gmail.com</p>
                     <p><strong>Response Time:</strong> We typically respond within 24-48 hours</p>
                     <p><strong>Feedback:</strong> We welcome all feedback, suggestions, and bug reports</p>
                 </div>
@@ -203,6 +212,8 @@
 
     <footer class="site-footer">
         <div class="footer-links">
+            <a href="index.html">Home</a>
+            <span class="footer-sep">|</span>
             <a href="about.html">About Us</a>
             <span class="footer-sep">|</span>
             <a href="privacy.html">Privacy Policy</a>
@@ -230,10 +241,25 @@
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('success') === 'true') {
                 showMessage('Thank you for your message! We\'ll get back to you soon.', 'success');
+                // Clear the form after successful submission
+                clearForm();
+                // Remove the success parameter from URL
+                window.history.replaceState({}, document.title, window.location.pathname);
             } else if (urlParams.get('error') === 'true') {
                 showMessage('Sorry, there was an error sending your message. Please try again.', 'error');
+                // Remove the error parameter from URL
+                window.history.replaceState({}, document.title, window.location.pathname);
             }
         });
+        
+        function clearForm() {
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('subject').value = '';
+            document.getElementById('message').value = '';
+            document.getElementById('submitBtn').textContent = 'Send Message';
+            document.getElementById('submitBtn').disabled = false;
+        }
         
         function showMessage(message, type) {
             // Create message element
@@ -280,5 +306,6 @@
             }, 5000);
         }
     </script>
+
 </body>
 </html> 

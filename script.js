@@ -1,7 +1,16 @@
+// Development mode - set to true for unlimited random languages, false for daily game
+// When dev_mode = false: One language per day, changes at midnight in user's timezone
+// When dev_mode = true: Random language every time the page loads
+const dev_mode = false;
+
 // Game data - will be loaded from Languages_data.json
 let gameData = {};
 let allCountries = [];
 let countryFlags = {};
+
+// Daily language system
+let usedLanguages = []; // Track languages used in daily mode
+let currentDailyLanguage = null; // Current daily language
 
 // Comprehensive list of top 100+ languages
 const allLanguages = [
@@ -184,7 +193,7 @@ let currentGame = {
 
 // DOM elements - will be initialized after DOM loads
 let dailySentenceEl, languageGuessEl, languageDropdownEl, submitLanguageGuessEl, submitCountryGuessEl;
-let languagePhaseEl, countryPhaseEl, languageResultEl, countryInputsEl;
+let languagePhaseEl, countryPhaseEl, countryInputsEl;
 let languageGuessesHistoryEl, countryGuessesHistoryEl, correctLanguageEl, correctCountriesEl;
 let correctSentenceEl, hintBtnEl, hintDisplayEl, instructionsPopupEl, closeInstructionsEl;
 let startGameBtnEl, playNextSectionEl, playNextBtnEl, languageInputRowEl;
@@ -202,7 +211,6 @@ function initializeDOMElements() {
     submitCountryGuessEl = document.getElementById('submitCountryGuess');
     languagePhaseEl = document.getElementById('languagePhase');
     countryPhaseEl = document.getElementById('countryPhase');
-    languageResultEl = document.getElementById('languageResult');
     countryInputsEl = document.getElementById('countryInputs');
     languageGuessesHistoryEl = document.getElementById('languageGuessesHistory');
     countryGuessesHistoryEl = document.getElementById('countryGuessesHistory');
@@ -241,7 +249,6 @@ function initializeDOMElements() {
         submitCountryGuessEl: !!submitCountryGuessEl,
         languagePhaseEl: !!languagePhaseEl,
         countryPhaseEl: !!countryPhaseEl,
-        languageResultEl: !!languageResultEl,
         countryInputsEl: !!countryInputsEl,
         languageGuessesHistoryEl: !!languageGuessesHistoryEl,
         countryGuessesHistoryEl: !!countryGuessesHistoryEl,
@@ -259,32 +266,75 @@ async function initGame() {
     try {
         console.log('Initializing game...');
         
-        // Initialize DOM elements first
-        initializeDOMElements();
-        
         // Load game data from JSON file
         await loadGameData();
         
-        // Set current date
-        const today = new Date();
+        // Check if there's a saved game state first
+        const savedState = localStorage.getItem('langlioGameState');
+        if (savedState) {
+            console.log('Found saved game state, loading...');
+            try {
+                loadGameState();
+                return 'loaded';
+            } catch (error) {
+                console.error('Error loading saved state:', error);
+                console.log('Clearing corrupted saved state and starting fresh...');
+                localStorage.removeItem('langlio_game_state');
+                // Continue with fresh game initialization
+            }
+        }
         
-        // Generate random sentence (not date-based for new games)
-        // Only select from languages that have actual data in the JSON file
-        const availableLanguages = Object.keys(gameData);
-        console.log('Available languages for selection:', availableLanguages);
-        console.log('Number of languages with data:', availableLanguages.length);
-        const languageIndex = Math.floor(Math.random() * availableLanguages.length);
-        const selectedLanguage = availableLanguages[languageIndex];
-        console.log('Selected language index:', languageIndex);
+        // Check and reset used languages for daily mode
+        if (!dev_mode) {
+            checkAndResetUsedLanguages();
+            
+            // Check if user has already played today
+            if (hasPlayedToday()) {
+                console.log('User has already played today in daily mode');
+                // Load the existing game state instead of showing the message
+                loadGameState();
+                return 'loaded';
+            }
+        }
+        
+        // Get the language for this game (daily or random based on dev_mode)
+        const selectedLanguage = getCurrentGameLanguage();
+        
+        if (!selectedLanguage) {
+            throw new Error('No languages available in game data');
+        }
+        
+        console.log('Game mode:', dev_mode ? 'DEV MODE (random)' : 'DAILY MODE');
         console.log('Selected language:', selectedLanguage);
         
+        // Debug: Check what the daily language should be
+        if (!dev_mode) {
+            const currentDate = getCurrentDateString();
+            const expectedDailyLanguage = getDailyLanguage(currentDate);
+            console.log('Expected daily language for', currentDate + ':', expectedDailyLanguage);
+            console.log('Available languages count:', Object.keys(gameData).length);
+        }
+        
         currentGame.correctLanguage = selectedLanguage;
+        
+        // Mark language as used for daily mode (only if this is a truly new game)
+        if (!dev_mode) {
+            markLanguageAsUsed(selectedLanguage);
+        }
+        
+        // Log daily language info for debugging
+        if (!dev_mode) {
+            const currentDate = getCurrentDateString();
+            console.log('Current date:', currentDate);
+            console.log('Used languages today:', usedLanguages);
+            console.log('Daily language for today:', getDailyLanguage(currentDate));
+        }
+        
         // Select random countries from the language's country list (max 3, or all if less than 3)
         const allCountries = gameData[selectedLanguage].countries;
         currentGame.correctCountries = [...allCountries]; // Use all available countries
         currentGame.dailySentence = gameData[selectedLanguage].sentence;
         
-        console.log('Selected language:', selectedLanguage);
         console.log('Daily sentence:', currentGame.dailySentence);
         
         // Display the sentence
@@ -295,14 +345,6 @@ async function initGame() {
         // Populate dropdowns
         populateDropdowns();
         
-        // Add event listeners
-        addEventListeners();
-        
-        // Load saved game state (only for daily games, not new games)
-        if (!currentGame.isNewGame) {
-            loadGameState();
-        }
-        
         // Update UI to show empty slots immediately
         updateUI();
         
@@ -311,7 +353,11 @@ async function initGame() {
             confetti = new Confetti(confettiCanvasEl);
         }
         
+        // Save the initial game state so it can be loaded on refresh
+        saveGameState();
+        
         console.log('Game initialized successfully');
+        return 'fresh';
     } catch (error) {
         console.error('Error initializing game:', error);
         alert('Error initializing game: ' + error.message);
@@ -327,6 +373,122 @@ function hashCode(str) {
         hash = hash & hash; // Convert to 32-bit integer
     }
     return hash;
+}
+
+// Get current date string in user's timezone (YYYY-MM-DD format)
+function getCurrentDateString() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`; // Returns YYYY-MM-DD in local timezone
+}
+
+// Get daily language based on date with perfect rotation
+function getDailyLanguage(dateString) {
+    const availableLanguages = Object.keys(gameData);
+    if (availableLanguages.length === 0) return null;
+    
+    // Calculate days since a reference date (2025-01-01)
+    const referenceDate = new Date('2025-01-01');
+    const currentDate = new Date(dateString);
+    const daysSinceReference = Math.floor((currentDate - referenceDate) / (1000 * 60 * 60 * 24));
+    
+    // Calculate which 35-day cycle we're in and which day within that cycle
+    const cycleNumber = Math.floor(daysSinceReference / availableLanguages.length);
+    const dayInCycle = daysSinceReference % availableLanguages.length;
+    
+    // Create a shuffled order for this cycle using the cycle number as seed
+    const shuffledLanguages = shuffleArrayWithSeed([...availableLanguages], cycleNumber);
+    
+    // Return the language for this specific day in this cycle
+    return shuffledLanguages[dayInCycle];
+}
+
+// Shuffle array with a seed for consistent results
+function shuffleArrayWithSeed(array, seed) {
+    const shuffled = [...array];
+    const random = seededRandom(seed);
+    
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    
+    return shuffled;
+}
+
+// Seeded random number generator
+function seededRandom(seed) {
+    let value = seed;
+    return function() {
+        value = (value * 9301 + 49297) % 233280;
+        return value / 233280;
+    };
+}
+
+// Check if we need to reset used languages (new day)
+function checkAndResetUsedLanguages() {
+    const currentDate = getCurrentDateString();
+    const lastPlayedDate = localStorage.getItem('langlio_last_played_date');
+    
+    if (lastPlayedDate !== currentDate) {
+        // New day, reset used languages
+        usedLanguages = [];
+        localStorage.setItem('langlio_last_played_date', currentDate);
+        localStorage.setItem('langlio_used_languages', JSON.stringify(usedLanguages));
+        console.log('New day detected, resetting used languages');
+    } else {
+        // Same day, load used languages from localStorage
+        const savedUsedLanguages = localStorage.getItem('langlio_used_languages');
+        if (savedUsedLanguages) {
+            usedLanguages = JSON.parse(savedUsedLanguages);
+        }
+    }
+}
+
+// Check if user has already played today (for daily mode)
+function hasPlayedToday() {
+    if (dev_mode) return false; // Dev mode allows unlimited plays
+    
+    const currentDate = getCurrentDateString();
+    const lastPlayedDate = localStorage.getItem('langlio_last_played_date');
+    const savedUsedLanguages = localStorage.getItem('langlio_used_languages');
+    
+    if (lastPlayedDate === currentDate && savedUsedLanguages) {
+        const usedLangs = JSON.parse(savedUsedLanguages);
+        return usedLangs.length > 0;
+    }
+    
+    return false;
+}
+
+// Get language for current game (daily or random based on dev_mode)
+function getCurrentGameLanguage() {
+    if (dev_mode) {
+        // Dev mode: return random language
+        const availableLanguages = Object.keys(gameData);
+        if (availableLanguages.length === 0) return null;
+        return availableLanguages[Math.floor(Math.random() * availableLanguages.length)];
+    } else {
+        // Daily mode: return the same language for the entire day
+        const currentDate = getCurrentDateString();
+        const dailyLanguage = getDailyLanguage(currentDate);
+        
+        // In daily mode, always return the same language for the day
+        // The usedLanguages tracking is for preventing multiple plays per day
+        return dailyLanguage;
+    }
+}
+
+// Mark language as used (for daily mode)
+function markLanguageAsUsed(language) {
+    if (!dev_mode && language) {
+        if (!usedLanguages.includes(language)) {
+            usedLanguages.push(language);
+            localStorage.setItem('langlio_used_languages', JSON.stringify(usedLanguages));
+        }
+    }
 }
 
 // Populate dropdowns with languages and countries
@@ -417,10 +579,23 @@ function showLanguageDropdown() {
 
 // Add event listeners
 function addEventListeners() {
-    submitLanguageGuessEl.addEventListener('click', submitLanguageGuess);
-    submitCountryGuessEl.addEventListener('click', submitCountryGuess);
-    hintBtnEl.addEventListener('click', toggleHint);
-    playNextBtnEl.addEventListener('click', startCountryPhase);
+    // Remove any existing event listeners to prevent duplicates
+    if (submitLanguageGuessEl) {
+        submitLanguageGuessEl.removeEventListener('click', submitLanguageGuess);
+        submitLanguageGuessEl.addEventListener('click', submitLanguageGuess);
+    }
+    if (submitCountryGuessEl) {
+        submitCountryGuessEl.removeEventListener('click', submitCountryGuess);
+        submitCountryGuessEl.addEventListener('click', submitCountryGuess);
+    }
+    if (hintBtnEl) {
+        hintBtnEl.removeEventListener('click', toggleHint);
+        hintBtnEl.addEventListener('click', toggleHint);
+    }
+    if (playNextBtnEl) {
+        playNextBtnEl.removeEventListener('click', startCountryPhase);
+        playNextBtnEl.addEventListener('click', startCountryPhase);
+    }
     
     // Add event listeners for share buttons if they exist
     if (shareBtnEl) {
@@ -431,27 +606,42 @@ function addEventListeners() {
     }
     
     // Instructions popup event listeners
-    closeInstructionsEl.addEventListener('click', closeInstructions);
-    startGameBtnEl.addEventListener('click', closeInstructions);
+    if (closeInstructionsEl) {
+        // Remove existing listener to prevent duplicates
+        closeInstructionsEl.removeEventListener('click', closeInstructions);
+        closeInstructionsEl.addEventListener('click', closeInstructions);
+    }
+    
+    if (startGameBtnEl) {
+        // Remove existing listener to prevent duplicates
+        startGameBtnEl.removeEventListener('click', closeInstructions);
+        startGameBtnEl.addEventListener('click', closeInstructions);
+    }
     
     // Close instructions when clicking outside
-    instructionsPopupEl.addEventListener('click', (e) => {
-        if (e.target === instructionsPopupEl) {
-            closeInstructions();
-        }
-    });
+    if (instructionsPopupEl) {
+        // Remove existing listener to prevent duplicates
+        instructionsPopupEl.removeEventListener('click', closeInstructions);
+        instructionsPopupEl.addEventListener('click', (e) => {
+            if (e.target === instructionsPopupEl) {
+                closeInstructions();
+            }
+        });
+    }
     
     // Add keyboard shortcuts
     document.addEventListener('keydown', (e) => {
+        // Close instructions with Escape key
+        if (e.key === 'Escape' && instructionsPopupEl.style.display !== 'none') {
+            closeInstructions();
+        }
+        
+        // Handle Enter key for language guesses
         if (e.key === 'Enter' && !currentGame.gameOver) {
             // Only submit language guesses when Enter is pressed
             // Country guesses should be submitted manually via the submit button
             if (currentGame.currentPhase === 'language') {
                 submitLanguageGuess();
-            }
-            // Close instructions with Escape key
-            if (e.key === 'Escape' && instructionsPopupEl.style.display !== 'none') {
-                closeInstructions();
             }
         }
     });
@@ -641,6 +831,11 @@ function submitLanguageGuess() {
         }
     }
     
+    // Mark that user has played today when language phase ends (for daily mode)
+    if (!dev_mode && (currentGame.languageGuessed || currentGame.languageAttempts <= 0)) {
+        markLanguageAsUsed(currentGame.correctLanguage);
+    }
+    
     // Save game state
     saveGameState();
 }
@@ -660,19 +855,30 @@ function generateCountryInputs(correctLanguage) {
     const totalCountries = languageData.countries.length;
     const numCountries = Math.min(3, totalCountries);
     
-    // Create a mapping of positions to countries based on the original guesses
+    // Create a mapping of positions to countries based on the saved state
     const positionToCountry = {};
     const countryToPosition = {};
     
-    // Get the most recent country guess to determine positions
-    const lastCountryGuess = currentGame.guesses.filter(g => g.countries.length > 0).pop();
-    if (lastCountryGuess) {
-        lastCountryGuess.countries.forEach((country, index) => {
-            if (currentGame.correctlyGuessedCountries.includes(country)) {
-                positionToCountry[index] = country;
-                countryToPosition[country] = index;
-            }
+    // Use the saved correctCountryPositions if available, otherwise use the most recent guess
+    if (currentGame.correctCountryPositions && Object.keys(currentGame.correctCountryPositions).length > 0) {
+        // Use saved positions
+        Object.keys(currentGame.correctCountryPositions).forEach(position => {
+            const country = currentGame.correctCountryPositions[position];
+            const positionIndex = parseInt(position);
+            positionToCountry[positionIndex] = country;
+            countryToPosition[country] = positionIndex;
         });
+    } else {
+        // Fallback to most recent country guess
+        const lastCountryGuess = currentGame.guesses.filter(g => g.countries.length > 0).pop();
+        if (lastCountryGuess) {
+            lastCountryGuess.countries.forEach((country, index) => {
+                if (currentGame.correctlyGuessedCountries.includes(country)) {
+                    positionToCountry[index] = country;
+                    countryToPosition[country] = index;
+                }
+            });
+        }
     }
     
     console.log('Position to country mapping:', positionToCountry);
@@ -858,7 +1064,7 @@ function submitCountryGuess() {
             !currentGame.correctlyGuessedCountries.includes(country)) {
             currentGame.correctlyGuessedCountries.push(country);
             // Track the position where this country was guessed
-            currentGame.correctCountryPositions[country] = index;
+            currentGame.correctCountryPositions[index] = country;
             newCorrectGuesses++;
             console.log(`New correct guess: ${country} at position ${index}`);
         }
@@ -977,6 +1183,7 @@ function updateGuessesHistory() {
 // End game
 function endGame(won) {
     currentGame.gameOver = true;
+    currentGame.gameWon = won;
     
     if (currentGame.currentPhase === 'countries') {
         // Trigger confetti for winning the country phase
@@ -1028,6 +1235,11 @@ function endGame(won) {
         updateUI();
     }
     
+    // Mark that user has played today (for daily mode)
+    if (!dev_mode) {
+        markLanguageAsUsed(currentGame.correctLanguage);
+    }
+    
     // Save game state
     saveGameState();
 }
@@ -1042,6 +1254,7 @@ function resetGame() {
         correctLanguage: "",
         correctCountries: [],
         gameOver: false,
+        gameWon: false,
         currentPhase: 'language',
         currentLanguageGuess: null,
         languageGuessed: false,
@@ -1068,7 +1281,6 @@ function resetGame() {
     // Reset phases
     languagePhaseEl.style.display = 'block';
     countryPhaseEl.style.display = 'none';
-    languageResultEl.innerHTML = '';
     countryShareSectionEl.style.display = 'none';
     
     // Reset language input section
@@ -1085,7 +1297,7 @@ function resetGame() {
     languageGuessEl.disabled = false;
     hintBtnEl.style.display = 'block';
     
-    // Reinitialize with new random language
+    // Reinitialize with new language (daily or random based on dev_mode)
     initGame().catch(error => {
         console.error('Error reinitializing game:', error);
     });
@@ -1093,28 +1305,70 @@ function resetGame() {
 
 // Save game state to localStorage
 function saveGameState() {
+    console.log('Saving game state...');
     const gameState = {
         ...currentGame,
-        date: new Date().toISOString().split('T')[0]
+        date: getCurrentDateString()
     };
     localStorage.setItem('langlioGameState', JSON.stringify(gameState));
+    console.log('Game state saved successfully');
+}
+
+// Show message when user has already played today
+function showAlreadyPlayedMessage() {
+    // Clear the sentence display
+    dailySentenceEl.textContent = 'You have already played today! Come back tomorrow for a new language.';
+    dailySentenceEl.style.textAlign = 'center';
+    dailySentenceEl.style.fontSize = '1.5rem';
+    dailySentenceEl.style.color = '#ffffff';
+    
+    // Hide all game elements
+    languageInputRowEl.style.display = 'none';
+    hintBtnEl.style.display = 'none';
+    languageGuessesHistoryEl.style.display = 'none';
+    countryPhaseEl.style.display = 'none';
+    
+    // Show a message about the daily language
+    const currentDate = getCurrentDateString();
+    const dailyLanguage = getDailyLanguage(currentDate);
+    console.log('Daily language for today:', dailyLanguage);
 }
 
 // Load game state from localStorage
 function loadGameState() {
+    console.log('loadGameState called');
     const savedState = localStorage.getItem('langlioGameState');
+    console.log('Saved state found:', !!savedState);
     if (savedState) {
         const gameState = JSON.parse(savedState);
-        const today = new Date().toISOString().split('T')[0];
+        const currentDate = getCurrentDateString();
         
-        // Only load if it's from today
-        if (gameState.date === today) {
+        // Only load if it's from today (or if in dev mode, allow loading)
+        if (dev_mode || gameState.date === currentDate) {
+            console.log('Loading game state for date:', gameState.date);
             currentGame = gameState;
             currentGame.isNewGame = false; // Mark as loaded game, not new game
             
             // Ensure correctlyGuessedCountries exists (for backward compatibility)
             if (!currentGame.correctlyGuessedCountries) {
                 currentGame.correctlyGuessedCountries = [];
+            }
+            
+            // Ensure correctCountryPositions exists (for backward compatibility)
+            if (!currentGame.correctCountryPositions) {
+                currentGame.correctCountryPositions = {};
+            }
+            
+            // Debug: Log the saved state for country positions
+            console.log('Loading saved game state - correctlyGuessedCountries:', currentGame.correctlyGuessedCountries);
+            console.log('Loading saved game state - correctCountryPositions:', currentGame.correctCountryPositions);
+            
+            // Populate dropdowns for the loaded game
+            populateDropdowns();
+            
+            // Display the sentence for the loaded game
+            if (currentGame.dailySentence) {
+                dailySentenceEl.textContent = currentGame.dailySentence;
             }
             
             updateUI();
@@ -1130,7 +1384,10 @@ function loadGameState() {
             if (currentGame.currentPhase === 'countries' && currentGame.currentLanguageGuess) {
                 languagePhaseEl.style.display = 'none';
                 countryPhaseEl.style.display = 'block';
-                generateCountryInputs(currentGame.correctLanguage);
+                
+                // Update the guess prompt for country phase
+                guessPromptEl.innerHTML = `Guess what countries speak <span style="color: #D2B48C;">${currentGame.correctLanguage}</span>`;
+                guessPromptEl.style.color = '00beed'; // Light blue color for the main text
                 
                 // Hide hint button in country phase
                 hintBtnEl.style.display = 'none';
@@ -1138,33 +1395,98 @@ function loadGameState() {
                 // Hide hint display in country phase
                 hintDisplayEl.style.display = 'none';
                 
-                // Show language result
+                // Keep translation visible during country guessing round
+                const languageData = gameData[currentGame.correctLanguage];
+                if (languageData && languageData.translation) {
+                    translationDisplayEl.textContent = languageData.translation;
+                    translationDisplayEl.style.display = 'block';
+                }
+                
+                // Show language result in the country phase
                 const isCorrect = currentGame.currentLanguageGuess === currentGame.correctLanguage;
-                languageResultEl.innerHTML = `
-                    <div class="language-result-display">
-                        <span class="result-label">Language:</span>
-                        <span class="result-value ${isCorrect ? 'correct' : 'incorrect'}">
-                            ${currentGame.currentLanguageGuess} ${isCorrect ? '✓' : '✗'}
-                        </span>
-                    </div>
-                `;
+                // Note: The language result is already shown in the language phase, 
+                // so we don't need to recreate it here in the country phase
+            } else if (currentGame.languageGuessed || currentGame.languageAttempts <= 0) {
+                // Language phase is complete but user hasn't moved to country phase yet
+                // Hide input section
+                languageInputRowEl.style.display = 'none';
+                
+                // Hide hint button
+                hintBtnEl.style.display = 'none';
+                
+                // Hide hint display
+                hintDisplayEl.style.display = 'none';
+                
+                // Show success/failure message
+                languageResultMessageEl.style.display = 'block';
+                if (currentGame.languageGuessed) {
+                    languageResultTextEl.textContent = 'You guessed the language!';
+                    languageResultTextEl.className = 'result-text success';
+                } else {
+                    languageResultTextEl.textContent = 'Better luck next time!';
+                    languageResultTextEl.className = 'result-text failure';
+                }
+                
+                // Show correct language and translation
+                correctLanguageInfoEl.style.display = 'block';
+                correctLanguageDisplayEl.textContent = currentGame.correctLanguage;
+                const languageData = gameData[currentGame.correctLanguage];
+                if (languageData && languageData.translation) {
+                    translationDisplayEl.textContent = languageData.translation;
+                    translationDisplayEl.style.display = 'block';
+                }
+                
+                // Show "Play Next" button and share button
+                playNextSectionEl.style.display = 'block';
+                
+                // Show share button for language phase if it exists
+                if (shareBtnLanguageEl) {
+                    shareBtnLanguageEl.style.display = 'inline-block';
+                }
             }
             
             if (currentGame.gameOver) {
-                endGame(false);
+                endGame(currentGame.gameWon || false);
             } else if (currentGame.currentPhase === 'countries') {
                 // If we're in country phase but game isn't over, regenerate country inputs
                 generateCountryInputs(currentGame.correctLanguage);
             }
+            
+            // Initialize confetti for loaded game
+            if (confettiCanvasEl && !confetti) {
+                confetti = new Confetti(confettiCanvasEl);
+            }
+        } else {
+            console.log('Game state date mismatch or dev mode issue');
+            console.log('Game state date:', gameState.date);
+            console.log('Current date:', currentDate);
+            console.log('Dev mode:', dev_mode);
+            // User has already played today but no saved state (edge case)
+            showAlreadyPlayedMessage();
         }
+    } else {
+        // No saved state - this means we should start a fresh game
+        // The hasPlayedToday() check is handled in initGame() before calling loadGameState()
+        console.log('No saved game state found, starting fresh game');
+        console.log('This should return to initGame() to start a new game');
     }
 }
 
 // Close instructions popup
 function closeInstructions() {
-    instructionsPopupEl.style.display = 'none';
+    if (instructionsPopupEl) {
+        instructionsPopupEl.style.display = 'none';
+    }
+    
     // Save that user has seen instructions
-    localStorage.setItem('langlioInstructionsSeen', 'true');
+    if (dev_mode) {
+        // Dev mode: save that user has seen instructions (forever)
+        localStorage.setItem('langlioInstructionsSeen', 'true');
+    } else {
+        // Daily mode: save that user has seen instructions for today
+        const currentDate = getCurrentDateString();
+        localStorage.setItem(`langlioInstructionsSeen_${currentDate}`, 'true');
+    }
 }
 
 // Show instructions popup
@@ -1429,12 +1751,31 @@ function fallbackCopyTextToClipboard(text) {
 document.addEventListener('DOMContentLoaded', async () => {
     try {
         console.log('DOM loaded, starting initialization...');
-        await initGame();
         
-        // Show instructions if user hasn't seen them before
-        const instructionsSeen = localStorage.getItem('langlioInstructionsSeen');
-        if (!instructionsSeen) {
-            showInstructions();
+        // Initialize DOM elements first (always needed for instructions)
+        initializeDOMElements();
+        
+        // Add event listeners (always needed for instructions)
+        addEventListeners();
+        
+        const gameStarted = await initGame();
+        
+        // Show instructions logic only if we started a fresh game (not loaded from saved state)
+        if (gameStarted !== 'loaded') {
+            if (dev_mode) {
+                // Dev mode: show instructions only if user hasn't seen them before (ever)
+                const instructionsSeen = localStorage.getItem('langlioInstructionsSeen');
+                if (!instructionsSeen) {
+                    showInstructions();
+                }
+            } else {
+                // Daily mode: show instructions only if user hasn't seen them today
+                const currentDate = getCurrentDateString();
+                const instructionsSeenToday = localStorage.getItem(`langlioInstructionsSeen_${currentDate}`);
+                if (!instructionsSeenToday) {
+                    showInstructions();
+                }
+            }
         }
         // Ensure hint is hidden on load
         hintDisplayEl.classList.remove('show');
