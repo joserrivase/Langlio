@@ -14,41 +14,29 @@ let currentDailyLanguage = null; // Current daily language
 
 // Comprehensive list of top 100+ languages
 const allLanguages = [
-    "English", "Mandarin Chinese", "Hindi", "Spanish", "French", "Standard Arabic", "Bengali", "Portuguese", "Russian", "Urdu",
-    "Indonesian", "German", "Japanese", "Nigerian Pidgin", "Marathi", "Telugu", "Turkish", "Tamil", "Yue Chinese (Cantonese)", "Vietnamese",
-    "Korean", "Wu Chinese (Shanghainese)", "Javanese", "Hausa", "Egyptian Arabic", "Swahili", "Italian", "Thai", "Gujarati", "Kannada",
-    "Bhojpuri", "Polish", "Pashto", "Xiang Chinese (Hunanese)", "Malayalam", "Dutch", "Persian", "Ukrainian", "Romanian", "Oromo",
-    "Igbo", "Amharic", "Yoruba", "Sindhi", "Cebuano", "Malay", "Nepali", "Sinhala", "Khmer", "Zulu",
-    "Czech", "Greek", "Hungarian", "Bulgarian", "Slovak", "Catalan", "Hebrew", "Finnish", "Norwegian", "Danish",
-    "Swedish", "Lithuanian", "Latvian", "Estonian", "Icelandic", "Albanian", "Macedonian", "Slovenian", "Croatian", "Serbian",
-    "Bosnian", "Montenegrin", "Georgian", "Armenian", "Azerbaijani", "Kazakh", "Kyrgyz", "Uzbek", "Turkmen", "Tajik",
-    "Mongolian", "Tibetan", "Burmese", "Lao", "Khmer", "Filipino", "Malagasy", "Somali", "Dinka", "Luo",
-    "Kikuyu", "Luhya", "Kamba", "Kalenjin", "Maasai", "Tigrinya", "Tigre", "Afar", "Beja", "Nuer",
-    "Shilluk", "Anuak", "Acholi", "Lango", "Alur", "Kumam", "Iteso", "Karimojong", "Jie", "Tepeth"
+    "Afrikaans", "Albanian", "Amharic", "Arabic", "Armenian", "Aymara", "Azerbaijani", "Bambara", "Belarusian", "Bengali", "Bislama", "Bosnian", "Bulgarian", "Burmese", "Catalan", "Chamorro", "Mandarin Chinese", 
+    "Croatian", "Czech", "Danish", "Dhivehi", "Dutch", "Dzongkha", "English", "Estonian", "Fijian", "Finnish", "French", "Georgian", "German", "Greek", "Guarani", "Gujarati", "Haitian Creole", "Hausa", "Hebrew", 
+    "Hindi", "Hungarian", "Icelandic", "Indonesian", "Irish", "Italian", "Japanese", "Kannada", "Kazakh", "Khmer", "Kinyarwanda", "Korean", "Kurdish", "Kyrgyz", "Lao", "Latvian", "Lithuanian", "Luxembourgish", 
+    "Macedonian", "Malagasy", "Malay", "Malayalam", "Maltese", "Maori", "Marathi", "Marshallese", "Mongolian", "Montenegrin", "Nauruan", "Nepali", "Norwegian", "Pashto", "Persian", "Polish", "Portuguese", "Punjabi", 
+    "Quechua", "Romanian", "Russian", "Samoan", "Sango", "Serbian", "Sesotho", "Setswana", "Shona", "Sinhala", "Slovak", "Slovene", "Somali", "Spanish", "Swahili", "Swedish", "Tajik", "Tamil", "Telugu", "Tetum", 
+    "Thai", "Tigrinya", "Tok Pisin", "Tongan", "Turkish", "Turkmen", "Tuvaluan", "Ukrainian", "Urdu", "Uzbek", "Vietnamese", "Xhosa", "Zulu"
 ];
 
-// Comprehensive list of all recognized countries
+
 const allCountriesList = [
-    "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria",
-    "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan",
-    "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia",
-    "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Costa Rica",
-    "Croatia", "Cuba", "Cyprus", "Czech Republic", "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor",
-    "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland",
-    "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea",
-    "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq",
-    "Ireland", "Israel", "Italy", "Ivory Coast", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati",
-    "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania",
-    "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius",
-    "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia",
-    "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "North Macedonia", "Norway",
-    "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal",
-    "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe",
-    "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia",
-    "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria",
-    "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan",
-    "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City",
-    "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
+"Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",
+"Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi",
+"Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic", "North Korea", "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica", "Dominican Republic",
+"Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana",
+"Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan",
+"Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg",
+"Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Norway",
+"Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal",
+"Qatar", "South Korea", "Moldova", "Romania", "Russia", "Rwanda",
+"Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria",
+"Tajikistan", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu",
+"Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "Tanzania", "United States of America", "Uruguay", "Uzbekistan",
+"Vanuatu", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe", "Taiwan", "Puerto Rico", "Palestine", "Vatican City"
 ];
 
 // Load game data from JSON file
@@ -144,8 +132,8 @@ function initializeCountryFlags() {
         "Afghanistan": "🇦🇫", "Albania": "🇦🇱", "Algeria": "🇩🇿", "Andorra": "🇦🇩", "Angola": "🇦🇴", "Antigua and Barbuda": "🇦🇬", "Argentina": "🇦🇷", "Armenia": "🇦🇲", "Australia": "🇦🇺", "Austria": "🇦🇹", "Azerbaijan": "🇦🇿",
         "Bahamas": "🇧🇸", "Bahrain": "🇧🇭", "Bangladesh": "🇧🇩", "Barbados": "🇧🇧", "Belarus": "🇧🇾", "Belgium": "🇧🇪", "Belize": "🇧🇿", "Benin": "🇧🇯", "Bhutan": "🇧🇹", "Bolivia": "🇧🇴", "Bosnia and Herzegovina": "🇧🇦", "Botswana": "🇧🇼", "Brazil": "🇧🇷", "Brunei": "🇧🇳", "Bulgaria": "🇧🇬", "Burkina Faso": "🇧🇫", "Burundi": "🇧🇮",
         "Cabo Verde": "🇨🇻", "Cambodia": "🇰🇭", "Cameroon": "🇨🇲", "Canada": "🇨🇦", "Central African Republic": "🇨🇫", "Chad": "🇹🇩", "Chile": "🇨🇱", "China": "🇨🇳", "Colombia": "🇨🇴", "Comoros": "🇰🇲", "Congo": "🇨🇬", "Costa Rica": "🇨🇷", "Croatia": "🇭🇷", "Cuba": "🇨🇺", "Cyprus": "🇨🇾", "Czech Republic": "🇨🇿",
-        "Democratic Republic of the Congo": "🇨🇩", "Denmark": "🇩🇰", "Djibouti": "🇩🇯", "Dominica": "🇩🇲", "Dominican Republic": "🇩🇴",
-        "East Timor": "🇹🇱", "Ecuador": "🇪🇨", "Egypt": "🇪🇬", "El Salvador": "🇸🇻", "Equatorial Guinea": "🇬🇶", "Eritrea": "🇪🇷", "Estonia": "🇪🇪", "Eswatini": "🇸🇿", "Ethiopia": "🇪🇹",
+        "North Korea": "🇰🇵", "Democratic Republic of the Congo": "🇨🇩", "Denmark": "🇩🇰", "Djibouti": "🇩🇯", "Dominica": "🇩🇲", "Dominican Republic": "🇩🇴",
+        "Ecuador": "🇪🇨", "Egypt": "🇪🇬", "El Salvador": "🇸🇻", "Equatorial Guinea": "🇬🇶", "Eritrea": "🇪🇷", "Estonia": "🇪🇪", "Eswatini": "🇸🇿", "Ethiopia": "🇪🇹",
         "Fiji": "🇫🇯", "Finland": "🇫🇮", "France": "🇫🇷",
         "Gabon": "🇬🇦", "Gambia": "🇬🇲", "Georgia": "🇬🇪", "Germany": "🇩🇪", "Ghana": "🇬🇭", "Greece": "🇬🇷", "Grenada": "🇬🇩", "Guatemala": "🇬🇹", "Guinea": "🇬🇳", "Guinea-Bissau": "🇬🇼", "Guyana": "🇬🇾",
         "Haiti": "🇭🇹", "Honduras": "🇭🇳", "Hungary": "🇭🇺",
@@ -154,17 +142,17 @@ function initializeCountryFlags() {
         "Kazakhstan": "🇰🇿", "Kenya": "🇰🇪", "Kiribati": "🇰🇮", "Kuwait": "🇰🇼", "Kyrgyzstan": "🇰🇬",
         "Laos": "🇱🇦", "Latvia": "🇱🇻", "Lebanon": "🇱🇧", "Lesotho": "🇱🇸", "Liberia": "🇱🇷", "Libya": "🇱🇾", "Liechtenstein": "🇱🇮", "Lithuania": "🇱🇹", "Luxembourg": "🇱🇺",
         "Madagascar": "🇲🇬", "Malawi": "🇲🇼", "Malaysia": "🇲🇾", "Maldives": "🇲🇻", "Mali": "🇲🇱", "Malta": "🇲🇹", "Marshall Islands": "🇲🇭", "Mauritania": "🇲🇷", "Mauritius": "🇲🇺", "Mexico": "🇲🇽", "Micronesia": "🇫🇲", "Moldova": "🇲🇩", "Monaco": "🇲🇨", "Mongolia": "🇲🇳", "Montenegro": "🇲🇪", "Morocco": "🇲🇦", "Mozambique": "🇲🇿", "Myanmar": "🇲🇲",
-        "Namibia": "🇳🇦", "Nauru": "🇳🇷", "Nepal": "🇳🇵", "Netherlands": "🇳🇱", "New Zealand": "🇳🇿", "Nicaragua": "🇳🇮", "Niger": "🇳🇪", "Nigeria": "🇳🇬", "North Korea": "🇰🇵", "North Macedonia": "🇲🇰", "Norway": "🇳🇴",
+        "Namibia": "🇳🇦", "Nauru": "🇳🇷", "Nepal": "🇳🇵", "Netherlands": "🇳🇱", "New Zealand": "🇳🇿", "Nicaragua": "🇳🇮", "Niger": "🇳🇪", "Nigeria": "🇳🇬", "North Macedonia": "🇲🇰", "Norway": "🇳🇴",
         "Oman": "🇴🇲",
         "Pakistan": "🇵🇰", "Palau": "🇵🇼", "Panama": "🇵🇦", "Papua New Guinea": "🇵🇬", "Paraguay": "🇵🇾", "Peru": "🇵🇪", "Philippines": "🇵🇭", "Poland": "🇵🇱", "Portugal": "🇵🇹",
         "Qatar": "🇶🇦",
-        "Romania": "🇷🇴", "Russia": "🇷🇺", "Rwanda": "🇷🇼",
-        "Saint Kitts and Nevis": "🇰🇳", "Saint Lucia": "🇱🇨", "Saint Vincent and the Grenadines": "🇻🇨", "Samoa": "🇼🇸", "San Marino": "🇸🇲", "Sao Tome and Principe": "🇸🇹", "Saudi Arabia": "🇸🇦", "Senegal": "🇸🇳", "Serbia": "🇷🇸", "Seychelles": "🇸🇨", "Sierra Leone": "🇸🇱", "Singapore": "🇸🇬", "Slovakia": "🇸🇰", "Slovenia": "🇸🇮", "Solomon Islands": "🇸🇧", "Somalia": "🇸🇴", "South Africa": "🇿🇦", "South Korea": "🇰🇷", "South Sudan": "🇸🇸", "Spain": "🇪🇸", "Sri Lanka": "🇱🇰", "Sudan": "🇸🇩", "Suriname": "🇸🇷", "Sweden": "🇸🇪", "Switzerland": "🇨🇭", "Syria": "🇸🇾",
-        "Taiwan": "🇹🇼", "Tajikistan": "🇹🇯", "Tanzania": "🇹🇿", "Thailand": "🇹🇭", "Togo": "🇹🇬", "Tonga": "🇹🇴", "Trinidad and Tobago": "🇹🇹", "Tunisia": "🇹🇳", "Turkey": "🇹🇷", "Turkmenistan": "🇹🇲", "Tuvalu": "🇹🇻",
-        "Uganda": "🇺🇬", "Ukraine": "🇺🇦", "United Arab Emirates": "🇦🇪", "United Kingdom": "🇬🇧", "United States": "🇺🇸", "Uruguay": "🇺🇾", "Uzbekistan": "🇺🇿",
-        "Vanuatu": "🇻🇺", "Vatican City": "🇻🇦", "Venezuela": "🇻🇪", "Vietnam": "🇻🇳",
+        "South Korea": "🇰🇷", "Moldova": "🇲🇩", "Romania": "🇷🇴", "Russia": "🇷🇺", "Rwanda": "🇷🇼",
+        "Saint Kitts and Nevis": "🇰🇳", "Saint Lucia": "🇱🇨", "Saint Vincent and the Grenadines": "🇻🇨", "Samoa": "🇼🇸", "San Marino": "🇸🇲", "Sao Tome and Principe": "🇸🇹", "Saudi Arabia": "🇸🇦", "Senegal": "🇸🇳", "Serbia": "🇷🇸", "Seychelles": "🇸🇨", "Sierra Leone": "🇸🇱", "Singapore": "🇸🇬", "Slovakia": "🇸🇰", "Slovenia": "🇸🇮", "Solomon Islands": "🇸🇧", "Somalia": "🇸🇴", "South Africa": "🇿🇦", "South Sudan": "🇸🇸", "Spain": "🇪🇸", "Sri Lanka": "🇱🇰", "Sudan": "🇸🇩", "Suriname": "🇸🇷", "Sweden": "🇸🇪", "Switzerland": "🇨🇭", "Syria": "🇸🇾",
+        "Taiwan": "🇹🇼", "Tajikistan": "🇹🇯", "Tanzania": "🇹🇿", "Thailand": "🇹🇭", "Timor-Leste": "🇹🇱", "Togo": "🇹🇬", "Tonga": "🇹🇴", "Trinidad and Tobago": "🇹🇹", "Tunisia": "🇹🇳", "Turkey": "🇹🇷", "Turkmenistan": "🇹🇲", "Tuvalu": "🇹🇻",
+        "Uganda": "🇺🇬", "Ukraine": "🇺🇦", "United Arab Emirates": "🇦🇪", "United Kingdom": "🇬🇧", "United States of America": "🇺🇸", "Uruguay": "🇺🇾", "Uzbekistan": "🇺🇿",
+        "Vanuatu": "🇻🇺", "Venezuela": "🇻🇪", "Vietnam": "🇻🇳",
         "Yemen": "🇾🇪",
-        "Zambia": "🇿🇲", "Zimbabwe": "🇿🇼"
+        "Zambia": "🇿🇲", "Zimbabwe": "🇿🇼", "Puerto Rico": "🇵🇷", "Palestine": "🇵🇸", "Vatican City": "🇻🇦"
     };
 }
 
@@ -269,19 +257,25 @@ async function initGame() {
         // Load game data from JSON file
         await loadGameData();
         
-        // Check if there's a saved game state first
-        const savedState = localStorage.getItem('langlioGameState');
-        if (savedState) {
-            console.log('Found saved game state, loading...');
-            try {
-                loadGameState();
-                return 'loaded';
-            } catch (error) {
-                console.error('Error loading saved state:', error);
-                console.log('Clearing corrupted saved state and starting fresh...');
-                localStorage.removeItem('langlio_game_state');
-                // Continue with fresh game initialization
+        // Check if there's a saved game state first (only in daily mode)
+        if (!dev_mode) {
+            const savedState = localStorage.getItem('langlioGameState');
+            if (savedState) {
+                console.log('Found saved game state, loading...');
+                try {
+                    loadGameState();
+                    return 'loaded';
+                } catch (error) {
+                    console.error('Error loading saved state:', error);
+                    console.log('Clearing corrupted saved state and starting fresh...');
+                    localStorage.removeItem('langlio_game_state');
+                    // Continue with fresh game initialization
+                }
             }
+        } else {
+            // Dev mode: always start fresh, clear any saved state
+            console.log('Dev mode: clearing saved state and starting fresh game');
+            localStorage.removeItem('langlioGameState');
         }
         
         // Check and reset used languages for daily mode
@@ -294,6 +288,10 @@ async function initGame() {
                 // Load the existing game state instead of showing the message
                 loadGameState();
                 return 'loaded';
+            } else {
+                // New day detected, clear any old game state
+                console.log('New day detected, clearing old game state');
+                localStorage.removeItem('langlioGameState');
             }
         }
         
@@ -432,18 +430,25 @@ function checkAndResetUsedLanguages() {
     const currentDate = getCurrentDateString();
     const lastPlayedDate = localStorage.getItem('langlio_last_played_date');
     
+    console.log('Checking for new day - Current date:', currentDate, 'Last played date:', lastPlayedDate);
+    
     if (lastPlayedDate !== currentDate) {
         // New day, reset used languages
         usedLanguages = [];
         localStorage.setItem('langlio_last_played_date', currentDate);
         localStorage.setItem('langlio_used_languages', JSON.stringify(usedLanguages));
         console.log('New day detected, resetting used languages');
+        
+        // Also clear any old game state from previous day
+        localStorage.removeItem('langlioGameState');
+        console.log('Cleared old game state for new day');
     } else {
         // Same day, load used languages from localStorage
         const savedUsedLanguages = localStorage.getItem('langlio_used_languages');
         if (savedUsedLanguages) {
             usedLanguages = JSON.parse(savedUsedLanguages);
         }
+        console.log('Same day, loaded used languages:', usedLanguages);
     }
 }
 
@@ -455,11 +460,16 @@ function hasPlayedToday() {
     const lastPlayedDate = localStorage.getItem('langlio_last_played_date');
     const savedUsedLanguages = localStorage.getItem('langlio_used_languages');
     
+    console.log('hasPlayedToday check - Current date:', currentDate, 'Last played date:', lastPlayedDate);
+    console.log('Saved used languages:', savedUsedLanguages);
+    
     if (lastPlayedDate === currentDate && savedUsedLanguages) {
         const usedLangs = JSON.parse(savedUsedLanguages);
+        console.log('Used languages for today:', usedLangs);
         return usedLangs.length > 0;
     }
     
+    console.log('User has not played today');
     return false;
 }
 
@@ -1553,6 +1563,9 @@ function startCountryPhase() {
     
     // Save game state
     saveGameState();
+    
+    // Scroll to the top of the page
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // Confetti animation
@@ -1760,21 +1773,19 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         const gameStarted = await initGame();
         
-        // Show instructions logic only if we started a fresh game (not loaded from saved state)
-        if (gameStarted !== 'loaded') {
-            if (dev_mode) {
-                // Dev mode: show instructions only if user hasn't seen them before (ever)
-                const instructionsSeen = localStorage.getItem('langlioInstructionsSeen');
-                if (!instructionsSeen) {
-                    showInstructions();
-                }
-            } else {
-                // Daily mode: show instructions only if user hasn't seen them today
-                const currentDate = getCurrentDateString();
-                const instructionsSeenToday = localStorage.getItem(`langlioInstructionsSeen_${currentDate}`);
-                if (!instructionsSeenToday) {
-                    showInstructions();
-                }
+        // Show instructions logic - check if user has seen instructions for today
+        if (dev_mode) {
+            // Dev mode: show instructions only if user hasn't seen them before (ever)
+            const instructionsSeen = localStorage.getItem('langlioInstructionsSeen');
+            if (!instructionsSeen) {
+                showInstructions();
+            }
+        } else {
+            // Daily mode: show instructions only if user hasn't seen them today
+            const currentDate = getCurrentDateString();
+            const instructionsSeenToday = localStorage.getItem(`langlioInstructionsSeen_${currentDate}`);
+            if (!instructionsSeenToday) {
+                showInstructions();
             }
         }
         // Ensure hint is hidden on load

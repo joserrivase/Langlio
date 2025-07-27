@@ -810,7 +810,8 @@ header h1 {
     align-items: center;
     justify-content: flex-start;
     gap: 1rem;
-    margin-top: 0.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
 } 
 
 /* Make guess slots fill the whole width and center content */
