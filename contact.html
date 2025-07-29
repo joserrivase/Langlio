@@ -164,7 +164,6 @@
                     <form id="contactForm" action="https://formspree.io/f/xvgqabbd" method="POST">
                         <input type="hidden" name="_replyto" value="contactmichaelandjose@gmail.com">
                         <input type="hidden" name="_subject" value="New Contact Form Submission - Langlio">
-                        <input type="hidden" name="_next" value="https://joserivas.github.io/Langlio/contact.html?success=true">
                         <div class="form-group">
                             <label for="name">Name:</label>
                             <input type="text" id="name" name="name" required>
@@ -225,31 +224,56 @@
     
     <script>
         document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent the default form submission
+            
             const submitBtn = document.getElementById('submitBtn');
             const originalText = submitBtn.textContent;
+            
+            // Validate form
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const subject = document.getElementById('subject').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            if (!name || !email || !subject || !message) {
+                showMessage('Please fill in all fields.', 'error');
+                return;
+            }
             
             // Show loading state
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
             
-            // Let the form submit normally to Formspree
-            // Formspree will handle the email sending
-        });
-        
-        // Handle form submission response
-        window.addEventListener('load', function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('success') === 'true') {
-                showMessage('Thank you for your message! We\'ll get back to you soon.', 'success');
-                // Clear the form after successful submission
-                clearForm();
-                // Remove the success parameter from URL
-                window.history.replaceState({}, document.title, window.location.pathname);
-            } else if (urlParams.get('error') === 'true') {
+            // Get form data
+            const formData = new FormData(this);
+            
+            // Submit form using fetch to prevent redirect
+            fetch('https://formspree.io/f/xvgqabbd', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Success
+                    showMessage('Thank you for your message! We\'ll get back to you soon.', 'success');
+                    clearForm();
+                } else {
+                    // Error
+                    throw new Error('Network response was not ok');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
                 showMessage('Sorry, there was an error sending your message. Please try again.', 'error');
-                // Remove the error parameter from URL
-                window.history.replaceState({}, document.title, window.location.pathname);
-            }
+            })
+            .finally(() => {
+                // Reset button state
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
         });
         
         function clearForm() {
@@ -257,8 +281,6 @@
             document.getElementById('email').value = '';
             document.getElementById('subject').value = '';
             document.getElementById('message').value = '';
-            document.getElementById('submitBtn').textContent = 'Send Message';
-            document.getElementById('submitBtn').disabled = false;
         }
         
         function showMessage(message, type) {

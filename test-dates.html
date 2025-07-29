@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Langlio - Date Testing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+        .container {
+            background-color: #2a2a2a;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            text-align: center;
+            color: #00beed;
+            margin-bottom: 30px;
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 8px;
+        }
+        .test-section h3 {
+            color: #D2B48C;
+            margin-top: 0;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        button {
+            background: linear-gradient(135deg, #D2B48C, #B8860B);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+        }
+        .danger {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+        }
+        .success {
+            background: linear-gradient(135deg, #51cf66, #40c057);
+        }
+        input[type="date"] {
+            padding: 10px;
+            border: 2px solid #D2B48C;
+            border-radius: 5px;
+            background-color: #444;
+            color: white;
+            font-size: 14px;
+        }
+        .status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #444;
+            border-left: 4px solid #D2B48C;
+        }
+        .game-link {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .game-link a {
+            color: #00beed;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .game-link a:hover {
+            text-decoration: underline;
+        }
+        .instructions {
+            background-color: #444;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #00beed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌍 Langlio Date Testing</h1>
+        
+        <div class="instructions">
+            <h3>📋 How to Use:</h3>
+            <p>1. Set a test date below to simulate a different day</p>
+            <p>2. Click "Go to Game" to test the language for that date</p>
+            <p>3. Use "Clear Test Date" to return to the real date</p>
+            <p>4. The game will show the language that would appear on that specific date</p>
+        </div>
+
+        <div class="test-section">
+            <h3>📅 Quick Test Dates</h3>
+            <div class="button-group">
+                <button onclick="testTomorrow()">Tomorrow</button>
+                <button onclick="testNextWeek()">Next Week</button>
+                <button onclick="testNextMonth()">Next Month</button>
+                <button onclick="testDate('2025-08-01')">August 1, 2025</button>
+                <button onclick="testDate('2025-12-25')">Christmas 2025</button>
+                <button onclick="testDate('2026-01-01')">New Year 2026</button>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>🎯 Custom Date</h3>
+            <div class="button-group">
+                <input type="date" id="customDate" min="2025-01-01" max="2030-12-31">
+                <button onclick="testCustomDate()">Test This Date</button>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>🔧 Controls</h3>
+            <div class="button-group">
+                <button onclick="showCurrentTestDate()" class="success">Show Current Test Date</button>
+                <button onclick="clearTestDate()" class="danger">Clear Test Date</button>
+                <button onclick="showLanguageForCustomDate()">Check Language for Date</button>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>📊 Status</h3>
+            <div id="status" class="status">
+                <strong>Current Status:</strong> <span id="statusText">Loading...</span>
+            </div>
+        </div>
+
+        <div class="game-link">
+            <a href="index.html" target="_blank">🎮 Go to Game</a>
+        </div>
+    </div>
+
+    <script>
+        // Set default date to today
+        document.getElementById('customDate').value = new Date().toISOString().split('T')[0];
+        
+        // Update status on load
+        updateStatus();
+        
+        function updateStatus() {
+            const testDate = localStorage.getItem('langlio_test_date');
+            const statusText = document.getElementById('statusText');
+            
+            if (testDate) {
+                statusText.textContent = `Test date set to: ${testDate}`;
+                statusText.style.color = '#D2B48C';
+            } else {
+                statusText.textContent = 'Using real date';
+                statusText.style.color = '#00beed';
+            }
+        }
+        
+        function testDate(dateString) {
+            localStorage.setItem('langlio_test_date', dateString);
+            updateStatus();
+            showMessage(`Test date set to: ${dateString}`);
+        }
+        
+        function testTomorrow() {
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const dateString = tomorrow.toISOString().split('T')[0];
+            testDate(dateString);
+        }
+        
+        function testNextWeek() {
+            const nextWeek = new Date();
+            nextWeek.setDate(nextWeek.getDate() + 7);
+            const dateString = nextWeek.toISOString().split('T')[0];
+            testDate(dateString);
+        }
+        
+        function testNextMonth() {
+            const nextMonth = new Date();
+            nextMonth.setMonth(nextMonth.getMonth() + 1);
+            const dateString = nextMonth.toISOString().split('T')[0];
+            testDate(dateString);
+        }
+        
+        function testCustomDate() {
+            const customDate = document.getElementById('customDate').value;
+            if (customDate) {
+                testDate(customDate);
+            } else {
+                showMessage('Please select a date first');
+            }
+        }
+        
+        function clearTestDate() {
+            localStorage.removeItem('langlio_test_date');
+            updateStatus();
+            showMessage('Test date cleared - using real date');
+        }
+        
+        function showCurrentTestDate() {
+            const testDate = localStorage.getItem('langlio_test_date');
+            if (testDate) {
+                showMessage(`Current test date: ${testDate}`);
+            } else {
+                showMessage('No test date set - using real date');
+            }
+        }
+        
+        function showLanguageForCustomDate() {
+            const customDate = document.getElementById('customDate').value;
+            if (customDate) {
+                // This would need the game data to work properly
+                showMessage(`Check the browser console for language info for ${customDate}`);
+                console.log(`To check language for ${customDate}, use: showLanguageForDate('${customDate}') in the game console`);
+            } else {
+                showMessage('Please select a date first');
+            }
+        }
+        
+        function showMessage(message) {
+            const statusText = document.getElementById('statusText');
+            statusText.textContent = message;
+            statusText.style.color = '#D2B48C';
+            
+            // Reset after 3 seconds
+            setTimeout(() => {
+                updateStatus();
+            }, 3000);
+        }
+    </script>
+</body>
+</html> 

@@ -14,12 +14,10 @@ let currentDailyLanguage = null; // Current daily language
 
 // Comprehensive list of top 100+ languages
 const allLanguages = [
-    "Afrikaans", "Albanian", "Amharic", "Arabic", "Armenian", "Aymara", "Azerbaijani", "Bambara", "Belarusian", "Bengali", "Bislama", "Bosnian", "Bulgarian", "Burmese", "Catalan", "Chamorro", "Mandarin Chinese", 
-    "Croatian", "Czech", "Danish", "Dhivehi", "Dutch", "Dzongkha", "English", "Estonian", "Fijian", "Finnish", "French", "Georgian", "German", "Greek", "Guarani", "Gujarati", "Haitian Creole", "Hausa", "Hebrew", 
-    "Hindi", "Hungarian", "Icelandic", "Indonesian", "Irish", "Italian", "Japanese", "Kannada", "Kazakh", "Khmer", "Kinyarwanda", "Korean", "Kurdish", "Kyrgyz", "Lao", "Latvian", "Lithuanian", "Luxembourgish", 
-    "Macedonian", "Malagasy", "Malay", "Malayalam", "Maltese", "Maori", "Marathi", "Marshallese", "Mongolian", "Montenegrin", "Nauruan", "Nepali", "Norwegian", "Pashto", "Persian", "Polish", "Portuguese", "Punjabi", 
-    "Quechua", "Romanian", "Russian", "Samoan", "Sango", "Serbian", "Sesotho", "Setswana", "Shona", "Sinhala", "Slovak", "Slovene", "Somali", "Spanish", "Swahili", "Swedish", "Tajik", "Tamil", "Telugu", "Tetum", 
-    "Thai", "Tigrinya", "Tok Pisin", "Tongan", "Turkish", "Turkmen", "Tuvaluan", "Ukrainian", "Urdu", "Uzbek", "Vietnamese", "Xhosa", "Zulu"
+"Afrikaans", "Albanian", "Amharic", "Arabic", "Armenian", "Aymara", "Azerbaijani", "Bambara", "Belarusian", "Bislama", "Bosnian", "Bulgarian", "Burmese", "Catalan", "Chamorro", "Mandarin Chinese", "Croatian", "Czech", "Danish", "Dhivehi", "Dutch", "Dzongkha", "English", "Estonian", "Fijian", "Finnish", 
+"French", "Georgian", "German", "Greek", "Guarani", "Haitian Creole", "Hausa", "Hebrew", "Hindi", "Hungarian", "Icelandic", "Indonesian", "Irish", "Italian", "Japanese", "Kazakh", "Khmer", "Kinyarwanda", "Korean", "Kurdish", "Kyrgyz", "Lao", "Latvian", "Lithuanian", "Luxembourgish", "Macedonian", 
+"Malagasy", "Malay", "Maltese", "Maori", "Marshallese", "Mongolian", "Montenegrin", "Nauruan", "Nepali", "Norwegian", "Pashto", "Persian", "Polish", "Portuguese", "Quechua", "Romanian", "Russian", "Samoan", "Sango", "Serbian", "Sesotho", "Setswana", "Shona", "Sinhala", "Slovak", "Slovene", "Somali", 
+"Spanish", "Swahili", "Swedish", "Tajik", "Tamil", "Tetum", "Thai", "Tigrinya", "Tok Pisin", "Tongan", "Turkish", "Turkmen", "Tuvaluan", "Ukrainian", "Urdu", "Uzbek", "Vietnamese", "Xhosa", "Zulu", "Bengali"
 ];
 
 
@@ -282,17 +280,9 @@ async function initGame() {
         if (!dev_mode) {
             checkAndResetUsedLanguages();
             
-            // Check if user has already played today
-            if (hasPlayedToday()) {
-                console.log('User has already played today in daily mode');
-                // Load the existing game state instead of showing the message
-                loadGameState();
-                return 'loaded';
-            } else {
-                // New day detected, clear any old game state
-                console.log('New day detected, clearing old game state');
-                localStorage.removeItem('langlioGameState');
-            }
+            // Always clear old game state for new day detection
+            console.log('Daily mode: checking for new day and clearing old game state if needed');
+            localStorage.removeItem('langlioGameState');
         }
         
         // Get the language for this game (daily or random based on dev_mode)
@@ -337,6 +327,7 @@ async function initGame() {
         
         // Display the sentence
         dailySentenceEl.textContent = currentGame.dailySentence;
+        dailySentenceEl.style.display = 'block';
         // Log the language for debugging
         console.log('Debug Language:', currentGame.correctLanguage);
         
@@ -375,11 +366,39 @@ function hashCode(str) {
 
 // Get current date string in user's timezone (YYYY-MM-DD format)
 function getCurrentDateString() {
+    // Check if there's a test date override
+    const testDate = localStorage.getItem('langlio_test_date');
+    if (testDate) {
+        console.log('Using test date:', testDate);
+        return testDate;
+    }
+    
+    // Return actual current date
     const now = new Date();
     const year = now.getFullYear();
     const month = String(now.getMonth() + 1).padStart(2, '0');
     const day = String(now.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`; // Returns YYYY-MM-DD in local timezone
+}
+
+// Set a test date for testing future languages
+function setTestDate(dateString) {
+    if (dateString) {
+        localStorage.setItem('langlio_test_date', dateString);
+        console.log('Test date set to:', dateString);
+        showPopup(`Test date set to: ${dateString}`, 3000);
+    } else {
+        localStorage.removeItem('langlio_test_date');
+        console.log('Test date cleared');
+        showPopup('Test date cleared - using real date', 3000);
+    }
+}
+
+// Clear test date and use real date
+function clearTestDate() {
+    localStorage.removeItem('langlio_test_date');
+    console.log('Test date cleared');
+    showPopup('Test date cleared - using real date', 3000);
 }
 
 // Get daily language based on date with perfect rotation
@@ -433,15 +452,12 @@ function checkAndResetUsedLanguages() {
     console.log('Checking for new day - Current date:', currentDate, 'Last played date:', lastPlayedDate);
     
     if (lastPlayedDate !== currentDate) {
-        // New day, reset used languages
+        // New day, reset everything
         usedLanguages = [];
         localStorage.setItem('langlio_last_played_date', currentDate);
         localStorage.setItem('langlio_used_languages', JSON.stringify(usedLanguages));
-        console.log('New day detected, resetting used languages');
-        
-        // Also clear any old game state from previous day
         localStorage.removeItem('langlioGameState');
-        console.log('Cleared old game state for new day');
+        console.log('New day detected, resetting everything for fresh start');
     } else {
         // Same day, load used languages from localStorage
         const savedUsedLanguages = localStorage.getItem('langlio_used_languages');
@@ -452,26 +468,7 @@ function checkAndResetUsedLanguages() {
     }
 }
 
-// Check if user has already played today (for daily mode)
-function hasPlayedToday() {
-    if (dev_mode) return false; // Dev mode allows unlimited plays
-    
-    const currentDate = getCurrentDateString();
-    const lastPlayedDate = localStorage.getItem('langlio_last_played_date');
-    const savedUsedLanguages = localStorage.getItem('langlio_used_languages');
-    
-    console.log('hasPlayedToday check - Current date:', currentDate, 'Last played date:', lastPlayedDate);
-    console.log('Saved used languages:', savedUsedLanguages);
-    
-    if (lastPlayedDate === currentDate && savedUsedLanguages) {
-        const usedLangs = JSON.parse(savedUsedLanguages);
-        console.log('Used languages for today:', usedLangs);
-        return usedLangs.length > 0;
-    }
-    
-    console.log('User has not played today');
-    return false;
-}
+
 
 // Get language for current game (daily or random based on dev_mode)
 function getCurrentGameLanguage() {
@@ -1324,25 +1321,7 @@ function saveGameState() {
     console.log('Game state saved successfully');
 }
 
-// Show message when user has already played today
-function showAlreadyPlayedMessage() {
-    // Clear the sentence display
-    dailySentenceEl.textContent = 'You have already played today! Come back tomorrow for a new language.';
-    dailySentenceEl.style.textAlign = 'center';
-    dailySentenceEl.style.fontSize = '1.5rem';
-    dailySentenceEl.style.color = '#ffffff';
-    
-    // Hide all game elements
-    languageInputRowEl.style.display = 'none';
-    hintBtnEl.style.display = 'none';
-    languageGuessesHistoryEl.style.display = 'none';
-    countryPhaseEl.style.display = 'none';
-    
-    // Show a message about the daily language
-    const currentDate = getCurrentDateString();
-    const dailyLanguage = getDailyLanguage(currentDate);
-    console.log('Daily language for today:', dailyLanguage);
-}
+
 
 // Load game state from localStorage
 function loadGameState() {
@@ -1379,6 +1358,7 @@ function loadGameState() {
             // Display the sentence for the loaded game
             if (currentGame.dailySentence) {
                 dailySentenceEl.textContent = currentGame.dailySentence;
+                dailySentenceEl.style.display = 'block';
             }
             
             updateUI();
@@ -1405,12 +1385,9 @@ function loadGameState() {
                 // Hide hint display in country phase
                 hintDisplayEl.style.display = 'none';
                 
-                // Keep translation visible during country guessing round
-                const languageData = gameData[currentGame.correctLanguage];
-                if (languageData && languageData.translation) {
-                    translationDisplayEl.textContent = languageData.translation;
-                    translationDisplayEl.style.display = 'block';
-                }
+                // Hide sentence and translation during country guessing round
+                dailySentenceEl.style.display = 'none';
+                translationDisplayEl.style.display = 'none';
                 
                 // Show language result in the country phase
                 const isCorrect = currentGame.currentLanguageGuess === currentGame.correctLanguage;
@@ -1559,7 +1536,9 @@ function startCountryPhase() {
     playNextSectionEl.style.display = 'none';
     correctLanguageInfoEl.style.display = 'none';
     
-    // Keep translation visible during country guessing round
+    // Hide sentence and translation during country guessing round
+    dailySentenceEl.style.display = 'none';
+    translationDisplayEl.style.display = 'none';
     
     // Save game state
     saveGameState();
@@ -1717,11 +1696,25 @@ function shareResult(event) {
     const languageCorrect = currentGame.languageGuessed;
     
     let shareText;
+    // const displayUrl = "https://langlio.io";
+    // const actualUrl = "https://www.langlio.io?utm_source=Langlio&utm_medium=share_button&utm_campaign=share_results&utm_id=share_button";
+    // const linkHtml = `<a href="${actualUrl}" target="_blank" rel="noopener noreferrer">${displayUrl}</a>`;
+
+    // if (languageCorrect) {
+    //     shareText = `🎯 I just played Langlio and guessed the correct language in ${languageAttemptsUsed} attempt${languageAttemptsUsed === 1 ? '' : 's'}! Can you beat my score? 🌍\n\nPlay here: ${displayUrl}`;
+    // } else {
+    //     shareText = `🌍 I just played Langlio and tried to guess the language but couldn't get it in 6 attempts. Can you do better? 🎯\n\nPlay here: ${displayUrl}`;
+    // }
+
     if (languageCorrect) {
         shareText = `🎯 I just played Langlio and guessed the correct language in ${languageAttemptsUsed} attempt${languageAttemptsUsed === 1 ? '' : 's'}! Can you beat my score? 🌍\n\nPlay here: https://langlio.io`;
     } else {
         shareText = `🌍 I just played Langlio and tried to guess the language but couldn't get it in 6 attempts. Can you do better? 🎯\n\nPlay here: https://langlio.io`;
     }
+
+
+    // If sharing to clipboard, keep the plain text (as above).
+    // If you want to show a clickable link in a popup or UI, use linkHtml for the link.
     
     // Try to copy to clipboard
     if (navigator.clipboard && window.isSecureContext) {
@@ -1796,3 +1789,61 @@ document.addEventListener('DOMContentLoaded', async () => {
         alert('Error loading game: ' + error.message);
     }
 });
+
+// ===== TESTING FUNCTIONS =====
+// These functions are available in the browser console for testing
+
+// Test a specific date
+window.testDate = function(dateString) {
+    setTestDate(dateString);
+    location.reload(); // Reload the page to apply the new date
+};
+
+// Test tomorrow
+window.testTomorrow = function() {
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const dateString = tomorrow.toISOString().split('T')[0];
+    testDate(dateString);
+};
+
+// Test next week
+window.testNextWeek = function() {
+    const nextWeek = new Date();
+    nextWeek.setDate(nextWeek.getDate() + 7);
+    const dateString = nextWeek.toISOString().split('T')[0];
+    testDate(dateString);
+};
+
+// Test next month
+window.testNextMonth = function() {
+    const nextMonth = new Date();
+    nextMonth.setMonth(nextMonth.getMonth() + 1);
+    const dateString = nextMonth.toISOString().split('T')[0];
+    testDate(dateString);
+};
+
+// Clear test date and use real date
+window.clearTestDate = function() {
+    clearTestDate();
+    location.reload(); // Reload the page to apply the real date
+};
+
+// Show current test date
+window.showTestDate = function() {
+    const testDate = localStorage.getItem('langlio_test_date');
+    if (testDate) {
+        console.log('Current test date:', testDate);
+        showPopup(`Current test date: ${testDate}`, 3000);
+    } else {
+        console.log('No test date set - using real date');
+        showPopup('No test date set - using real date', 3000);
+    }
+};
+
+// Show what language would be for a specific date
+window.showLanguageForDate = function(dateString) {
+    const language = getDailyLanguage(dateString);
+    console.log(`Language for ${dateString}:`, language);
+    showPopup(`Language for ${dateString}: ${language}`, 4000);
+};
