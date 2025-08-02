@@ -11,6 +11,8 @@ body {
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
 }
 
 .world-map-bg {
@@ -61,6 +63,7 @@ header h1 {
     padding: 1rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    position: relative;
 }
 
 /* HINT SECTION LEFT LAYOUT */
@@ -128,8 +131,8 @@ header h1 {
     align-items: center;
     justify-content: center;
     min-height: 38px;
-    height: 38px;
-    padding: 0 1rem;
+    height: auto;
+    padding: 0.5rem 1rem;
     margin: 0;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -140,6 +143,10 @@ header h1 {
     line-height: 1.4;
     box-sizing: border-box;
     text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    max-width: 100%;
 }
 #hintDisplay.hint-display.show {
     display: flex;
@@ -214,6 +221,9 @@ header h1 {
     color: #87CEEB;
     margin-bottom: 1rem;
     text-align: center;
+    padding-left: 4rem; /* Space for back button */
+    padding-right: 4rem; /* Space for forward button */
+    box-sizing: border-box;
 }
 
 .language-result {
@@ -752,6 +762,8 @@ header h1 {
 @media (max-width: 768px) {
     .container {
         padding: 1rem;
+        max-width: 100%;
+        overflow-x: hidden;
     }
     
     header h1 {
@@ -777,7 +789,7 @@ header h1 {
     }
     
     .sentence {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
     
     .sentence-info {
@@ -789,6 +801,63 @@ header h1 {
         flex-direction: column;
         gap: 0.5rem;
     }
+    
+    /* Fix hint text overflow */
+    #hintDisplay.hint-display {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+        max-width: 100%;
+        padding: 0.5rem;
+        min-height: auto;
+        height: auto;
+    }
+    
+    /* Fix play next and share buttons layout */
+    .play-next-section {
+        flex-direction: row;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .play-next-btn,
+    .share-btn {
+        width: auto;
+        min-width: 140px;
+        max-width: 200px;
+        flex: 1;
+        box-sizing: border-box;
+    }
+    
+    /* Prevent horizontal scrolling */
+    body {
+        overflow-x: hidden;
+        width: 100%;
+    }
+    
+    .game-container {
+        overflow-x: hidden;
+        width: 100%;
+    }
+    
+    /* Fix hint row layout */
+    .hint-row {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: stretch;
+    }
+    
+    #hintBtn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    #hintDisplay.hint-display {
+        width: 100%;
+        text-align: center;
+    }
 }
 
 @media (max-width: 480px) {
@@ -797,11 +866,38 @@ header h1 {
     }
     
     .game-container {
-        padding: 1rem;
+        padding: 0.75rem;
+        margin: 0;
     }
     
     .sentence-display {
-        padding: 1rem;
+        padding: 0.75rem;
+    }
+    
+    .container {
+        padding: 0.75rem;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .sentence {
+        font-size: 1.1rem;
+        padding: 0 0.5rem;
+    }
+    
+    .play-next-btn,
+    .share-btn {
+        font-size: 0.9rem;
+        padding: 0.75rem 1.25rem;
+        min-width: 120px;
+        box-sizing: border-box;
+    }
+    
+    /* Ensure no horizontal scroll on very small screens */
+    * {
+        max-width: 100vw;
     }
 } 
 
@@ -897,8 +993,7 @@ header h1 {
     display: flex !important;
     flex-direction: column;
     gap: 0.25rem;
-    min-height: 12rem;
-    max-height: 15rem;
+    height: auto;
     justify-content: flex-start;
 }
 #countryGuessesHistory .guess-item {
@@ -977,6 +1072,8 @@ header h1 {
     align-items: center;
     gap: 1rem;
     flex-wrap: wrap;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .play-next-btn {
@@ -990,6 +1087,8 @@ header h1 {
     cursor: pointer;
     transition: all 0.3s ease;
     font-family: inherit;
+    white-space: nowrap;
+    box-sizing: border-box;
 }
 
 .play-next-btn:hover {
@@ -1002,17 +1101,18 @@ header h1 {
 } 
 
 .share-btn {
-    padding: 0.75rem 1.5rem;
+    padding: 1rem 2rem;
     background: linear-gradient(135deg, #10b981 0%, #059669 100%);
     border: none;
     border-radius: 10px;
     color: #ffffff;
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin-top: 1rem;
+    margin: 0;
     font-family: inherit;
+    white-space: nowrap;
 }
 
 .share-btn:hover {
@@ -1076,7 +1176,7 @@ header h1 {
 } 
 
 .sentence {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 600;
     margin-bottom: 1rem;
     color: #ffffff;
@@ -1133,5 +1233,477 @@ header h1 {
     
     .footer-sep {
         display: none;
+    }
+} 
+
+/* Strikes display for country guessing */
+.strikes-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.strikes-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.strikes-text {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ff6b6b;
+}
+
+.countries-found {
+    font-size: 1rem;
+    color: #4ecdc4;
+}
+
+.strikes-visual {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.strike {
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.strike.active {
+    background: rgba(255, 107, 107, 0.2);
+    border: 2px solid #ff6b6b;
+    color: #ff6b6b;
+}
+
+.strike.used {
+    background: rgba(128, 128, 128, 0.2);
+    border: 2px solid #808080;
+    color: #808080;
+}
+
+/* Mobile responsive for strikes display */
+@media (max-width: 768px) {
+    .strikes-display {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .strikes-info {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+    
+    .strike {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .strikes-info {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+    
+    .strikes-text, .countries-found {
+        font-size: 0.9rem;
+    }
+    
+    .strike {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+} 
+
+/* New country guessing UI layout */
+.country-ui-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.country-sentence {
+    font-size: 1.2rem;
+    color: #ffffff;
+    text-align: center;
+    font-weight: 500;
+}
+
+.progress-counter {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #4ecdc4;
+    text-align: center;
+}
+
+.strikes-display-new {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-direction: row;
+}
+
+.strike-x {
+    font-size: 2rem;
+    padding: 0.5rem;
+    border-radius: 8px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    color: #808080;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.strike-x.gray {
+    background: rgba(255, 255, 255, 0.1);
+    color: #808080;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.strike-x.used {
+    background: rgba(255, 107, 107, 0.3);
+    color: #ff6b6b;
+    border: 2px solid #ff6b6b;
+}
+
+.country-input-full {
+    width: 100%;
+}
+
+.searchable-input.full-width {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Mobile responsive for new country UI */
+@media (max-width: 768px) {
+    .country-ui-layout {
+        gap: 1rem;
+    }
+    
+    .country-sentence {
+        font-size: 1rem;
+    }
+    
+    .progress-counter {
+        font-size: 1.5rem;
+    }
+    
+    .strikes-display-new {
+        gap: 0.75rem;
+    }
+    
+    .strike-x {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .country-sentence {
+        font-size: 0.9rem;
+    }
+    
+    .progress-counter {
+        font-size: 1.3rem;
+    }
+    
+    .strikes-display-new {
+        gap: 0.5rem;
+    }
+    
+    .strike-x {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+    }
+} 
+
+/* Country guesses grid layout for compact display */
+.country-guesses-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 0.5rem;
+}
+
+.country-guess-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 35px;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.country-guess-item .result-value {
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-align: center;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    line-height: 1.2;
+    min-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.country-guess-item .result-value.correct {
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.country-guess-item .result-value.incorrect {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* Back button styles for other pages */
+.back-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Game back button styles (circular) */
+.back-btn.game-back-btn {
+    background: transparent;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none;
+}
+
+.back-btn:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.back-btn:active {
+    transform: translateY(0);
+}
+
+.back-btn.game-back-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Forward button styles */
+.forward-btn {
+    background: transparent;
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: none;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.forward-btn:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.forward-btn:active {
+    transform: translateY(0);
+}
+
+.back-button-section {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 10;
+}
+
+.forward-button-section {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10;
+}
+
+/* Mobile responsive for back button */
+@media (max-width: 768px) {
+    .back-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    
+    .back-btn.game-back-btn {
+        padding: 0.6rem;
+        font-size: 1.1rem;
+        width: 2.8rem;
+        height: 2.8rem;
+    }
+    
+    .forward-btn {
+        padding: 0.6rem;
+        font-size: 1.1rem;
+        width: 2.8rem;
+        height: 2.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .back-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+    
+    .back-btn.game-back-btn {
+        padding: 0.5rem;
+        font-size: 1rem;
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+    
+    .forward-btn {
+        padding: 0.5rem;
+        font-size: 1rem;
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+}
+
+/* Mobile responsive for country guesses grid */
+@media (max-width: 768px) {
+    .country-guesses-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.4rem;
+        max-height: 180px;
+        padding: 0.4rem;
+    }
+    
+    .country-guess-item {
+        min-height: 30px;
+        padding: 0.2rem 0.4rem;
+    }
+    
+    .country-guess-item .result-value {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.4rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+        line-height: 1.1;
+        min-height: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .country-guesses-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.3rem;
+        max-height: 160px;
+        padding: 0.3rem;
+    }
+    
+    .country-guess-item {
+        min-height: 28px;
+        padding: 0.15rem 0.3rem;
+    }
+    
+    .country-guess-item .result-value {
+        font-size: 0.75rem;
+        padding: 0.15rem 0.3rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+        line-height: 1.1;
+        min-height: 16px;
+    }
+}
+
+/* Ensure consistent share button sizing */
+#shareBtn, #shareBtnLanguage {
+    box-sizing: border-box !important;
+    white-space: nowrap !important;
+}
+
+/* Mobile popup styles */
+@media (max-width: 768px) {
+    /* Ensure popups are properly centered on mobile */
+    [style*="position: fixed"][style*="top: 50%"][style*="left: 50%"] {
+        width: auto !important;
+        max-width: 85vw !important;
+        min-width: 200px !important;
+        text-align: center !important;
+        padding: 1rem 1.5rem !important;
+        font-size: 1rem !important;
+        line-height: 1.4 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Further adjustments for very small screens */
+    [style*="position: fixed"][style*="top: 50%"][style*="left: 50%"] {
+        max-width: 90vw !important;
+        min-width: 180px !important;
+        padding: 0.75rem 1.25rem !important;
+        font-size: 0.95rem !important;
     }
 } 

@@ -44,3 +44,18 @@ A fun language guessing game where players try to identify languages and their a
 ## Languages Included
 
 The game includes 35+ languages with their associated countries, covering major world languages and their geographic distributions. 
+
+## Versions
+
+0.0.1 first offical version of the testing version of the game
+0.0.2 
+ - fixed the daily functionality of the game
+ - removed the fowarding link after sending a message in the contact page
+ - removed sentence and translation from the country guessing round
+ - added a debugging feature that lets me change the date of the game to see how the game would play on other dates
+
+ 0.0.3
+ - changed country guessing level to be to guess all the coutries that speak the certain language and you have 3 strikes
+ - improved phone visuals
+ - addded a back and foward button so you can see the other round results
+ - other improvements

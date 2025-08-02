@@ -58,7 +58,7 @@
     "Example Sentence": "A galinha foi condenada à prisão perpétua.",
     "Translation": "The chicken has been sentenced to jail for life.",
     "Hint": "This language sails from Brazil to Mozambique",
-    "Countries that this is a national language": "['Portugal', 'Brazil', 'Mozambique', 'Angola', 'Guinea-Bissau', 'Timor-Leste', 'Equatorial Guinea', 'Cape Verde', 'Sao Tome and Principe']",
+    "Countries that this is a national language": "['Portugal', 'Brazil', 'Mozambique', 'Angola', 'Guinea-Bissau', 'Timor-Leste', 'Equatorial Guinea', 'Capo Verde', 'Sao Tome and Principe']",
     "Script": "Latin alphabet",
     "Country of origin (Modern Day)": "Portugal"
   },
@@ -202,9 +202,9 @@
     "Example Sentence": "Çarşıda tavuk için birçok iyi fırsat vardı.",
     "Translation": "The bazaar had many good deals on chicken.",
     "Hint": "Spoken in a country that bridges Europe and Asia.",
-    "Countries that this is a national language": "['Türkiye', 'Cyprus']",
+    "Countries that this is a national language": "['Turkey', 'Cyprus']",
     "Script": "Latin alphabet",
-    "Country of origin (Modern Day)": "Türkiye"
+    "Country of origin (Modern Day)": "Turkey"
   },
   {
     "Language": "Burmese",
@@ -409,7 +409,7 @@
     "Example Sentence": "Saya membaca untuk memahami makna kehidupan.",
     "Translation": "I read to make sense of life.",
     "Hint": "A breezy language from tropical islands, shared by nasi lemak lovers and jungle trekkers.",
-    "Countries that this is a national language": "",
+    "Countries that this is a national language": "['Malaysia', 'Singapore', 'Brunei']",
     "Script": "Latin Script",
     "Country of origin (Modern Day)": "Malaysia"
   },
