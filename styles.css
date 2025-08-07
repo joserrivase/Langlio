@@ -56,6 +56,15 @@ header h1 {
     margin-top: 0.5rem;
 }
 
+.streak-display {
+    color: #ff6b35;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    text-align: center;
+    min-height: 1.5rem;
+}
+
 .game-container {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(20px);
@@ -150,6 +159,29 @@ header h1 {
 }
 #hintDisplay.hint-display.show {
     display: flex;
+}
+
+/* Map hint styles */
+.map-hint-container {
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.map-hint-container .leaflet-container {
+    background: #1a1a1a;
+}
+
+.map-hint-container .leaflet-control-attribution {
+    display: none;
+}
+
+.map-hint-container .leaflet-control-zoom {
+    display: none;
 }
 
 .sentence-info {
@@ -609,6 +641,10 @@ header h1 {
 
 /* Mobile responsive for instructions */
 @media (max-width: 768px) {
+    .map-hint-container {
+        height: 250px;
+    }
+    
     .instructions-content {
         padding: 1.5rem;
         margin: 1rem;
@@ -846,12 +882,12 @@ header h1 {
     .hint-row {
         flex-direction: column;
         gap: 0.5rem;
-        align-items: stretch;
+        align-items: flex-start;
     }
     
-    #hintBtn {
-        width: 100%;
-        justify-content: center;
+    #hintBtn, #hintBtn2 {
+        width: auto;
+        justify-content: flex-start;
     }
     
     #hintDisplay.hint-display {
@@ -903,11 +939,12 @@ header h1 {
 
 .hint-row {
     display: flex !important;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
     gap: 1rem;
     margin-top: 1.5rem;
     margin-bottom: 1rem;
+    flex-direction: column;
 } 
 
 /* Make guess slots fill the whole width and center content */
@@ -1373,13 +1410,13 @@ header h1 {
     justify-content: center;
     transition: all 0.3s ease;
     background: rgba(255, 255, 255, 0.1);
-    color: #808080;
+    color: #000000;
     border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
-.strike-x.gray {
+.strike-x.black {
     background: rgba(255, 255, 255, 0.1);
-    color: #808080;
+    color: #000000;
     border: 2px solid rgba(255, 255, 255, 0.2);
 }
 

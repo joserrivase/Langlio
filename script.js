@@ -12,6 +12,10 @@ let countryFlags = {};
 let usedLanguages = []; // Track languages used in daily mode
 let currentDailyLanguage = null; // Current daily language
 
+// Map variables
+let map = null;
+let highlightedCountries = [];
+
 // Comprehensive list of top 100+ languages
 const allLanguages = [
 "Afrikaans", "Albanian", "Amharic", "Arabic", "Armenian", "Aymara", "Azerbaijani", "Bambara", "Belarusian", "Bislama", "Bosnian", "Bulgarian", "Burmese", "Catalan", "Chamorro", "Mandarin Chinese", "Croatian", "Czech", "Danish", "Dhivehi", "Dutch", "Dzongkha", "English", "Estonian", "Fijian", "Finnish", 
@@ -177,16 +181,25 @@ let currentGame = {
     correctCountryPositions: {} // Track which position each correct country was guessed in
 };
 
+// Streak functionality
+let streakData = {
+    currentStreak: 0,
+    bestStreak: 0,
+    lastPlayedDate: null,
+    lastWonDate: null
+};
+
 // DOM elements - will be initialized after DOM loads
 let dailySentenceEl, languageGuessEl, languageDropdownEl, submitLanguageGuessEl, submitCountryGuessEl;
 let languagePhaseEl, countryPhaseEl, countryInputsEl;
 let languageGuessesHistoryEl, countryGuessesHistoryEl, correctLanguageEl, correctCountriesEl;
-let correctSentenceEl, hintBtnEl, hintDisplayEl, instructionsPopupEl, closeInstructionsEl;
+let correctSentenceEl, hintBtnEl, hintBtn2El, hintDisplayEl, hintDisplay2El, instructionsPopupEl, closeInstructionsEl;
 let startGameBtnEl, playNextSectionEl, playNextBtnEl, languageInputRowEl;
 let languageResultMessageEl, languageResultTextEl, shareBtnLanguageEl;
 let correctLanguageInfoEl, correctLanguageDisplayEl, translationDisplayEl;
 let countryResultMessageEl, countryResultTextEl, allCountriesInfoEl, allCountriesListEl, allCountriesTitleEl;
 let shareBtnEl, countryShareSectionEl, guessPromptEl, confettiCanvasEl, backToLanguageBtnEl, gameBackButtonEl, forwardToCountryBtnEl, gameForwardButtonEl;
+let streakDisplayEl;
 
 // Initialize DOM elements
 function initializeDOMElements() {
@@ -204,7 +217,9 @@ function initializeDOMElements() {
     correctCountriesEl = document.getElementById('correctCountries');
     correctSentenceEl = document.getElementById('correctSentence');
     hintBtnEl = document.getElementById('hintBtn');
+    hintBtn2El = document.getElementById('hintBtn2');
     hintDisplayEl = document.getElementById('hintDisplay');
+    hintDisplay2El = document.getElementById('hintDisplay2');
     instructionsPopupEl = document.getElementById('instructionsPopup');
     closeInstructionsEl = document.getElementById('closeInstructions');
     startGameBtnEl = document.getElementById('startGameBtn');
@@ -230,6 +245,7 @@ function initializeDOMElements() {
     gameBackButtonEl = document.getElementById('gameBackButton');
     forwardToCountryBtnEl = document.getElementById('forwardToCountryBtn');
     gameForwardButtonEl = document.getElementById('gameForwardButton');
+    streakDisplayEl = document.getElementById('streakDisplay');
     
     // Debug: Check if all DOM elements are found
     console.log('DOM elements found:', {
@@ -245,7 +261,9 @@ function initializeDOMElements() {
         correctLanguageEl: !!correctLanguageEl,
         correctCountriesEl: !!correctCountriesEl,
         hintBtnEl: !!hintBtnEl,
+        hintBtn2El: !!hintBtn2El,
         hintDisplayEl: !!hintDisplayEl,
+        hintDisplay2El: !!hintDisplay2El,
         shareBtnEl: !!shareBtnEl,
         shareBtnLanguageEl: !!shareBtnLanguageEl,
         forwardToCountryBtnEl: !!forwardToCountryBtnEl,
@@ -262,6 +280,12 @@ async function initGame() {
         
         // Load game data from JSON file
         await loadGameData();
+        
+        // Load streak data
+        loadStreakData();
+        
+        // Update streak display
+        updateStreakDisplay();
         
         // Check if there's a saved game state first (only in daily mode)
         if (!dev_mode) {
@@ -344,6 +368,16 @@ async function initGame() {
         
         // Update UI to show empty slots immediately
         updateUI();
+        
+        // Ensure hints are hidden at game start
+        if (hintDisplayEl) {
+            hintDisplayEl.style.display = 'none';
+            hintDisplayEl.classList.remove('show');
+        }
+        if (hintDisplay2El) {
+            hintDisplay2El.style.display = 'none';
+            hintDisplay2El.classList.remove('show');
+        }
         
         // Initialize confetti after DOM elements are ready
         if (confettiCanvasEl) {
@@ -604,8 +638,12 @@ function addEventListeners() {
         submitCountryGuessEl.addEventListener('click', submitCountryGuess);
     }
     if (hintBtnEl) {
-        hintBtnEl.removeEventListener('click', toggleHint);
-        hintBtnEl.addEventListener('click', toggleHint);
+        hintBtnEl.removeEventListener('click', () => toggleHint('text'));
+        hintBtnEl.addEventListener('click', () => toggleHint('text'));
+    }
+    if (hintBtn2El) {
+        hintBtn2El.removeEventListener('click', () => toggleHint('map'));
+        hintBtn2El.addEventListener('click', () => toggleHint('map'));
     }
     if (playNextBtnEl) {
         playNextBtnEl.removeEventListener('click', startCountryPhase);
@@ -675,49 +713,178 @@ function addEventListeners() {
 }
 
 // Toggle hint display
-function toggleHint() {
-    if (currentGame.hintRevealed) {
-        // Hint is already revealed - do nothing (keep it open)
-        return;
-    } else {
-        // Show hint (only once)
-        currentGame.hintRevealed = true;
-        updateHintDisplay();
-        
-        // Disable the hint button after first click
-        hintBtnEl.disabled = true;
+function toggleHint(hintType) {
+    console.log('toggleHint called with type:', hintType);
+    console.log('currentGame.hintRevealed before:', currentGame.hintRevealed);
+    console.log('currentGame.mapHintRevealed before:', currentGame.mapHintRevealed);
+    
+    if (hintType === 'text') {
+        if (currentGame.hintRevealed) {
+            // Text hint is already revealed - do nothing (keep it open)
+            console.log('Text hint already revealed, keeping it open');
+            return;
+        } else {
+            // Show text hint (only once)
+            console.log('Showing text hint...');
+            currentGame.hintRevealed = true;
+            updateHintDisplay('text');
+            
+            // Disable the text hint button after first click
+            hintBtnEl.disabled = true;
+            console.log('Text hint button disabled');
+        }
+    } else if (hintType === 'map') {
+        if (currentGame.mapHintRevealed) {
+            // Map hint is already revealed - do nothing (keep it open)
+            console.log('Map hint already revealed, keeping it open');
+            return;
+        } else {
+            // Show map hint (only once)
+            console.log('Showing map hint...');
+            currentGame.mapHintRevealed = true;
+            updateHintDisplay('map');
+            
+            // Disable the map hint button after first click
+            hintBtn2El.disabled = true;
+            console.log('Map hint button disabled');
+        }
     }
+    
+    console.log('currentGame.hintRevealed after:', currentGame.hintRevealed);
+    console.log('currentGame.mapHintRevealed after:', currentGame.mapHintRevealed);
     
     // Save game state
     saveGameState();
 }
 
 // Update hint display
-function updateHintDisplay() {
-    console.log('updateHintDisplay called');
+function updateHintDisplay(hintType) {
+    console.log('updateHintDisplay called with type:', hintType);
     console.log('currentGame.hintRevealed:', currentGame.hintRevealed);
+    console.log('currentGame.mapHintRevealed:', currentGame.mapHintRevealed);
     console.log('currentGame.correctLanguage:', currentGame.correctLanguage);
     console.log('gameData available:', !!gameData);
-    
-    if (!currentGame.hintRevealed) {
-        hintDisplayEl.style.display = 'none';
-        hintDisplayEl.classList.remove('show');
-        return;
-    }
+    console.log('hintDisplayEl:', hintDisplayEl);
+    console.log('hintDisplay2El:', hintDisplay2El);
     
     const languageData = gameData[currentGame.correctLanguage];
     console.log('languageData:', languageData);
-    console.log('languageData.hint:', languageData ? languageData.hint : 'undefined');
     
-    if (languageData && languageData.hint) {
-        hintDisplayEl.textContent = languageData.hint;
-        hintDisplayEl.style.display = 'flex';
-        hintDisplayEl.classList.add('show');
-        console.log('Hint displayed successfully');
-    } else {
-        hintDisplayEl.style.display = 'none';
-        hintDisplayEl.classList.remove('show');
-        console.log('Hint not available or language data missing');
+    if (hintType === 'text') {
+        // Handle text hint in first display
+        if (!currentGame.hintRevealed) {
+            hintDisplayEl.style.display = 'none';
+            hintDisplayEl.classList.remove('show');
+            return;
+        }
+        
+        if (languageData && languageData.hint) {
+            hintDisplayEl.textContent = languageData.hint;
+            hintDisplayEl.style.display = 'flex';
+            hintDisplayEl.classList.add('show');
+            console.log('Text hint displayed successfully in hintDisplayEl');
+        } else {
+            hintDisplayEl.style.display = 'none';
+            hintDisplayEl.classList.remove('show');
+            console.log('Language data or hint missing');
+        }
+    } else if (hintType === 'map') {
+        // Handle map hint in second display
+        if (!currentGame.mapHintRevealed) {
+            hintDisplay2El.style.display = 'none';
+            hintDisplay2El.classList.remove('show');
+            return;
+        }
+        
+        if (languageData) {
+            // Create map hint container
+            const mapContainer = document.createElement('div');
+            mapContainer.className = 'map-hint-container';
+            mapContainer.style.setProperty('width', '100%', 'important');
+            mapContainer.style.setProperty('height', '300px', 'important');
+            console.log('Created map container:', mapContainer);
+            
+            // Clear existing content and add map container to hintDisplay2El
+            hintDisplay2El.innerHTML = '';
+            hintDisplay2El.appendChild(mapContainer);
+            console.log('Added map container to hintDisplay2El');
+            console.log('hintDisplay2El.innerHTML:', hintDisplay2El.innerHTML);
+            
+            // Show the hint display
+            hintDisplay2El.classList.add('show');
+            hintDisplay2El.style.setProperty('display', 'flex', 'important');
+            hintDisplay2El.style.setProperty('min-height', '350px', 'important'); // Ensure it has height for the map
+            hintDisplay2El.style.setProperty('width', '100%', 'important'); // Ensure it takes full width
+            console.log('Added show class to hintDisplay2El');
+            console.log('hintDisplay2El.classList:', hintDisplay2El.classList);
+            
+            // Debug hint display visibility
+            setTimeout(() => {
+                const rect = hintDisplay2El.getBoundingClientRect();
+                const computedStyle = window.getComputedStyle(hintDisplay2El);
+                console.log('Hint display 2 dimensions:', {
+                    width: rect.width,
+                    height: rect.height,
+                    top: rect.top,
+                    left: rect.left,
+                    display: computedStyle.display,
+                    visibility: computedStyle.visibility,
+                    opacity: computedStyle.opacity,
+                    position: computedStyle.position,
+                    zIndex: computedStyle.zIndex
+                });
+                
+                const mapContainerRect = mapContainer.getBoundingClientRect();
+                console.log('Map container dimensions:', {
+                    width: mapContainerRect.width,
+                    height: mapContainerRect.height,
+                    top: mapContainerRect.top,
+                    left: mapContainerRect.left
+                });
+                
+                // Check if hint display is actually visible
+                if (rect.width === 0 || rect.height === 0) {
+                    console.error('Hint display 2 has zero dimensions!');
+                    console.log('Hint display 2 element:', hintDisplay2El);
+                    console.log('Hint display 2 parent:', hintDisplay2El.parentElement);
+                }
+            }, 100);
+            
+            // Initialize map and highlight countries with longer delay to ensure Leaflet is loaded
+            setTimeout(() => {
+                console.log('Timeout callback - initializing map...');
+                
+                // Ensure map container has proper dimensions
+                const mapContainer = document.querySelector('.map-hint-container');
+                if (mapContainer) {
+                    const rect = mapContainer.getBoundingClientRect();
+                    console.log('Map container before initialization:', {
+                        width: rect.width,
+                        height: rect.height
+                    });
+                    
+                    // Force a minimum height if needed
+                    if (rect.height < 100) {
+                        mapContainer.style.height = '300px';
+                        console.log('Forced map container height to 300px');
+                    }
+                }
+                
+                initializeMap();
+                if (map) {
+                    console.log('Map initialized successfully, highlighting countries...');
+                    highlightCountriesForLanguage(currentGame.correctLanguage);
+                } else {
+                    console.log('Map initialization failed');
+                }
+            }, 500);
+            
+            console.log('Map hint displayed successfully in hintDisplay2El');
+        } else {
+            hintDisplay2El.style.display = 'none';
+            hintDisplay2El.classList.remove('show');
+            console.log('Language data missing');
+        }
     }
 }
 
@@ -803,6 +970,9 @@ function submitLanguageGuess() {
         // Trigger confetti for correct language guess
         triggerConfetti();
         
+        // Update streak for win
+        updateStreak(true);
+        
         // Language is correct - show success message and correct language info
         currentGame.languageGuessed = true;
         currentGame.currentLanguageGuess = languageGuess;
@@ -810,23 +980,28 @@ function submitLanguageGuess() {
         // Hide input section
         languageInputRowEl.style.display = 'none';
         
-        // Hide hint button
+        // Hide hint buttons
         hintBtnEl.style.display = 'none';
+        hintBtn2El.style.display = 'none';
         
-        // Hide hint display
+        // Hide hint displays
         hintDisplayEl.style.display = 'none';
+        hintDisplay2El.style.display = 'none';
         
         // Show success message
         languageResultMessageEl.style.display = 'block';
         languageResultTextEl.textContent = 'You guessed the language!';
         languageResultTextEl.className = 'result-text success';
         
+        // Show streak display
+        updateStreakDisplay();
+        
         // Show correct language and translation
         correctLanguageInfoEl.style.display = 'block';
         correctLanguageDisplayEl.textContent = currentGame.correctLanguage;
         const languageData = gameData[currentGame.correctLanguage];
         if (languageData && languageData.translation) {
-            translationDisplayEl.textContent = languageData.translation;
+            translationDisplayEl.innerHTML = '<span style="color: #87CEEB;">Translation:</span> ' + languageData.translation;
             translationDisplayEl.style.display = 'block';
             currentGame.translationRevealed = true;
         }
@@ -842,25 +1017,33 @@ function submitLanguageGuess() {
     } else {
         // Language is incorrect - check if game is over
         if (currentGame.languageAttempts <= 0) {
+            // Update streak for loss
+            updateStreak(false);
+            
             // No more language attempts - show failure message
             languageInputRowEl.style.display = 'none';
             
-            // Hide hint button
+            // Hide hint buttons
             hintBtnEl.style.display = 'none';
+            hintBtn2El.style.display = 'none';
             
-            // Hide hint display
+            // Hide hint displays
             hintDisplayEl.style.display = 'none';
+            hintDisplay2El.style.display = 'none';
             
             languageResultMessageEl.style.display = 'block';
             languageResultTextEl.textContent = 'Better luck next time!';
             languageResultTextEl.className = 'result-text failure';
+            
+            // Show streak display
+            updateStreakDisplay();
             
             // Show correct language and translation
             correctLanguageInfoEl.style.display = 'block';
             correctLanguageDisplayEl.textContent = currentGame.correctLanguage;
             const languageData = gameData[currentGame.correctLanguage];
             if (languageData && languageData.translation) {
-                translationDisplayEl.textContent = languageData.translation;
+                translationDisplayEl.innerHTML = '<span style="color: #87CEEB;">Translation:</span> ' + languageData.translation;
                 translationDisplayEl.style.display = 'block';
                 currentGame.translationRevealed = true;
             }
@@ -932,9 +1115,9 @@ function generateCountryInputs(correctLanguage) {
             strike.textContent = '❌';
             console.log(`Strike ${i + 1}: created as used (red)`);
         } else {
-            strike.classList.add('gray');
+            strike.classList.add('black');
             strike.textContent = '❌';
-            console.log(`Strike ${i + 1}: created as gray`);
+            console.log(`Strike ${i + 1}: created as black`);
         }
         strikesDisplay.appendChild(strike);
     }
@@ -1169,13 +1352,13 @@ function updateCountryUI() {
         console.log('Found strike elements:', strikeElements.length);
         
         strikeElements.forEach((strike, index) => {
-            strike.classList.remove('used', 'gray');
+            strike.classList.remove('used', 'black');
             if (index < strikesUsed) {
                 strike.classList.add('used');
                 console.log(`Strike ${index + 1}: marked as used (red)`);
             } else {
-                strike.classList.add('gray');
-                console.log(`Strike ${index + 1}: marked as gray`);
+                strike.classList.add('black');
+                console.log(`Strike ${index + 1}: marked as black`);
             }
         });
     } else {
@@ -1317,13 +1500,13 @@ function endGame(won) {
             const strikeElements = strikesDisplay.querySelectorAll('.strike-x');
             
             strikeElements.forEach((strike, index) => {
-                strike.classList.remove('used', 'gray');
+                strike.classList.remove('used', 'black');
                 if (index < strikesUsed) {
                     strike.classList.add('used');
                     console.log(`Final strike ${index + 1}: marked as used (red)`);
                 } else {
-                    strike.classList.add('gray');
-                    console.log(`Final strike ${index + 1}: marked as gray`);
+                    strike.classList.add('black');
+                    console.log(`Final strike ${index + 1}: marked as black`);
                 }
             });
         }
@@ -1361,6 +1544,7 @@ function resetGame() {
         languageGuessed: false,
         isNewGame: true, // Flag to indicate if it's a new game or a loaded daily game
         hintRevealed: false, // Reset hint state
+        mapHintRevealed: false, // Reset map hint state
         correctlyGuessedCountries: [], // Reset correctly guessed countries
         correctCountryPositions: {}, // Reset correct country positions
         totalCountriesForLanguage: 0 // New: total number of countries that speak the language
@@ -1375,10 +1559,13 @@ function resetGame() {
     submitLanguageGuessEl.disabled = false;
     submitCountryGuessEl.disabled = false;
     hintBtnEl.disabled = false; // Re-enable hint button
+    hintBtn2El.disabled = false; // Re-enable map hint button
     
     // Reset hint state
     hintDisplayEl.classList.remove('show');
     hintDisplayEl.textContent = '';
+    hintDisplay2El.classList.remove('show');
+    hintDisplay2El.textContent = '';
     
     // Reset phases
     languagePhaseEl.style.display = 'block';
@@ -1391,13 +1578,19 @@ function resetGame() {
     correctLanguageInfoEl.style.display = 'none';
     playNextSectionEl.style.display = 'none';
     
+    // Hide streak display
+    if (streakDisplayEl) {
+        streakDisplayEl.textContent = '';
+    }
+    
     // Reset guess prompt
     guessPromptEl.textContent = 'Guess the language';
     guessPromptEl.style.color = '#87CEEB'; // Sky blue color to match CSS default
     
-    // Re-enable language input and show hint button
+    // Re-enable language input and show hint buttons
     languageGuessEl.disabled = false;
     hintBtnEl.style.display = 'block';
+    hintBtn2El.style.display = 'block';
     
     // Reinitialize with new language (daily or random based on dev_mode)
     initGame().catch(error => {
@@ -1441,6 +1634,11 @@ function loadGameState() {
             // Ensure correctCountryPositions exists (for backward compatibility)
             if (!currentGame.correctCountryPositions) {
                 currentGame.correctCountryPositions = {};
+            }
+            
+            // Ensure mapHintRevealed exists (for backward compatibility)
+            if (currentGame.mapHintRevealed === undefined) {
+                currentGame.mapHintRevealed = false;
             }
             
             // Ensure countryAttempts exists (for backward compatibility)
@@ -1500,11 +1698,13 @@ function loadGameState() {
                 guessPromptEl.innerHTML = `Guess what countries speak <span style="color: #D2B48C;">${currentGame.correctLanguage}</span>`;
                 guessPromptEl.style.color = '00beed'; // Light blue color for the main text
                 
-                // Hide hint button in country phase
+                // Hide hint buttons in country phase
                 hintBtnEl.style.display = 'none';
+                hintBtn2El.style.display = 'none';
                 
-                // Hide hint display in country phase
+                // Hide hint displays in country phase
                 hintDisplayEl.style.display = 'none';
+                hintDisplay2El.style.display = 'none';
                 
                 // Hide sentence and translation during country guessing round
                 dailySentenceEl.style.display = 'none';
@@ -1519,11 +1719,13 @@ function loadGameState() {
                 // Hide input section
                 languageInputRowEl.style.display = 'none';
                 
-                // Hide hint button
+                // Hide hint buttons
                 hintBtnEl.style.display = 'none';
+                hintBtn2El.style.display = 'none';
                 
-                // Hide hint display
+                // Hide hint displays
                 hintDisplayEl.style.display = 'none';
+                hintDisplay2El.style.display = 'none';
                 
                 // Show success/failure message
                 languageResultMessageEl.style.display = 'block';
@@ -1540,7 +1742,7 @@ function loadGameState() {
                 correctLanguageDisplayEl.textContent = currentGame.correctLanguage;
                 const languageData = gameData[currentGame.correctLanguage];
                 if (languageData && languageData.translation) {
-                    translationDisplayEl.textContent = languageData.translation;
+                    translationDisplayEl.innerHTML = '<span style="color: #87CEEB;">Translation:</span> ' + languageData.translation;
                     translationDisplayEl.style.display = 'block';
                 }
                 
@@ -1558,6 +1760,9 @@ function loadGameState() {
                 if (shareBtnLanguageEl) {
                     shareBtnLanguageEl.style.display = 'inline-block';
                 }
+                
+                // Show streak display when language phase is complete
+                updateStreakDisplay();
             }
             
             if (currentGame.gameOver) {
@@ -1573,18 +1778,37 @@ function loadGameState() {
                 confetti = new Confetti(confettiCanvasEl);
             }
             
-            // Ensure hint is properly restored after all data is loaded
+            // Ensure hints are properly restored after all data is loaded
             if (currentGame.hintRevealed) {
-                // Try to restore hint immediately
-                updateHintDisplay();
+                // Try to restore text hint immediately
+                updateHintDisplay('text');
                 
                 // If hint wasn't restored (game data might not be ready), retry after a short delay
                 setTimeout(() => {
                     if (currentGame.hintRevealed && hintDisplayEl.style.display !== 'flex') {
-                        console.log('Retrying hint restoration...');
-                        updateHintDisplay();
+                        console.log('Retrying text hint restoration...');
+                        updateHintDisplay('text');
                     }
                 }, 200);
+            }
+            
+            if (currentGame.mapHintRevealed) {
+                // Try to restore map hint immediately
+                updateHintDisplay('map');
+                
+                // If map hint wasn't restored (game data might not be ready), retry after a short delay
+                setTimeout(() => {
+                    if (currentGame.mapHintRevealed && hintDisplay2El.style.display !== 'flex') {
+                        console.log('Retrying map hint restoration...');
+                        updateHintDisplay('map');
+                    }
+                }, 200);
+            } else {
+                // Ensure map hint is hidden if not revealed
+                if (hintDisplay2El) {
+                    hintDisplay2El.style.display = 'none';
+                    hintDisplay2El.classList.remove('show');
+                }
             }
             
             // Update country UI if in country phase
@@ -1693,11 +1917,11 @@ function restoreCompletedGameState() {
             const strikeElements = strikesDisplay.querySelectorAll('.strike-x');
             
             strikeElements.forEach((strike, index) => {
-                strike.classList.remove('used', 'gray');
+                strike.classList.remove('used', 'black');
                 if (index < strikesUsed) {
                     strike.classList.add('used');
                 } else {
-                    strike.classList.add('gray');
+                    strike.classList.add('black');
                 }
             });
         }
@@ -1777,9 +2001,11 @@ function startCountryPhase() {
     // Hide forward button when entering country phase
     gameForwardButtonEl.style.display = 'none';
     
-    // Hide hint button and display in country phase
-    hintBtnEl.style.display = 'none';
+            // Hide hint buttons and displays in country phase
+        hintBtnEl.style.display = 'none';
+        hintBtn2El.style.display = 'none';
     hintDisplayEl.style.display = 'none';
+    hintDisplay2El.style.display = 'none';
     
     // Hide "Play Next" button and correct language info
     playNextSectionEl.style.display = 'none';
@@ -1848,11 +2074,11 @@ function startCountryPhase() {
             const strikeElements = strikesDisplay.querySelectorAll('.strike-x');
             
             strikeElements.forEach((strike, index) => {
-                strike.classList.remove('used', 'gray');
+                strike.classList.remove('used', 'black');
                 if (index < strikesUsed) {
                     strike.classList.add('used');
                 } else {
-                    strike.classList.add('gray');
+                    strike.classList.add('black');
                 }
             });
         }
@@ -1900,9 +2126,11 @@ function goBackToLanguagePhase() {
         // Hide input section when language phase is complete
         languageInputRowEl.style.display = 'none';
         
-        // Hide hint button and display when language phase is complete
+        // Hide hint buttons and displays when language phase is complete
         hintBtnEl.style.display = 'none';
+        hintBtn2El.style.display = 'none';
         hintDisplayEl.style.display = 'none';
+        hintDisplay2El.style.display = 'none';
         
         // Show language result message
         languageResultMessageEl.style.display = 'block';
@@ -1914,12 +2142,15 @@ function goBackToLanguagePhase() {
             languageResultTextEl.className = 'result-text failure';
         }
         
+        // Show streak display
+        updateStreakDisplay();
+        
         // Show correct language and translation
         correctLanguageInfoEl.style.display = 'block';
         correctLanguageDisplayEl.textContent = currentGame.correctLanguage;
         const languageData = gameData[currentGame.correctLanguage];
         if (languageData && languageData.translation) {
-            translationDisplayEl.textContent = languageData.translation;
+            translationDisplayEl.innerHTML = '<span style="color: #87CEEB;">Translation:</span> ' + languageData.translation;
             translationDisplayEl.style.display = 'block';
         }
         
@@ -1934,8 +2165,12 @@ function goBackToLanguagePhase() {
         // Language phase is not complete - show input and hint elements
         languageInputRowEl.style.display = 'block';
         hintBtnEl.style.display = 'block';
+        hintBtn2El.style.display = 'block';
         if (currentGame.hintRevealed) {
             hintDisplayEl.style.display = 'flex';
+        }
+        if (currentGame.mapHintRevealed) {
+            hintDisplay2El.style.display = 'flex';
         }
         
         // Hide result elements when language phase is not complete
@@ -1944,6 +2179,11 @@ function goBackToLanguagePhase() {
         playNextSectionEl.style.display = 'none';
         if (shareBtnLanguageEl) {
             shareBtnLanguageEl.style.display = 'none';
+        }
+        
+        // Hide streak display when language phase is not complete
+        if (streakDisplayEl) {
+            streakDisplayEl.textContent = '';
         }
     }
     
@@ -2120,10 +2360,13 @@ function shareResult(event) {
     //     shareText = `🌍 I just played Langlio and tried to guess the language but couldn't get it in 6 attempts. Can you do better? 🎯\n\nPlay here: ${displayUrl}`;
     // }
 
+    const dayNumber = getDayNumber();
+    const streakText = getStreakDisplay();
+    
     if (languageCorrect) {
-        shareText = `🎯 I just played Langlio and guessed the correct language in ${languageAttemptsUsed} attempt${languageAttemptsUsed === 1 ? '' : 's'}! Can you beat my score? 🌍\n\nPlay here: https://langlio.io`;
+        shareText = `🎯 I just played Langlio Day ${dayNumber} and guessed the correct language in ${languageAttemptsUsed} attempt${languageAttemptsUsed === 1 ? '' : 's'}! ${streakText} Can you beat my score? 🌍\n\nPlay here: https://langlio.io`;
     } else {
-        shareText = `🌍 I just played Langlio and tried to guess the language but couldn't get it in 6 attempts. Can you do better? 🎯\n\nPlay here: https://langlio.io`;
+        shareText = `🌍 I just played Langlio Day ${dayNumber} and tried to guess the language but couldn't get it in 6 attempts. ${streakText} Can you do better? 🎯\n\nPlay here: https://langlio.io`;
     }
 
 
@@ -2167,10 +2410,300 @@ function fallbackCopyTextToClipboard(text) {
     document.body.removeChild(textArea);
 }
 
+// Map functionality
+function initializeMap() {
+    console.log('initializeMap called');
+    
+    // Check if Leaflet is available
+    if (typeof L === 'undefined') {
+        console.error('Leaflet library not loaded');
+        showMapFallback();
+        return;
+    }
+    console.log('Leaflet is available');
+    
+    if (map) {
+        console.log('Removing existing map');
+        map.remove();
+    }
+    
+    // Find the map container
+    const mapContainer = document.querySelector('.map-hint-container');
+    console.log('Map container found:', mapContainer);
+    if (!mapContainer) {
+        console.error('Map container not found');
+        return;
+    }
+    
+    try {
+        // Create map div
+        const mapDiv = document.createElement('div');
+        mapDiv.id = 'map';
+        mapDiv.style.width = '100%';
+        mapDiv.style.height = '100%';
+        console.log('Created map div:', mapDiv);
+        
+        // Clear existing content and add map div
+        mapContainer.innerHTML = '';
+        mapContainer.appendChild(mapDiv);
+        console.log('Added map div to container');
+        
+        // Initialize the map
+        console.log('Initializing Leaflet map...');
+        map = L.map('map').setView([20, 0], 2);
+        console.log('Map created:', map);
+        
+        // Add a dark tile layer without labels
+        console.log('Adding tile layer...');
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
+            attribution: '©OpenStreetMap, ©CartoDB',
+            subdomains: 'abcd',
+            maxZoom: 19
+        }).addTo(map);
+        console.log('Tile layer added');
+        
+        // Remove zoom controls
+        if (map.zoomControl) {
+            map.zoomControl.remove();
+        }
+        
+        // Disable dragging and zooming with error handling
+        if (map.dragging) map.dragging.disable();
+        if (map.touchZoom) map.touchZoom.disable();
+        if (map.doubleClickZoom) map.doubleClickZoom.disable();
+        if (map.scrollWheelZoom) map.scrollWheelZoom.disable();
+        if (map.boxZoom) map.boxZoom.disable();
+        if (map.keyboard) map.keyboard.disable();
+        if (map.tap) map.tap.disable();
+        
+        console.log('Map initialization completed successfully');
+        
+    } catch (error) {
+        console.error('Error initializing map:', error);
+        showMapFallback();
+    }
+}
+
+function showMapFallback() {
+    const mapContainer = document.querySelector('.map-hint-container');
+    if (mapContainer) {
+        mapContainer.innerHTML = `
+            <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: #ffffff; font-size: 1.1rem; text-align: center; padding: 1rem;">
+                <div>
+                    <p>🌍 Map hint unavailable</p>
+                    <p style="font-size: 0.9rem; color: #a0a0a0; margin-top: 0.5rem;">Try guessing the language based on the sentence!</p>
+                </div>
+            </div>
+        `;
+    }
+}
+
+function loadWorldGeoJSON() {
+    return fetch('https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .catch(error => {
+            console.error('Error loading world GeoJSON:', error);
+            // Fallback: show a simple text hint
+            const mapContainer = document.querySelector('.map-hint-container');
+            if (mapContainer) {
+                mapContainer.innerHTML = `
+                    <div style="display: flex; align-items: center; justify-content: center; height: 100%; color: #ffffff; font-size: 1.1rem; text-align: center; padding: 1rem;">
+                        <div>
+                            <p>🌍 Map hint unavailable</p>
+                            <p style="font-size: 0.9rem; color: #a0a0a0; margin-top: 0.5rem;">Try guessing the language based on the sentence!</p>
+                        </div>
+                    </div>
+                `;
+            }
+            return null;
+        });
+}
+
+function highlightCountriesForLanguage(language) {
+    if (!map || !gameData[language]) {
+        return;
+    }
+    
+    // Clear previous highlights
+    highlightedCountries.forEach(layer => {
+        if (map.hasLayer(layer)) {
+            map.removeLayer(layer);
+        }
+    });
+    highlightedCountries = [];
+    
+    const countriesToHighlight = gameData[language].countries;
+    
+    loadWorldGeoJSON().then(worldData => {
+        if (!worldData) return;
+        
+        // Create a group to hold all highlighted countries
+        const highlightedGroup = L.featureGroup();
+        
+        worldData.features.forEach(feature => {
+            const countryName = feature.properties.name;
+            
+            // Check if this country speaks the target language
+            if (countriesToHighlight.includes(countryName)) {
+                const layer = L.geoJSON(feature, {
+                    style: {
+                        fillColor: '#22c55e',
+                        weight: 2,
+                        opacity: 1,
+                        color: '#ffffff',
+                        fillOpacity: 0.7
+                    },
+                    onEachFeature: function(feature, layer) {
+                        // Disable tooltips and popups to hide country names
+                        layer.bindTooltip('', { permanent: false });
+                        layer.bindPopup('', { closeButton: false });
+                    }
+                });
+                
+                highlightedCountries.push(layer);
+                highlightedGroup.addLayer(layer);
+            }
+        });
+        
+        // Add the group to the map
+        highlightedGroup.addTo(map);
+        
+        // Fit the map to show all highlighted countries with some padding
+        if (highlightedCountries.length > 0) {
+            map.fitBounds(highlightedGroup.getBounds(), {
+                padding: [20, 20], // Add 20px padding on all sides
+                maxZoom: 6 // Limit zoom to prevent too much detail
+            });
+        }
+    });
+}
+
+// Initialize day counter
+function initializeDayCounter() {
+    // Fixed launch date for everyone: August 3, 2025
+    const fixedLaunchDate = '2025-08-03';
+    console.log('Game launch date (fixed):', fixedLaunchDate);
+}
+
+// Get the current day number since launch
+function getDayNumber() {
+    // Fixed launch date for everyone: August 3, 2025
+    const launchDate = '2025-08-03';
+    const today = new Date();
+    
+    // Reset time to midnight for accurate day calculation
+    const launch = new Date(launchDate);
+    launch.setHours(0, 0, 0, 0);
+    today.setHours(0, 0, 0, 0);
+    
+    const timeDiff = today.getTime() - launch.getTime();
+    const dayDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    
+    // Return at least day 1
+    return Math.max(1, dayDiff);
+}
+
+// Streak management functions
+function loadStreakData() {
+    const savedStreakData = localStorage.getItem('langlioStreakData');
+    if (savedStreakData) {
+        streakData = JSON.parse(savedStreakData);
+    }
+    console.log('Loaded streak data:', streakData);
+}
+
+function saveStreakData() {
+    localStorage.setItem('langlioStreakData', JSON.stringify(streakData));
+    console.log('Saved streak data:', streakData);
+}
+
+function updateStreak(won) {
+    const today = getCurrentDateString();
+    
+    // Check if user has already played today
+    if (streakData.lastPlayedDate === today) {
+        console.log('User already played today, streak not updated');
+        return;
+    }
+    
+    // Mark that user played today
+    streakData.lastPlayedDate = today;
+    
+    if (won) {
+        // Check if this is consecutive day win
+        if (streakData.lastWonDate) {
+            const lastWon = new Date(streakData.lastWonDate);
+            const todayDate = new Date(today);
+            
+            // Reset time to midnight for accurate day calculation
+            lastWon.setHours(0, 0, 0, 0);
+            todayDate.setHours(0, 0, 0, 0);
+            
+            const timeDiff = todayDate.getTime() - lastWon.getTime();
+            const dayDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+            
+            if (dayDiff === 1) {
+                // Consecutive day win - increment streak
+                streakData.currentStreak++;
+                console.log('Consecutive day win! Current streak:', streakData.currentStreak);
+            } else {
+                // Non-consecutive day win - reset streak to 1
+                streakData.currentStreak = 1;
+                console.log('Non-consecutive day win. Streak reset to 1');
+            }
+        } else {
+            // First win ever - start streak at 1
+            streakData.currentStreak = 1;
+            console.log('First win! Starting streak at 1');
+        }
+        
+        // Update best streak if current streak is higher
+        if (streakData.currentStreak > streakData.bestStreak) {
+            streakData.bestStreak = streakData.currentStreak;
+            console.log('New best streak:', streakData.bestStreak);
+        }
+        
+        // Update last won date
+        streakData.lastWonDate = today;
+    } else {
+        // Loss - reset streak to 0
+        streakData.currentStreak = 0;
+        console.log('Loss - streak reset to 0');
+    }
+    
+    saveStreakData();
+    
+    // Update the streak display
+    updateStreakDisplay();
+}
+
+function getStreakDisplay() {
+    if (streakData.currentStreak === 0) {
+        return '💀 0 days';
+    }
+    return `🔥 ${streakData.currentStreak} day${streakData.currentStreak === 1 ? '' : 's'}`;
+}
+
+function updateStreakDisplay() {
+    if (streakDisplayEl) {
+        const streakText = getStreakDisplay();
+        streakDisplayEl.textContent = streakText;
+        console.log('Updated streak display:', streakText);
+    }
+}
+
 // Initialize the game when the page loads
 document.addEventListener('DOMContentLoaded', async () => {
     try {
         console.log('DOM loaded, starting initialization...');
+        
+        // Initialize day counter if not already set
+        initializeDayCounter();
         
         // Initialize DOM elements first (always needed for instructions)
         initializeDOMElements();
@@ -2195,9 +2728,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                 showInstructions();
             }
         }
-        // Ensure hint is hidden on load
+        // Ensure hints are hidden on load
         hintDisplayEl.classList.remove('show');
         hintDisplayEl.textContent = '';
+        hintDisplay2El.classList.remove('show');
+        hintDisplay2El.textContent = '';
     } catch (error) {
         console.error('Error in DOMContentLoaded:', error);
         alert('Error loading game: ' + error.message);

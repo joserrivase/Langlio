@@ -48,6 +48,7 @@ The game includes 35+ languages with their associated countries, covering major 
 ## Versions
 
 0.0.1 first offical version of the testing version of the game
+
 0.0.2 
  - fixed the daily functionality of the game
  - removed the fowarding link after sending a message in the contact page
@@ -59,3 +60,9 @@ The game includes 35+ languages with their associated countries, covering major 
  - improved phone visuals
  - addded a back and foward button so you can see the other round results
  - other improvements
+
+ 0.0.4
+ - added map
+ - added streak
+ - made visual changes 
+ - change share message
