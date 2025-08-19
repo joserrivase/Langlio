@@ -1,28 +1,31 @@
 [
   {
     "Language": "Spanish",
-    "Example Sentence": "Tenía el corazón de un bailarín y se movía como el viento. Era conocido como el Salsero.",
-    "Translation": "He had a heart of a dancer, and moved like the wind. He was known as the Salsero.",
-    "Hint": "This language is full of ¡energía!",
+    "Example Sentence": "El que lee mucho y viaja mucho, ve mucho y sabe mucho.",
+    "Translation": "He who reads a lot and travels a lot, sees a lot and knows a lot.",
+    "Hint": "Words often end in -o or -a and are phonetic (spelled like they sound)",
     "Countries that this is a national language": "['Spain', 'Mexico', 'Colombia', 'Argentina', 'Peru', 'Venezuela', 'Chile', 'Ecuador', 'Guatemala', 'Cuba', 'Bolivia', 'Dominican Republic', 'Honduras', 'Paraguay', 'El Salvador', 'Nicaragua', 'Costa Rica', 'Panama', 'Uruguay', 'Puerto Rico', 'Equatorial Guinea']",
+    "Regions": "Southern Europe, Central America, South America, Caribbean, Central Africa",
     "Script": "Latin alphabet",
     "Country of origin (Modern Day)": "Spain"
   },
   {
     "Language": "French",
-    "Example Sentence": "J'ai dansé avec un manchot hier soir. Il portait un très beau costume.",
-    "Translation": "I danced with a penguin last night. He wore a very handsome suit.",
+    "Example Sentence": "Ce qui peut être détruit par la vérité doit l’être.",
+    "Translation": "That which can be destroyed by the truth should be.",
     "Hint": "The language of love and baguettes",
     "Countries that this is a national language": "['France', 'Canada', 'Belgium', 'Switzerland', 'Luxembourg', 'Monaco', 'Haiti', 'Democratic Republic of the Congo', 'Ivory Coast', 'Senegal', 'Madagascar', 'Cameroon', 'Niger', 'Mali', 'Rwanda', 'Mauritius', 'Benin', 'Burundi', 'Chad', 'Guinea', 'Republic of the Congo', 'Togo', 'Central African Republic', 'Djibouti', 'Equatorial Guinea', 'Gabon', 'Comoros', 'Vanuatu', 'Seychelles']",
+    "Regions": "Western Europe, North America, Central Africa, West Africa, East Africa, Indian Ocean, Caribbean, Oceania",
     "Script": "Latin alphabet",
     "Country of origin (Modern Day)": "France"
   },
   {
     "Language": "Mandarin Chinese",
-    "Example Sentence": "我和我的情妇喜欢一起去听音乐会。",
-    "Translation": "Me and my mistress love going to concerts together.",
+    "Example Sentence": "知道为什么而活的人几乎可以忍受任何生活。",
+    "Translation": "He who has a why to live can bear almost any how.",
     "Hint": "Spoken by over a billion people",
     "Countries that this is a national language": "['China', 'Taiwan', 'Singapore']",
+    "Regions": "East Asia, Southeast Asia",
     "Script": "Simplified Chinese (or Traditional)",
     "Country of origin (Modern Day)": "China"
   },
@@ -32,78 +35,87 @@
     "Translation": "You don’t have to be rich to travel well.",
     "Hint": "Bollywood speaks this language",
     "Countries that this is a national language": "['India', 'Fiji']",
+    "Regions": "South Asia, Oceania",
     "Script": "Devanagari",
     "Country of origin (Modern Day)": "India"
   },
   {
     "Language": "Arabic",
-    "Example Sentence": "تم اعتقال الدجاجة لعبورها الطريق بشكل غير قانوني.",
-    "Translation": "The chicken was arrested for crossing the road illegally.",
+    "Example Sentence": "الكراهية سهلة، لكن الحب يتطلب الشجاعة.",
+    "Translation": "Hate is easy, but love takes courage.",
     "Hint": "A language of the Quran and calligraphy",
     "Countries that this is a national language": "['Algeria', 'Bahrain', 'Comoros', 'Chad', 'Djibouti', 'Egypt', 'Iraq', 'Jordan', 'Kuwait', 'Lebanon', 'Libya', 'Mauritania', 'Morocco', 'Oman', 'Palestine', 'Qatar', 'Saudi Arabia', 'Somalia', 'Sudan', 'Syria', 'Tunisia', 'United Arab Emirates', 'Yemen']",
+    "Regions": "North Africa, Middle East, East Africa",
     "Script": "Arabic script",
     "Country of origin (Modern Day)": "Saudi Arabia"
   },
   {
     "Language": "Bengali",
-    "Example Sentence": "মুরগিটি দোষী নয়, আপনার সম্মান।",
-    "Translation": "The chicken is not guilty, your honor.",
+    "Example Sentence": "মানুষ স্বাধীনভাবে জন্মগ্রহণ করে, কিন্তু সর্বত্র সে শৃঙ্খলে আবদ্ধ।",
+    "Translation": "Man was born free, but everywhere is in chains.",
     "Hint": "This language flows like the rivers of the Ganges delta",
     "Countries that this is a national language": "['Bangladesh', 'India']",
+    "Regions": "South Asia",
     "Script": "Bengali script",
     "Country of origin (Modern Day)": "Bangladesh"
   },
   {
     "Language": "Portuguese",
-    "Example Sentence": "A galinha foi condenada à prisão perpétua.",
-    "Translation": "The chicken has been sentenced to jail for life.",
-    "Hint": "This language sails from Brazil to Mozambique",
+    "Example Sentence": "E, quando você quer algo, todo o universo conspira para ajudar você a alcançá-lo.",
+    "Translation": "And, when you want something, all the universe conspires in helping you to achieve it.",
+    "Hint": "Shares vocabulary roots with other Romance languages, but pronounces them very differently.",
     "Countries that this is a national language": "['Portugal', 'Brazil', 'Mozambique', 'Angola', 'Guinea-Bissau', 'Timor-Leste', 'Equatorial Guinea', 'Cabo Verde', 'Sao Tome and Principe']",
+    "Regions": "Southern Europe, South America, West Africa, Central Africa, Southeast Asia",
     "Script": "Latin alphabet",
     "Country of origin (Modern Day)": "Portugal"
   },
   {
     "Language": "Russian",
-    "Example Sentence": "Русский мужчина поспешил на работу. Он сильно опаздывал.",
-    "Translation": "The Russian man rushed to his job. He was very late.",
+    "Example Sentence": "Именно возможность осуществления мечты делает жизнь интересной.",
+    "Translation": "It's the possibility of having a dream come true that makes life interesting.",
     "Hint": "This language launched the first man into space",
     "Countries that this is a national language": "['Russia', 'Belarus', 'Kazakhstan', 'Kyrgyzstan', 'Tajikistan']",
+    "Regions": "Eastern Europe, Central Asia",
     "Script": "Cyrillic alphabet",
     "Country of origin (Modern Day)": "Russia"
   },
   {
     "Language": "Urdu",
-    "Example Sentence": "آدمی، جو اپنی نوکری پر جا رہا تھا، نے غلطی سے مرغی کو ٹکر مار دی۔",
-    "Translation": "The man, who was rushing to his job, accidentally hit the chicken.",
+    "Example Sentence": "ایک سے محبت کی جاتی ہے کیونکہ ایک سے پیار کیا جاتا ہے۔ محبت کے لیے کسی وجہ کی ضرورت نہیں ہوتی۔",
+    "Translation": "One is loved because one is loved. No reason is needed for loving.",
     "Hint": "A poetic sibling of Hindi written in Arabic script",
     "Countries that this is a national language": "['Pakistan']",
+    "Regions": "South Asia",
     "Script": "Perso-Arabic script",
     "Country of origin (Modern Day)": "India"
   },
   {
     "Language": "Indonesian",
-    "Example Sentence": "Pemakaman ayam akan diadakan pada hari Sabtu.",
-    "Translation": "The chicken's funeral will be held on Saturday.",
+    "Example Sentence": "Ingatlah bahwa di mana pun hatimu berada, di sanalah kau akan menemukan harta karunmu.",
+    "Translation": "Remember that wherever your heart is, there you will find your treasure.",
     "Hint": "This is the official language of the world’s largest island country.",
     "Countries that this is a national language": "['Indonesia']",
+    "Regions": "Southeast Asia",
     "Script": "Latin alphabet",
     "Country of origin (Modern Day)": "Indonesia"
   },
   {
     "Language": "German",
-    "Example Sentence": "Der Waschbär war ein sehr guter Schachspieler.",
-    "Translation": "The raccoon was a very good Chess player",
+    "Example Sentence": "In dem Moment, in dem wir beginnen, nach Liebe zu suchen, beginnt die Liebe, nach uns zu suchen.",
+    "Translation": "The moment we begin to seek love, love begins to seek us.",
     "Hint": "The language of pretzels and philosophers.",
     "Countries that this is a national language": "['Germany', 'Austria', 'Switzerland', 'Belgium', 'Liechtenstein', 'Luxembourg']",
+    "Regions": "Western Europe, Central Europe",
     "Script": "Latin alphabet",
     "Country of origin (Modern Day)": "Germany"
   },
   {
     "Language": "Japanese",
-    "Example Sentence": "私はアライグマにチェスを挑んで、負けました。",
-    "Translation": "I challenged the raccoon to chess and lost.",
+    "Example Sentence": "決して忘れないでください。あらゆる障害の中には、私たちの状況を改善する機会が存在します。",
+    "Translation": "Never forget, within every obstacle is an opportunity to improve our condition.",
     "Hint": "This island nation’s language uses three scripts.",
     "Countries that this is a national language": "['Japan']",
+    "Regions": "East Asia",
     "Script": "Kanji, Hiragana, Katakana",
     "Country of origin (Modern Day)": "Japan"
   },
@@ -111,26 +123,29 @@
     "Language": "Catalan",
     "Example Sentence": "Viatjar és fatal per al prejudici, la intolerància i la mentalitat tancada.",
     "Translation": "Travel is fatal to prejudice, bigotry, and narrow-mindedness.",
-    "Hint": "Andorra and a very famous soccer team speak this langauge",
+    "Hint": "Has traits of both French and Spanish, but is its own thing entirely.",
     "Countries that this is a national language": "['Andorra']",
+    "Regions": "Southern Europe",
     "Script": "Latin script",
     "Country of origin (Modern Day)": "Spain"
   },
   {
     "Language": "Italian",
-    "Example Sentence": "Il podcast presentava una conversazione poco ispirata su tralallero e trallalà.",
-    "Translation": "The podcast featured uninspired talk about tralallero and trallala.",
+    "Example Sentence": "Se pensi che l'avventura sia pericolosa, prova la routine. È letale.",
+    "Translation": "If you think adventure is dangerous, try routine. It's lethal.",
     "Hint": "The language of pasta and opera.",
     "Countries that this is a national language": "['Italy', 'Switzerland', 'San Marino', 'Vatican City']",
+    "Regions": "Southern Europe",
     "Script": "Latin alphabet",
     "Country of origin (Modern Day)": "Italy"
   },
   {
     "Language": "Vietnamese",
-    "Example Sentence": "Liệu con gà và con gấu trúc Mỹ sẽ là bạn hay là người yêu?",
-    "Translation": "Will the chicken and raccons be friends or will they be lovers?",
+    "Example Sentence": "Trái đất có âm nhạc dành cho những ai lắng nghe.",
+    "Translation": "The Earth has music for those who listen.",
     "Hint": "Spoken in the land of motorbikes and bánh mì.",
     "Countries that this is a national language": "['Vietnam']",
+    "Regions": "Southeast Asia",
     "Script": "Latin alphabet",
     "Country of origin (Modern Day)": "Vietnam"
   },
@@ -140,105 +155,117 @@
     "Translation": "To travel is to discover that everyone is wrong about other countries.",
     "Hint": "Your favorite K-drama is in this langauge.",
     "Countries that this is a national language": "['South Korea', 'North Korea']",
+    "Regions": "East Asia",
     "Script": "Hangul",
     "Country of origin (Modern Day)": "Korea"
   },
   {
     "Language": "Armenian",
-    "Example Sentence": "Երանի՛ հետաքրքրասերներին, որովհետև նրանք արկածներ են ունենալու։",
+    "Example Sentence": "Օրհնյալ են հետաքրքրասերները, քանզի արկածներ են ունենալու։",
     "Translation": "Blessed are the curious, for they shall have adventures.",
     "Hint": "This ancient language uses its own alphabet, has letters that look like magic symbols, and is spoken in a country where apricots are a national treasure.",
     "Countries that this is a national language": "['Armenia']",
+    "Regions": "Caucasus",
     "Script": "Armenian script",
     "Country of origin (Modern Day)": "Armenia"
   },
   {
     "Language": "Hausa",
-    "Example Sentence": "Berayen hamada suna gudu da hauka idan suka ga kaza.",
-    "Translation": "Desert rats run wildly when they see a chicken.",
-    "Hint": "Spoken from Nigeria to Niger, this language rides across deserts and cities alike, uniting people with rhythm and tone.",
+    "Example Sentence": "A kowane tafiya tare da yanayi mutum yana karɓar fiye da yadda yake nema.",
+    "Translation": "In every walk with nature one receives far more than he seeks.",
+    "Hint": "Has words that sound like they’re using glottal stops or “clicks,” but not exactly.",
     "Countries that this is a national language": "['Niger']",
+    "Regions": "West Africa",
     "Script": "Latin alphabet",
     "Country of origin (Modern Day)": "Nigeria"
   },
   {
     "Language": "Swahili",
-    "Example Sentence": "Kuku alienda sokoni kufanya ununuzi.",
-    "Translation": "The chicken went to the market to do some shopping.",
+    "Example Sentence": "Asili haina haraka, lakini kila kitu kinakamilika.",
+    "Translation": "Nature does not hurry, yet everything is accomplished.",
     "Hint": "This smooth East African language blends African roots with Arabic flair. It's also the only one with a Lion King soundtrack",
     "Countries that this is a national language": "['Tanzania', 'Kenya', 'Uganda', 'Democratic Republic of the Congo', 'Rwanda']",
+    "Regions": "East Africa, Central Africa",
     "Script": "Latin alphabet",
     "Country of origin (Modern Day)": "Tanzania"
   },
   {
     "Language": "Thai",
-    "Example Sentence": "หนูเป็นแฟนพันธุ์แท้ของก๋วยเตี๋ยวเผ็ด มันขโมยก๋วยเตี๋ยวจากร้านอาหารทุกวัน",
-    "Translation": "The rat was a big fan of spicy noodles. He stole them from the restaurant every day.",
+    "Example Sentence": "จงมีความเมตตา เพราะทุกคนที่คุณพบกำลังต่อสู้กับความยากลำบาก",
+    "Translation": "Be kind, for everyone you meet is fighting a hard battle.",
     "Hint": "This language loops, swirls, and curls, just like the noodles you’ll find on every corner of it's capital city",
     "Countries that this is a national language": "['Thailand']",
+    "Regions": "Southeast Asia",
     "Script": "Thai script",
     "Country of origin (Modern Day)": "Thailand"
   },
   {
     "Language": "Polish",
-    "Example Sentence": "Szczur był kucharzem i miał słynną zupę.",
-    "Translation": "The rat was a chef and had a famous soup.",
-    "Hint": "Spoken from Warsaw to Chicago, this language doesn’t mess around. Neither with grammar or soup.",
+    "Example Sentence": "Żeby być niezastąpionym, trzeba być zawsze innym.",
+    "Translation": "In order to be irreplaceable one must always be different.",
+    "Hint": "The “w” sounds like a “v,” and “ł” sounds like a “w.”",
     "Countries that this is a national language": "['Poland']",
+    "Regions": "Central Europe",
     "Script": "Latin alphabet",
     "Country of origin (Modern Day)": "Poland"
   },
   {
     "Language": "Pashto",
-    "Example Sentence": "چرګې یو ځل په کلي کې ټولو ته وویل چې اسمان لوېږي.",
-    "Translation": "The chicken once told everyone in the town that the sky was falling.",
+    "Example Sentence": "دا مرګ نه دی چې سړی باید ترې ویره ولري، بلکې هیڅکله ژوند پیل نه کوي.",
+    "Translation": "It is not death that a man should fear, but never beginning to live.",
     "Hint": "This warrior language flows through the hills of the Hindu Kush.",
     "Countries that this is a national language": "['Afghanistan']",
+    "Regions": "South Asia, Central Asia",
     "Script": "Arabic Script",
     "Country of origin (Modern Day)": "Afghanistan"
   },
   {
     "Language": "Turkish",
-    "Example Sentence": "Çarşıda tavuk için birçok iyi fırsat vardı.",
-    "Translation": "The bazaar had many good deals on chicken.",
+    "Example Sentence": "Ağaçlar arasında geçirilen zaman asla boşa geçmiş zaman değildir.",
+    "Translation": "Time spent among trees is never time wasted.",
     "Hint": "Spoken in a country that bridges Europe and Asia.",
-    "Countries that this is a national language": "['Turkey', 'Cyprus']",
+    "Countries that this is a national language": "['Türkiye', 'Cyprus']",
+    "Regions": "Middle East, Southeastern Europe, Eastern Mediterranean",
     "Script": "Latin alphabet",
-    "Country of origin (Modern Day)": "Turkey"
+    "Country of origin (Modern Day)": "Türkiye"
   },
   {
     "Language": "Burmese",
-    "Example Sentence": "သင်သွားသည့်နေရာတိုင်းဟာ တစ်နည်းနည်းနဲ့ သင့်အဖြစ်အစိတ်အပိုင်းတစ်ခုဖြစ်သွားပါတယ်။",
+    "Example Sentence": "သင်သွားလေရာရာ၌ သင့်၏အစိတ်အပိုင်းတစ်ခုဖြစ်လာသည်။",
     "Translation": "Wherever you go becomes a part of you somehow.",
     "Hint": "This language echoes through centuries of empire—from the Pagan Kingdom to British Burma—carried by kings, monks, and revolutionaries alike.",
     "Countries that this is a national language": "['Myanmar']",
+    "Regions": "Southeast Asia",
     "Script": "Burmese script",
     "Country of origin (Modern Day)": "Myanmar"
   },
   {
     "Language": "Ukrainian",
-    "Example Sentence": "Ми побачили пожежний гідрант під час прогулянки містом.",
-    "Translation": "We saw a fire hyrdrant on our walk through the city.",
-    "Hint": "Rooted in the Kyivan Rus', this language has survived empires, bans, and wars.",
+    "Example Sentence": "Гарне життя – це сукупність щасливих моментів.",
+    "Translation": "A good life is a collection of happy moments.",
+    "Hint": "Similar to Russian but uses a soft “i” more often—think “yi” or “i” instead of “e.”",
     "Countries that this is a national language": "['Ukraine']",
+    "Regions": "Eastern Europe",
     "Script": "Cyrillic script",
     "Country of origin (Modern Day)": "Ukraine"
   },
   {
     "Language": "Romanian",
-    "Example Sentence": "Șobolanul a plecat într-o aventură prin ocean.",
-    "Translation": "The rat went off on an adventure through the ocean.",
+    "Example Sentence": "Ochi pentru ochi va orbi întreaga lume.",
+    "Translation": "An eye for an eye will make the whole world blind.",
     "Hint": "This Romance language is spoken where vampires roam, castles rise, and Latin meets Slavic flair.",
     "Countries that this is a national language": "['Romania', 'Moldova']",
+    "Regions": "Eastern Europe",
     "Script": "Latin script",
     "Country of origin (Modern Day)": "Romania"
   },
   {
     "Language": "Dutch",
-    "Example Sentence": "Het regende op de bruiloft van de aap. Toch kuste hij zijn bruid.",
-    "Translation": "It rained on the monkey's wedding. He kissed his bride anyway.",
+    "Example Sentence": "Geluk is niet iets kant-en-klaars. Het komt voort uit je eigen daden.",
+    "Translation": "Happiness is not something ready made. It comes from your own actions",
     "Hint": "This language sails in on tall ships and bikes. spoken in the land of windmills, and waffles.",
     "Countries that this is a national language": "['Netherlands', 'Belgium', 'Suriname']",
+    "Regions": "Western Europe, South America",
     "Script": "Latin script",
     "Country of origin (Modern Day)": "Netherlands"
   },
@@ -246,35 +273,39 @@
     "Language": "Estonian",
     "Example Sentence": "Mõistus, mida on venitanud uus kogemus, ei saa kunagi naasta oma vanadesse mõõtmetesse.",
     "Translation": "A mind that is stretched by a new experience can never go back to its old dimensions.",
-    "Hint": "This language sounds like Elvish, comes from the digital republic of the north, and has more vowels than your keyboard can handle.",
+    "Hint": "It’s closely related to Finnish, and they can sometimes understand each other.",
     "Countries that this is a national language": "['Estonia']",
+    "Regions": "Northern Europe, Baltic States",
     "Script": "Latin script",
     "Country of origin (Modern Day)": "Estonia"
   },
   {
     "Language": "Lao",
-    "Example Sentence": "ລິງແລະໜູມັກໄປທ່ອງທ່ຽວດ້ວຍກັນ.",
-    "Translation": "Monkeys and rats like to travel together.",
+    "Example Sentence": "ຈິດໃຈແມ່ນທຸກສິ່ງທຸກຢ່າງ. ສິ່ງທີ່ທ່ານຄິດວ່າທ່ານກາຍເປັນ.",
+    "Translation": "The mind is everything. What you think you become.",
     "Hint": "Spoken in the land of waterfalls, sticky rice, and silent power—this language flows as gently as the Mekong River.",
     "Countries that this is a national language": "['Laos']",
+    "Regions": "Southeast Asia",
     "Script": "Lao script",
     "Country of origin (Modern Day)": "Laos"
   },
   {
     "Language": "Georgian",
-    "Example Sentence": "შეგიძლია იპოვო ვირი ისეთ ქვეყანაში, რომლის შესახებაც ჯერ არავის",
-    "Translation": "You can find the rat in a country no one has ever heard of before.",
-    "Hint": "This ancient language has its own curvy script, its own mountains, and zero linguistic relatives—spoken where Europe and Asia shake hands.",
+    "Example Sentence": "ერთადერთი ჭეშმარიტი სიბრძნე იმაშია, რომ იცოდე, არაფერი იცი.",
+    "Translation": "The only true wisdom is in knowing you know nothing.",
+    "Hint": "This language shares the same name as a famous southern state in the U.S.",
     "Countries that this is a national language": "['Georgia']",
+    "Regions": "Caucasus",
     "Script": "Georgian script",
     "Country of origin (Modern Day)": "Georgia"
   },
   {
     "Language": "Amharic",
-    "Example Sentence": "ብልውን ሥራ ነበረው ፣ ነገር ግን አልደሰተም። ምናልባት መተው ጊዜው ነው።",
-    "Translation": "The monkey had a job but he wasn't happy. It might be time to quit.",
+    "Example Sentence": "ነገ እንደምትሞት ኑር። ለዘላለም እንደምትኖር ተማር።",
+    "Translation": "Live as if you were to die tomorrow. Learn as if you were to live forever.",
     "Hint": "This ancient Semitic language is written with its own script and spoken in the highlands of East Africa—where coffee was born and kings once ruled from stone castles.",
     "Countries that this is a national language": "['Ethiopia']",
+    "Regions": "East Africa",
     "Script": "Ge'ez (Ethiopic) script",
     "Country of origin (Modern Day)": "Ethiopia"
   },
@@ -284,60 +315,67 @@
     "Translation": "Collect moments, not things.",
     "Hint": "Spoken in the islands where volcanoes roar and karaoke never sleeps. This language dances through this island country with heart and humor.",
     "Countries that this is a national language": "['Philippines']",
+    "Regions": "Southeast Asia",
     "Script": "Latin script",
     "Country of origin (Modern Day)": "Philippines"
   },
   {
     "Language": "Hungarian",
-    "Example Sentence": "Az utazó azt látja, amit lát. A turista azt látja, amit látni jött.",
-    "Translation": "The traveler sees what he sees. The tourist sees what he has come to see.",
-    "Hint": "This Central European language is one of a kind—full of logic, mystery, and more accents than vowels.",
+    "Example Sentence": "Őrizd és becsüld a halványkék pontot, az egyetlen otthont, amelyet valaha ismertünk.",
+    "Translation": "Preserve and cherish the pale blue dot, the only home we've ever known.",
+    "Hint": "It's famous for paprika, goulash, and thermal baths.",
     "Countries that this is a national language": "['Hungary']",
+    "Regions": "Central Europe",
     "Script": "Latin script",
     "Country of origin (Modern Day)": "Hungary"
   },
   {
     "Language": "Greek",
-    "Example Sentence": "Ο αρουραίος και η μαϊμού ήθελαν να ταξιδέψουν μαζί στις επτά θάλασσες.",
-    "Translation": "The rat and the monkey wanted to sail the seven seas together.",
+    "Example Sentence": "Υποφέρουμε πιο συχνά στη φαντασία παρά στην πραγματικότητα.",
+    "Translation": "We suffer more often in imagination than in reality.",
     "Hint": "Spoken in the land of philosophers, olives, and gods—this ancient language helped invent Western civilization and still slaps today.",
     "Countries that this is a national language": "['Greece', 'Cyprus']",
+    "Regions": "Southern Europe, Eastern Mediterranean",
     "Script": "Greek script",
     "Country of origin (Modern Day)": "Greece"
   },
   {
-    "Language": "Sinhala",
+    "Language": "Sinhalese",
     "Example Sentence": "හොඳ සංචාරකයෙකුට ස්ථිර සැලසුම් නොමැති අතර, ළඟා වීමටත් ඔහු බලාපොරොත්තු වන්නේ නැත.",
     "Translation": "A good traveler has no fixed plans and is not intent on arriving.",
     "Hint": "Spoken on the teardrop island below India, this curly-scripted language flows like a jungle river and sips tea like royalty.",
     "Countries that this is a national language": "['Sri Lanka']",
+    "Regions": "South Asia",
     "Script": "Sinhala script",
     "Country of origin (Modern Day)": "Sri Lanka"
   },
   {
     "Language": "Malagasy",
-    "Example Sentence": "Nanana volombava hafahafa ilay gidro.",
-    "Translation": "The monkey had a funny looking mustache.",
+    "Example Sentence": "Ny miaina no zavatra tsy fahita indrindra eto an-tany. Ny ankamaroan'ny olona dia misy, izany ihany.",
+    "Translation": "To live is the rarest thing in the world. Most people exist, that is all.",
     "Hint": "Spoken on the giant island off Africa’s east coast, this language is part African, part Southeast Asian, and 100% unexpected.",
     "Countries that this is a national language": "['Madagascar']",
+    "Regions": "Indian Ocean, East Africa",
     "Script": "Latin script",
     "Country of origin (Modern Day)": "Madagascar"
   },
   {
     "Language": "Azerbaijani",
-    "Example Sentence": "Səyahət etməmiş adam elə bilir ki, onun anası ən yaxşı aşpazdır.",
-    "Translation": "He who has not traveled thinks his mother is the best cook.",
+    "Example Sentence": "Dünyada hər şey ol, amma heç vaxt vicdansız qalma.",
+    "Translation": "Be anything in the world, but never be without a conscience.",
     "Hint": "Spoken between mountains and oil fields, this language blends Turkish vibes with Persian poetry and Soviet spice.",
     "Countries that this is a national language": "['Azerbaijan']",
+    "Regions": "Caucasus",
     "Script": "Latin script",
     "Country of origin (Modern Day)": "Azerbaijan"
   },
   {
     "Language": "Khmer",
-    "Example Sentence": "អៀង មកទីនេះ!\" កន្ទុយមាន់និយាយទៅកាន់ស្វា។",
-    "Translation": "Hey, come here!\" said the rat to the monkey.",
+    "Example Sentence": "វឌ្ឍនភាពកើតចេញពីការផ្លាស់ប្តូររបៀបដែលអ្នកមើលឃើញពិភពលោក។",
+    "Translation": "Progress only comes from changing how you see the world.",
     "Hint": "Spoken in the land of ancient temples and street food dreams, this language has a script that looks like it belongs in a secret treasure map.",
     "Countries that this is a national language": "['Cambodia']",
+    "Regions": "Southeast Asia",
     "Script": "Khmer script",
     "Country of origin (Modern Day)": "Cambodia"
   },
@@ -347,6 +385,7 @@
     "Translation": "The gladdest moment in human life is a departure into unknown lands.",
     "Hint": "This ancient language came back from the dead, and now it’s spoken from the synagogues to the startup scene.",
     "Countries that this is a national language": "['Israel']",
+    "Regions": "Middle East",
     "Script": "Hebrew script",
     "Country of origin (Modern Day)": "Israel"
   },
@@ -356,6 +395,7 @@
     "Translation": "Life is either a daring adventure or nothing at all.",
     "Hint": "This language loves waffles, fjords, and trolls in the forest. Spoken where the sun doesn't set in summer.",
     "Countries that this is a national language": "['Norway']",
+    "Regions": "Northern Europe, Scandinavia",
     "Script": "Latin script",
     "Country of origin (Modern Day)": "Norway"
   },
@@ -363,17 +403,19 @@
     "Language": "Danish",
     "Example Sentence": "Rejser er det eneste, du køber, som gør dig rigere.",
     "Translation": "Travel is the only thing you buy that makes you richer.",
-    "Hint": "This language sounds like it’s spoken with a potato in the mouth — but they make the best pastries.",
+    "Hint": "Known for its “soft” pronunciation that even confuses other Scandinavians.",
     "Countries that this is a national language": "['Denmark']",
+    "Regions": "Northern Europe, Scandinavia",
     "Script": "Latin script",
     "Country of origin (Modern Day)": "Denmark"
   },
   {
-    "Language": "Māori",
+    "Language": "Maori",
     "Example Sentence": "Ko te haere, ko te ora.",
     "Translation": "To travel is to live.",
     "Hint": "An indigenous language from the land of the long white cloud — where haka meets hobbits.",
     "Countries that this is a national language": "['New Zealand']",
+    "Regions": "Oceania",
     "Script": "Latin script",
     "Country of origin (Modern Day)": "New Zealand"
   },
@@ -382,7 +424,8 @@
     "Example Sentence": "همهٔ کسانی که سرگردانند، گم‌گشته نیستند.",
     "Translation": "Not all those who wander are lost.",
     "Hint": "This poetic language gave the world Rumi, saffron rice, and legendary carpets.",
-    "Countries that this is a national language": "['Iran', 'Afghanistan', 'Tajikistan']",
+    "Countries that this is a national language": "['Iran', 'Afghanistan, 'Tajikistan']",
+    "Regions": "Middle East, South Asia, Central Asia",
     "Script": "Persian script",
     "Country of origin (Modern Day)": "Iran"
   },
@@ -392,6 +435,7 @@
     "Translation": "The world is a book, and those who do not travel read only one page.",
     "Hint": "Spoken across the Balkans — think rakija, Roman ruins, and dramatic coastline drama.",
     "Countries that this is a national language": "['Serbia', 'Croatia', 'Bosnia and Herzegovina', 'Montenegro']",
+    "Regions": "Southeastern Europe, Balkans",
     "Script": "Latin and Cyrillic scripts",
     "Country of origin (Modern Day)": "Serbia/Croatia"
   },
@@ -399,8 +443,9 @@
     "Language": "Icelandic",
     "Example Sentence": "Við ferðast á yfirborði kúlunnar. Ég veit að leiðir okkar hljóta að mætast.",
     "Translation": "We travel on the surface of a sphere. I know our paths must cross.",
-    "Hint": "Vikings spoke it. Elves still might. The letters look like magic spells. Spoken on a land of fire and ice.",
+    "Hint": "Vikings spoke it and is spoken on a land of fire and ice.",
     "Countries that this is a national language": "['Iceland']",
+    "Regions": "Northern Europe",
     "Script": "Latin script",
     "Country of origin (Modern Day)": "Iceland"
   },
@@ -408,26 +453,29 @@
     "Language": "Malay",
     "Example Sentence": "Saya membaca untuk memahami makna kehidupan.",
     "Translation": "I read to make sense of life.",
-    "Hint": "A breezy language from tropical islands, shared by nasi lemak lovers and jungle trekkers.",
+    "Hint": "Used in a region where you’d eat satay, laksa, and nasi goreng.",
     "Countries that this is a national language": "['Malaysia', 'Singapore', 'Brunei']",
+    "Regions": "Southeast Asia",
     "Script": "Latin Script",
     "Country of origin (Modern Day)": "Malaysia"
   },
   {
     "Language": "Finnish",
     "Example Sentence": "Ota mukaasi vain muistot, jätä jälkeesi vain jalanjäljet.",
-    "Translation": "Take only memories, leave only footprints",
-    "Hint": "Sounds like Elvish. Has 15 grammatical cases. Used by sauna masters and heavy metal fans.",
+    "Translation": "Take only memories, leave only footprints.",
+    "Hint": "Has 15 grammatical cases and is used by sauna masters and heavy metal fans.",
     "Countries that this is a national language": "['Finland']",
+    "Regions": "Northern Europe",
     "Script": "Latin script",
     "Country of origin (Modern Day)": "Finland"
   },
   {
     "Language": "Swedish",
     "Example Sentence": "Jobb fyller fickan, men äventyr fyller själen.",
-    "Translation": "Jobs fill your pocket, but adventures fill your soul",
+    "Translation": "Jobs fill your pocket, but adventures fill your soul.",
     "Hint": "ABBA, IKEA, and meatballs. This melodic language comes from the land of minimalist vibes.",
     "Countries that this is a national language": "['Sweden', 'Finland']",
+    "Regions": "Northern Europe, Nordic Region",
     "Script": "Latin script",
     "Country of origin (Modern Day)": "Sweden"
   },
@@ -435,8 +483,9 @@
     "Language": "Czech",
     "Example Sentence": "Ať jdeš kamkoli, jdi tam celým svým srdcem.",
     "Translation": "Wherever you go, go with all your heart.",
-    "Hint": "Spoken in the land of castles, chimney cakes, and the world’s best beer. Sounds a bit like a Slavic tongue twist.",
+    "Hint": "This language comes from a country that drinks more beer per person than any other. This Slavic language is full of consonants.",
     "Countries that this is a national language": "['Czech Republic']",
+    "Regions": "Central Europe",
     "Script": "Latin script",
     "Country of origin (Modern Day)": "Czech Republic"
   },
@@ -446,6 +495,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -455,6 +505,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -464,6 +515,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -473,6 +525,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -482,6 +535,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -491,6 +545,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -500,6 +555,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -509,6 +565,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -518,6 +575,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -527,6 +585,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -536,6 +595,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -545,6 +605,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -554,6 +615,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -563,6 +625,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -572,6 +635,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -581,6 +645,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -590,6 +655,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -599,6 +665,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -608,6 +675,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -617,6 +685,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -626,6 +695,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -635,6 +705,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -644,6 +715,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -653,6 +725,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -662,6 +735,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -671,6 +745,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -680,6 +755,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -689,6 +765,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -698,6 +775,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -707,6 +785,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -716,6 +795,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -725,6 +805,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -734,6 +815,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -743,6 +825,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -752,6 +835,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -761,6 +845,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -770,6 +855,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -779,6 +865,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -788,6 +875,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -797,6 +885,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -806,6 +895,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -815,6 +905,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -824,6 +915,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -833,6 +925,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -842,6 +935,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -851,6 +945,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -860,6 +955,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -869,6 +965,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -878,6 +975,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -887,6 +985,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -896,6 +995,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -905,6 +1005,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -914,6 +1015,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -923,6 +1025,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -932,6 +1035,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -941,6 +1045,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -950,6 +1055,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -959,6 +1065,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -968,6 +1075,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -977,6 +1085,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -986,6 +1095,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -995,6 +1105,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -1004,6 +1115,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -1013,6 +1125,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -1022,6 +1135,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -1031,6 +1145,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -1040,6 +1155,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -1049,6 +1165,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -1058,6 +1175,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -1067,6 +1185,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -1076,6 +1195,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -1085,6 +1205,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -1094,6 +1215,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -1103,6 +1225,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -1112,6 +1235,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -1121,6 +1245,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -1130,6 +1255,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -1139,6 +1265,7 @@
     "Translation": "",
     "Hint": "",
     "Countries that this is a national language": "",
+    "Regions": "",
     "Script": "",
     "Country of origin (Modern Day)": ""
   },
@@ -1148,6 +1275,7 @@
     "Translation": "I framed the raccoon for arson.",
     "Hint": "This language is spoken in the land of Bollywood dreams and spicy street food—especially around Mumbai!",
     "Countries that this is a national language": "['India']",
+    "Regions": "",
     "Script": "Devanagari",
     "Country of origin (Modern Day)": "India"
   }

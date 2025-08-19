@@ -59,16 +59,15 @@
 
     <div class="container">
         <header>
-            <h1>
-                <span style="color: #ff0000; text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff;">L</span>
-                <span style="color: #0000ff; text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff;">A</span>
-                <span style="color: #ffffff; text-shadow: -1px -1px 0 #000000, 1px -1px 0 #000000, -1px 1px 0 #000000, 1px 1px 0 #000000;">N</span>
-                <span style="color: #008000; text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff;">G</span>
-                <span style="color: #ffff00; text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff;">L</span>
-                <span style="color: #000000; text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff;">I</span>
-                <span style="color: #ffa500; text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff;">O</span>
-            </h1>
-            <p class="subtitle">The Daily Language Guessing Game</p>
+            <div class="header-content">
+                <h1>
+                    <img src="langlio_Logo.png" alt="LANGLIO" class="header-logo">
+                </h1>
+                                        <div class="header-streak" id="headerStreak">
+                            <img src="flame_gray.png" alt="streak" class="streak-flame" id="streakFlame">
+                            <span class="streak-number" id="streakNumber">0</span>
+                        </div>
+            </div>
         </header>
 
         <div class="game-container">
@@ -78,19 +77,28 @@
             <div class="forward-button-section" id="gameForwardButton" style="display: none;">
                 <button id="forwardToCountryBtn" class="forward-btn">→</button>
             </div>
+            <h2 class="guess-prompt">Guess the language</h2>
             <div class="sentence-display">
-                <h2 class="guess-prompt">Guess the language</h2>
-                <div class="sentence" id="dailySentence"></div>
-                <div class="translation" id="translationDisplay" style="display: none;"></div>
-                               <div class="hint-row" style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem;">
-                   <button id="hintBtn" class="hint-btn">Hint 1</button>
+                <div class="translate-container">
+                    <div class="language-boxes-container">
+                        <div class="language-box">
+                            <div class="language-label" id="detectedLanguageLabel">Guess Below</div>
+                        </div>
+                        <div class="language-box">
+                            <div class="language-label">English</div>
+                        </div>
+                    </div>
+                    <div class="content-boxes-container">
+                        <div class="sentence" id="dailySentence"></div>
+                        <div class="translation" id="translationDisplay"></div>
+                    </div>
+                </div>
+                <div class="hint-row" style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem;">
+                   <button id="hintBtn" class="hint-btn">Hint</button>
                    <div id="hintDisplay" class="hint-display" style="display: none; margin: 0;"></div>
-                   <button id="hintBtn2" class="hint-btn">Hint 2</button>
+                   <button id="hintBtn2" class="hint-btn">Regions Hint</button>
                    <div id="hintDisplay2" class="hint-display" style="display: none; margin: 0;"></div>
                </div>
-                <div class="correct-language-info" id="correctLanguageInfo" style="display: none;">
-                    <div class="correct-language" id="correctLanguageDisplay"></div>
-                </div>
             </div>
 
             <div class="guessing-section">
@@ -107,14 +115,13 @@
                     </div>
                     <div class="language-result-message" id="languageResultMessage" style="display: none;">
                         <div class="result-text" id="languageResultText"></div>
-                        <div class="streak-display" id="streakDisplay"></div>
+                        <div class="play-next-section" id="playNextSection" style="display: none;">
+                            <button id="playNextBtn" class="play-next-btn">Play Next</button>
+                            <button id="shareBtnLanguage" class="play-next-btn">Share Result</button>
+                        </div>
                     </div>
                     <div class="guesses-history" id="languageGuessesHistory" style="display: flex; flex-direction: column; gap: 0.5rem; min-height: 12rem; max-height: 15rem;">
                         <!-- 6 vertical slots for language guesses will be displayed here -->
-                    </div>
-                    <div class="play-next-section" id="playNextSection" style="display: none;">
-                        <button id="playNextBtn" class="play-next-btn">Play Next</button>
-                        <button id="shareBtnLanguage" class="play-next-btn">Share Result</button>
                     </div>
                 </div>
                 <!-- Country guessing phase (initially hidden) -->
@@ -127,6 +134,7 @@
                         </div>
                     </div>
                     <div class="country-inputs" id="countryInputs"></div>
+
                     <div class="guess-row">
                         <button id="submitCountryGuess" class="submit-btn">Submit Countries</button>
                     </div>
@@ -150,10 +158,10 @@
             <a href="privacy.html">Privacy Policy</a>
             <span class="footer-sep">|</span>
             <a href="contact.html">Contact Us</a>
-            <span class="footer-sep">|</span>
-            <a href="test-dates.html">Test Dates</a>
+            <!-- <span class="footer-sep">|</span>
+            <a href="test-dates.html">Test Dates</a> -->
         </div>
-        <div class="footer-copy">&copy; 2025 Langlio  V0.0.4</div>
+        <div class="footer-copy">&copy; 2025 Langlio  V 0.0.5</div>
     </footer>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>

@@ -66,3 +66,11 @@ The game includes 35+ languages with their associated countries, covering major 
  - added streak
  - made visual changes 
  - change share message
+
+ 0.0.5
+ - added region hint
+ - moved map hint to country guessing section
+ - changed visual format to look like a translation
+ - added logo
+ - added streak to the top right corner
+ 
