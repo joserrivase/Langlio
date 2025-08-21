@@ -73,4 +73,8 @@ The game includes 35+ languages with their associated countries, covering major 
  - changed visual format to look like a translation
  - added logo
  - added streak to the top right corner
- 
+
+ 1.0.0
+ - added new language list
+ - reset back to day 1
+
